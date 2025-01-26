@@ -43,7 +43,7 @@ export const metadata = {
     locale: "en_US",
     images: [
       {
-        url: { DP },
+        url:  "./favicon.ico" ,
         width: 1200,
         height: 630,
         alt: "Omar Faruk - Web Developer Portfolio",

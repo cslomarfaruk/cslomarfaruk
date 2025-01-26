@@ -20,10 +20,10 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    optimizeCss: true,
-    // nextScriptWorkers: true,
-  },
+  // experimental: {
+  //   optimizeCss: true,
+  //   // nextScriptWorkers: true,
+  // },
   webpack: (config) => {
     config.optimization.minimize = true;
     return config;

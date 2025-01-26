@@ -7,7 +7,6 @@ import {
   Instagram,
   Linkedin,
   Twitter,
-  WhatsApp,
   PhoneCall,
   Mail,
   MapPin,
