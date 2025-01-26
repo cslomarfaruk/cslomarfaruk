@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://cslomarfaruk.vercel.app/
+
+# Sitemaps
+Sitemap: https://cslomarfaruk.vercel.app/sitemap.xml
