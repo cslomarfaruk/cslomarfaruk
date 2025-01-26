@@ -115,13 +115,13 @@ const OmarPortfolio = () => {
       {/* Dark Mode Toggle */}
       <button
         onClick={() => setIsDarkMode(!isDarkMode)}
-        className="absolute top-4 right-4 bg-gray-800 dark:bg-white text-white dark:text-black p-2 rounded-full hover:scale-110 transition-transform"
+        className="absolute top-4 right-4 bg-gray-800 dark:bg-white text-white dark:text-black p-2 rounded-full hover:scale-110 transition-transform z-50"
       >
         {isDarkMode ? "☀️" : "🌙"}
       </button>
 
       <div
-        className={`relative z-10 shadow-2xl rounded-2xl p-8 m-2 max-w-lg w-full transform hover:scale-[1.02] transition-transform duration-300 ${
+        className={`relative z-10 shadow-2xl rounded-2xl p-8 m-2 max-w-lg w-full transform transition-transform duration-300 ${
           isDarkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
         }`}
       >
