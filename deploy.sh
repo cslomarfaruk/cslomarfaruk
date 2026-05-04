@@ -13,7 +13,7 @@ fi
 
 # 2. Build the Docker image and start the container
 echo "📦 Building and starting the container..."
-docker-compose up -d --build
+docker compose up -d --build
 
 # 3. Clean up old unused images to save disk space
 echo "🧹 Cleaning up old unused images..."
