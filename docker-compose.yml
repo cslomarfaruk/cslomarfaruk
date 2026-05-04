@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  portfolio:
+    build: .
+    container_name: devcsl-portfolio
+    restart: always
+    env_file:
+      - .env
+    expose:
+      - "3000"
+    labels:
+      - "traefik.enable=true"
+      # Route both bare domain and www subdomain
+      - "traefik.http.routers.devcsl.rule=Host(`devcsl.tech`, `www.devcsl.tech`)"
+      - "traefik.http.routers.devcsl.entrypoints=websecure"
+      - "traefik.http.routers.devcsl.tls.certresolver=myresolver"
+      - "traefik.http.services.devcsl.loadbalancer.server.port=3000"
+      - "traefik.docker.network=app_admission_net"
+    networks:
+      - app_admission_net
+
+networks:
+  app_admission_net:
+    external: true
