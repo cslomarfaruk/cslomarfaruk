@@ -23,57 +23,53 @@ export default function App() {
     <HelmetProvider>
       <div className="min-h-screen">
         <Helmet>
-          <title>DEV CSL | Strategic Digital Product Studio by Omar Faruk</title>
-          <meta name="description" content="Top-tier web engineering, SaaS development, and business automation studio in Sylhet, BD. I build highly secure, ROI-focused scalable web applications." />
-          <meta name="keywords" content="Omar Faruk, DEV CSL, web developer for hire, SaaS developer Sylhet, business automation developer, secure web apps, React developer BD, Node.js engineer, full-stack engineer" />
+          <title>Omar Faruk | Expert Web Developer & Software Engineer | DEV CSL</title>
+          <meta name="description" content="Looking for a web developer to hire? Omar Faruk (cslomarfaruk) is a developer with high skills. Hire engineer Omar Faruk for premium, scalable software at DEV CSL." />
+          <meta name="keywords" content="Omar Faruk, cslomarfaruk, developer omar faruk, developer omar, developer faruk, engineer omar, engineer omar faruk, web developer to hire, developer with high skills, React expert, software engineer Sylhet, DEV CSL" />
           <meta name="author" content="Omar Faruk" />
-          <meta name="robots" content="index, follow" />
-          <meta property="og:title" content="DEV CSL | Strategic Digital Product Studio" />
-          <meta property="og:description" content="Secure, scalable web engineering and mission-critical business automation. Delivered with reliability and ROI in mind." />
+          <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+          <meta property="og:title" content="Omar Faruk | Expert Web Developer | DEV CSL" />
+          <meta property="og:description" content="Hire developer Omar Faruk. Top-tier software engineer with high skills delivering robust web applications." />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://devcsl.tech" />
+          <meta property="og:site_name" content="Omar Faruk - Web Developer" />
           <meta name="twitter:card" content="summary_large_image" />
           <link rel="canonical" href="https://devcsl.tech" />
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              "name": "DEV CSL",
-              "image": "https://devcsl.tech/dp-new.jpg",
-              "@id": "https://devcsl.tech",
-              "url": "https://devcsl.tech",
-              "telephone": "+8801839467728",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Sylhet",
-                "addressCountry": "BD"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 24.8949,
-                "longitude": 91.8687
-              },
-              "sameAs": [
-                "https://www.linkedin.com/in/csl-omarfaruk/",
-                "https://github.com/cslomarfaruk/",
-                "https://www.facebook.com/cslomarfaruk1/"
-              ],
-              "founder": {
-                "@type": "Person",
-                "name": "Omar Faruk",
-                "jobTitle": "Full Stack Engineer"
-              },
-              "description": "Strategic digital product studio specializing in SaaS, business automation, and secure web engineering.",
-              "priceRange": "$$$",
-              "serviceArea": {
-                "@type": "GeoCircle",
-                "geoMidpoint": {
-                  "@type": "GeoCoordinates",
-                  "latitude": 24.8949,
-                  "longitude": 91.8687
+              "@graph": [
+                {
+                  "@type": "Person",
+                  "@id": "https://devcsl.tech/#person",
+                  "name": "Omar Faruk",
+                  "alternateName": ["cslomarfaruk", "Developer Omar Faruk", "Engineer Omar", "Developer Omar", "Developer Faruk", "Engineer Omar Faruk"],
+                  "jobTitle": "Expert Web Developer & Software Engineer",
+                  "url": "https://devcsl.tech",
+                  "sameAs": [
+                    "https://www.linkedin.com/in/csl-omarfaruk/",
+                    "https://github.com/cslomarfaruk/",
+                    "https://www.facebook.com/cslomarfaruk1/"
+                  ],
+                  "description": "Omar Faruk is a highly skilled web developer to hire for complex software engineering and web application development."
                 },
-                "geoRadius": "50000"
-              }
+                {
+                  "@type": "ProfessionalService",
+                  "@id": "https://devcsl.tech/#organization",
+                  "name": "DEV CSL",
+                  "founder": { "@id": "https://devcsl.tech/#person" },
+                  "image": "https://devcsl.tech/dp-new.jpg",
+                  "url": "https://devcsl.tech",
+                  "telephone": "+8801839467728",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Sylhet",
+                    "addressCountry": "BD"
+                  },
+                  "description": "Strategic digital product studio by expert web developer Omar Faruk, specializing in SaaS and business automation.",
+                  "priceRange": "$$$"
+                }
+              ]
             })}
           </script>
         </Helmet>
