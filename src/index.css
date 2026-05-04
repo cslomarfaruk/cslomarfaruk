@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-brand: #050505;
+  --color-accent: #10b981; /* Business Emerald */
+  --color-emerald: #10b981;
+}
+
+@layer base {
+  :root.light {
+    --color-brand: #fafafa;
+    --color-zinc-950: #ffffff;
+    --color-zinc-900: #f4f4f5;
+    --color-zinc-800: #e4e4e7;
+    --color-zinc-700: #d4d4d8;
+    --color-zinc-600: #a1a1aa;
+    --color-zinc-500: #6b7280;
+    --color-zinc-400: #4b5563;
+    --color-zinc-300: #374151;
+    --color-zinc-200: #1f2937;
+    --color-zinc-100: #111827;
+    --color-zinc-50: #030712;
+
+    --color-white: #0a0a0a;
+    --color-black: #ffffff;
+  }
+
+  body {
+    @apply bg-brand text-zinc-100 font-sans selection:bg-emerald-500/30 selection:text-white antialiased overflow-x-hidden;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.03) 0%, transparent 40%),
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 64px 64px, 64px 64px;
+  }
+
+  :root.light body {
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.02) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.01) 0%, transparent 40%),
+      linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  }
+}
+
+.glass {
+  @apply bg-zinc-900/40 backdrop-blur-3xl border border-white/5 shadow-[0_32px_128px_-16px_rgba(0,0,0,0.5)];
+  background-image: linear-gradient(165deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+}
+
+:root.light .glass {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
+}
+
+.glass-accent {
+  @apply bg-emerald-500/5 backdrop-blur-3xl border border-emerald-500/10 shadow-[0_0_60px_rgba(16,185,129,0.1)];
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  @apply text-[10px] uppercase tracking-[0.5em] font-black text-emerald-500/70;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-emerald-400;
+}
+
+.glow-emerald {
+  @apply shadow-[0_0_100px_-20px_rgba(16,185,129,0.3)];
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-800/50 rounded-full hover:bg-indigo-500 transition-all;
+}
+
+@keyframes textShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.animate-text-shine {
+  background-size: 200% auto;
+  animation: textShine 4s linear infinite;
+}
