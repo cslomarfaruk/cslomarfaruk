@@ -17,6 +17,9 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
+  // Trust Traefik reverse proxy for accurate rate limiting
+  app.set("trust proxy", 1);
+
   // Security Middleware
   app.use(helmet({
     contentSecurityPolicy: false, // Set to false to allow Vite dev server, in prod configure CSP properly
