@@ -48,7 +48,7 @@ export default function Trust() {
             <p>{t.trust.desc1}</p>
             <p>{t.trust.desc2}</p>
           </div>
- 
+
           <div className="mt-16 flex flex-wrap gap-6">
             <div className="glass p-8 rounded-[40px] border-emerald-500/20 flex items-center gap-6 shadow-2xl">
               <div className="size-16 rounded-full glass border-emerald-500/30 flex items-center justify-center font-mono text-emerald-500 text-xl font-black shadow-inner">

@@ -41,7 +41,7 @@ export default function Navbar() {
         "w-full flex items-center justify-between transition-all duration-500 pointer-events-auto",
         scrolled
           ? "max-w-5xl lg:max-w-6xl glass px-4 md:px-6 py-3 rounded-full shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] border-white/10"
-          : "max-w-7xl px-2 py-4 bg-transparent rounded-none border-transparent shadow-none"
+          : "max-w-7xl px-4 py-4 bg-transparent border-none shadow-none"
       )}>
         <a href="#" className="flex items-center gap-3 group">
           <img
@@ -76,7 +76,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-              className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors text-[10px] font-black tracking-widest uppercase bg-white/5 px-3 py-1.5 rounded-full border border-white/10"
+              className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors text-[10px] font-black tracking-widest uppercase glass px-3 py-1.5 rounded-full"
             >
               <Globe size={12} />
               {language === 'en' ? 'EN' : 'BN'}
@@ -99,13 +99,13 @@ export default function Navbar() {
         <div className="md:hidden flex items-center gap-3">
           <button
             onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-            className="flex items-center justify-center size-8 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-white pointer-events-auto"
+            className="flex items-center justify-center size-8 rounded-full glass text-zinc-400 hover:text-white pointer-events-auto"
           >
             {language === 'en' ? 'EN' : 'BN'}
           </button>
           <ThemeToggle />
           <button
-            className="p-2 text-white bg-white/5 border border-white/10 rounded-full backdrop-blur-md"
+            className="p-2 text-white glass rounded-full"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
