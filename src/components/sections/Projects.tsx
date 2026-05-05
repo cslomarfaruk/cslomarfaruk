@@ -219,7 +219,7 @@ function ProjectModal({ project, onClose }: { project: typeof PROJECTS[0], onClo
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10"
+      className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-10"
     >
       <div className="absolute inset-0 bg-zinc-950/90 backdrop-blur-xl" onClick={onClose}></div>
 
