@@ -5,8 +5,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: 'https://devcsl.tech',
       lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 1,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+      alternates: {
+        languages: {
+          en: 'https://devcsl.tech/?lang=en',
+          bn: 'https://devcsl.tech/?lang=bn',
+        },
+      },
     },
   ];
 }
