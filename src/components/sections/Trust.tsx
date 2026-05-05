@@ -29,7 +29,12 @@ export default function Trust() {
   return (
     <section id="about" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t border-white/10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
           <span className="mono-label text-emerald-500 font-black mb-6 block tracking-[0.5em]">{t.trust.tagline}</span>
           <h2 className={cn(
             "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase mb-12",
@@ -43,7 +48,7 @@ export default function Trust() {
             <p>{t.trust.desc1}</p>
             <p>{t.trust.desc2}</p>
           </div>
-
+ 
           <div className="mt-16 flex flex-wrap gap-6">
             <div className="glass p-8 rounded-[40px] border-emerald-500/20 flex items-center gap-6 shadow-2xl">
               <div className="size-16 rounded-full glass border-emerald-500/30 flex items-center justify-center font-mono text-emerald-500 text-xl font-black shadow-inner">
@@ -55,7 +60,7 @@ export default function Trust() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 gap-6">
           {TRUST_PILLARS.map((item, index) => (

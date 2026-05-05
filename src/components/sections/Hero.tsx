@@ -14,12 +14,14 @@ export default function Hero() {
       <motion.div
         animate={{ scale: [1, 1.2, 1], x: [0, 50, 0], y: [0, -50, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute top-1/4 -right-1/4 -z-10 w-[800px] h-[800px] bg-emerald-600/5 blur-[180px] rounded-full"
+        style={{ willChange: "transform" }}
+        className="absolute top-1/4 -right-1/4 -z-10 w-[800px] h-[800px] bg-emerald-600/5 blur-[120px] rounded-full pointer-events-none"
       />
       <motion.div
         animate={{ scale: [1, 1.3, 1], x: [0, -70, 0], y: [0, 30, 0] }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        className="absolute -bottom-1/4 -left-1/4 -z-10 w-[600px] h-[600px] bg-emerald-600/5 blur-[150px] rounded-full"
+        style={{ willChange: "transform" }}
+        className="absolute -bottom-1/4 -left-1/4 -z-10 w-[600px] h-[600px] bg-emerald-600/5 blur-[100px] rounded-full pointer-events-none"
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -39,10 +41,15 @@ export default function Hero() {
           </motion.div>
 
           <div className="space-y-4 md:space-y-6">
-            <h1 className={cn(
-              "text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5.5rem] font-black uppercase",
-              language === 'bn' ? "leading-[1.2] tracking-normal" : "tracking-tighter leading-[1]"
-            )}>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className={cn(
+                "text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5.5rem] font-black uppercase",
+                language === 'bn' ? "leading-[1.2] tracking-normal" : "tracking-tighter leading-[1]"
+              )}
+            >
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-300 via-zinc-100 to-zinc-400 pb-2 inline-block">
                 {t.hero.headline_pt1}
               </span>
@@ -50,12 +57,12 @@ export default function Hero() {
               <span className="bg-clip-text text-gradient inline-block mt-2 pb-4">
                 {t.hero.headline_pt2}
               </span>
-            </h1>
+            </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               className="text-lg md:text-2xl lg:text-3xl text-zinc-400 max-w-2xl lg:mx-0 mx-auto leading-tight font-light tracking-tight"
             >
               {t.hero.subheadline}
@@ -65,7 +72,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
           >
              <a href="#contact" className="px-8 py-4 bg-emerald-600 text-white rounded-full font-bold uppercase tracking-wider hover:bg-emerald-500 transition-colors">
@@ -88,6 +95,7 @@ export default function Hero() {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+              style={{ willChange: "transform" }}
               className="w-[200%] h-[200%] absolute -top-[50%] -left-[50%] bg-[conic-gradient(from_0deg,transparent_0_180deg,rgba(16,185,129,0.8)_300deg,rgba(255,255,255,1)_360deg)]"
             />
           </div>
@@ -104,7 +112,7 @@ export default function Hero() {
                 alt="Omar Faruk"
                 loading="eager"
                 decoding="async"
-                className="h-full w-full object-cover rounded-[32px] transition-all duration-1000 group-hover:scale-105 brightness-[0.85] group-hover:brightness-110"
+                className="h-full w-full object-cover rounded-[32px] transition-transform duration-700 group-hover:scale-105 brightness-[0.85] group-hover:brightness-110 will-change-transform"
               />
             </motion.div>
 
@@ -113,7 +121,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="glass-accent p-4 md:p-5 rounded-3xl border-emerald-500/30 backdrop-blur-3xl shadow-glow shadow-emerald-500/10 flex items-center gap-4 w-full"
+                className="glass-accent p-4 md:p-5 rounded-3xl border-emerald-500/30 shadow-glow shadow-emerald-500/10 flex items-center gap-4 w-full"
               >
                 <div className="size-3 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.8)]"></div>
                 <div>
@@ -146,6 +154,21 @@ export default function Hero() {
               <SocialLink icon={Facebook} href="https://www.facebook.com/cslomarfaruk1/" />
             </div>
           </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
+        >
+          <div className="w-6 h-10 border-2 border-white/20 rounded-full p-1">
+            <motion.div
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="w-1.5 h-1.5 bg-emerald-500 rounded-full mx-auto"
+            />
+          </div>
+          <span className="mono-label !text-[8px] tracking-[0.3em] !text-zinc-600">Scroll</span>
         </motion.div>
       </div>
     </section>

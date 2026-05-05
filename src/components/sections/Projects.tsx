@@ -100,7 +100,13 @@ export default function Projects() {
 
   return (
     <section id="projects" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t border-white/10">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-20 md:mb-24">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-20 md:mb-24"
+      >
         <div>
           <span className="mono-label text-emerald-500 font-black mb-6 md:mb-4 block tracking-[0.4em]">{t.projects.tagline}</span>
           <h2 className={cn(
@@ -117,7 +123,7 @@ export default function Projects() {
           <span className="mono-label !opacity-100 !text-inherit tracking-widest uppercase text-xs">{t.projects.index_btn}</span>
           <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform mb-1" />
         </a>
-      </div>
+      </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {PROJECTS.map((project, index) => (
@@ -127,6 +133,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            style={{ willChange: "transform, opacity" }}
             onClick={() => setSelectedProject(project)}
             className={cn(
               "group glass p-2 md:p-3 rounded-[32px] md:rounded-[40px] border-white/10 hover:border-emerald-500/30 hover:shadow-[0_0_80px_-20px_rgba(16,185,129,0.15)] transition-all duration-700 cursor-pointer flex flex-col",
@@ -146,7 +153,7 @@ export default function Projects() {
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
 
               <div className="absolute top-4 right-4 md:top-6 md:right-6">
-                <div className="p-3 glass bg-white/10 backdrop-blur-xl border-white/20 text-white rounded-full translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 shadow-2xl group-hover:bg-emerald-500 group-hover:border-emerald-400 group-hover:text-black">
+                <div className="p-3 glass bg-white/10 border-white/20 text-white rounded-full translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 shadow-2xl group-hover:bg-emerald-500 group-hover:border-emerald-400 group-hover:text-black">
                   <ArrowUpRight size={20} />
                 </div>
               </div>
@@ -214,7 +221,7 @@ function ProjectModal({ project, onClose }: { project: typeof PROJECTS[0], onClo
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10"
     >
-      <div className="absolute inset-0 bg-zinc-950/90 backdrop-blur-3xl" onClick={onClose}></div>
+      <div className="absolute inset-0 bg-zinc-950/90 backdrop-blur-xl" onClick={onClose}></div>
 
       <motion.div
         initial={{ scale: 0.95, y: 40 }}

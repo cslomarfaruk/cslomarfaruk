@@ -4,8 +4,10 @@ import { LanguageProvider } from "@/lib/i18n";
 import Navbar from "@/src/components/layout/Navbar";
 import Footer from "@/src/components/sections/Footer";
 import { ThemeProvider } from "@/src/components/ThemeProvider";
+import PageTransition from "@/src/components/layout/PageTransition";
 
 export const metadata: Metadata = {
+// ... existing metadata ...
   title: "DEV CSL | Omar Faruk - Expert Web Developer & Software Engineer",
   description: "DEV CSL by Omar Faruk (cslomarfaruk) is a premium web engineering studio building production-ready, secure, and scalable web systems. Expert in Next.js, React, and DevOps.",
   keywords: "omar faruk dev, dev, csl, omar, faruk, omar faruk, dev omar, dev omar faruk, devcsl, devcsl.tech, dev csl tech, cslomarfaruk, csl omar faruk, omar faruk developer, web developer omar faruk, full stack developer bangladesh, next.js expert, software engineer, devops engineer, web engineering studio, custom software development, premium web systems, production-ready web apps",
@@ -70,7 +72,9 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <LanguageProvider>
             <Navbar />
-            {children}
+            <PageTransition>
+              {children}
+            </PageTransition>
             <Footer />
           </LanguageProvider>
         </ThemeProvider>

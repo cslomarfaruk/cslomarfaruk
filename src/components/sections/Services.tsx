@@ -41,7 +41,13 @@ export default function Services() {
 
   return (
     <section id="skills" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t border-white/10">
-      <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-20 md:mb-32">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-20 md:mb-32"
+      >
         <div className="max-w-3xl">
           <span className="mono-label text-emerald-500 font-black mb-6 md:mb-4 block tracking-[0.4em]">{t.services.tagline}</span>
           <h2 className={cn(
@@ -58,7 +64,7 @@ export default function Services() {
             {t.services.subheadline}
           </p>
         </div>
-      </div>
+      </motion.div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
         {SERVICES.map((service, index) => (
@@ -68,6 +74,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            style={{ willChange: "transform, opacity" }}
             className="glass p-8 md:p-10 rounded-[40px] md:rounded-[48px] border-white/10 hover:glass-accent transition-all group overflow-hidden relative"
           >
             <div className="absolute -top-12 -right-12 size-32 bg-emerald-500/10 blur-3xl group-hover:bg-emerald-500/20 transition-all duration-700"></div>
