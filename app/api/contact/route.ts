@@ -1,8 +1,37 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+// Simple in-memory rate limiting (IP -> { count, timestamp })
+const rateLimitMap = new Map<string, { count: number, timestamp: number }>();
+
 export async function POST(req: Request) {
   try {
+    const ip = req.headers.get('x-forwarded-for') || '127.0.0.1';
+    const now = Date.now();
+    const windowMs = 5 * 60 * 1000; // 5 minutes window
+    const maxRequests = 3; // Maximum 3 emails per 5 minutes
+
+    const userRateData = rateLimitMap.get(ip);
+    if (userRateData) {
+      if (now - userRateData.timestamp < windowMs) {
+        if (userRateData.count >= maxRequests) {
+          console.warn(`Rate limit exceeded for IP: ${ip}`);
+          return NextResponse.json({ error: "Too many requests. Please try again later." }, { status: 429 });
+        }
+        userRateData.count++;
+      } else {
+        // Reset window
+        rateLimitMap.set(ip, { count: 1, timestamp: now });
+      }
+    } else {
+      rateLimitMap.set(ip, { count: 1, timestamp: now });
+    }
+
+    // Clean up old entries periodically to prevent memory leaks
+    if (rateLimitMap.size > 1000) {
+      rateLimitMap.clear();
+    }
+
     const { name, email, businessType, budget, message } = await req.json();
 
     if (!name || !email || !message) {

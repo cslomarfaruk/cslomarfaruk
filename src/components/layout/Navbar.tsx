@@ -44,16 +44,18 @@ export default function Navbar() {
           : "max-w-7xl px-2 py-4 bg-transparent rounded-none border-transparent shadow-none"
       )}>
         <a href="#" className="flex items-center gap-3 group">
-          <div className={cn(
-            "bg-emerald-600 !text-[#ffffff] flex items-center justify-center font-mono text-xs font-black transition-all group-hover:rotate-0 shadow-lg shadow-emerald-600/20",
-            scrolled ? "size-8 rounded-lg rotate-0" : "size-10 rounded-xl rotate-3"
-          )}>
-            SL
-          </div>
+          <img
+            src="/logo.png"
+            alt="DEV.CSL"
+            className={cn(
+              "transition-all group-hover:scale-105 object-contain",
+              scrolled ? "h-8 w-8" : "h-10 w-10"
+            )}
+          />
           <span className={cn(
             "font-black tracking-tight text-white uppercase transition-all whitespace-nowrap",
             scrolled ? "text-base" : "text-xl md:text-2xl"
-          )}>DEV <span className="text-emerald-500">CSL</span></span>
+          )}>DEV<span className="text-emerald-500">.CSL</span></span>
         </a>
 
         {/* Desktop Nav */}
@@ -95,12 +97,12 @@ export default function Navbar() {
 
         {/* Mobile Nav Toggle */}
         <div className="md:hidden flex items-center gap-3">
-           <button
-              onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-              className="flex items-center justify-center size-8 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-white pointer-events-auto"
-            >
-              {language === 'en' ? 'EN' : 'BN'}
-            </button>
+          <button
+            onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
+            className="flex items-center justify-center size-8 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-white pointer-events-auto"
+          >
+            {language === 'en' ? 'EN' : 'BN'}
+          </button>
           <ThemeToggle />
           <button
             className="p-2 text-white bg-white/5 border border-white/10 rounded-full backdrop-blur-md"

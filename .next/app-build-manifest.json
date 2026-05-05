@@ -1,15 +1,39 @@
 {
   "pages": {
-    "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
-    ],
     "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/_ca681a._.js",
+      "static/chunks/app_icon_png_mjs_797d15._.js",
+      "static/chunks/app_globals_73c377.css",
+      "static/chunks/node_modules_348f4d._.js",
+      "static/chunks/_8f2d94._.js",
+      "static/chunks/app_layout_tsx_61af54._.js",
+      "static/chunks/_30c8e4._.js",
+      "static/chunks/node_modules_lucide-react_dist_esm_icons_0918c6._.js",
+      "static/chunks/app_page_tsx_19eb75._.js",
+      "static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js",
+      "static/chunks/node_modules_next_dist_compiled_107ce8._.js",
+      "static/chunks/node_modules_next_dist_client_523921._.js",
+      "static/chunks/node_modules_next_dist_4bb10e._.js",
+      "static/chunks/node_modules_@swc_helpers_cjs_00636a._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_d0a96d._.js",
+      "static/chunks/_e69f0d._.js",
+      "static/chunks/_d95469._.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/_ca681a._.js",
+      "static/chunks/app_icon_png_mjs_797d15._.js",
+      "static/chunks/app_globals_73c377.css",
+      "static/chunks/node_modules_348f4d._.js",
+      "static/chunks/_8f2d94._.js",
+      "static/chunks/app_layout_tsx_61af54._.js",
+      "static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js",
+      "static/chunks/node_modules_next_dist_compiled_107ce8._.js",
+      "static/chunks/node_modules_next_dist_client_523921._.js",
+      "static/chunks/node_modules_next_dist_4bb10e._.js",
+      "static/chunks/node_modules_@swc_helpers_cjs_00636a._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_d0a96d._.js",
+      "static/chunks/_e69f0d._.js",
+      "static/chunks/_d95469._.js"
     ]
   }
 }

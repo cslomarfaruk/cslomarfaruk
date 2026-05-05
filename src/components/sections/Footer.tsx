@@ -22,10 +22,11 @@ export default function Footer() {
       <div className="relative z-10 flex flex-col md:flex-row justify-between items-start gap-16">
         <div className="space-y-8 max-w-sm">
           <div className="flex items-center gap-4 group cursor-pointer w-fit">
-            <div className="size-12 bg-zinc-950 border border-white/10 text-white rounded-xl flex items-center justify-center font-mono text-sm font-black shadow-lg shadow-emerald-600/10 group-hover:border-emerald-500/50 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all duration-500 relative overflow-hidden">
-              <div className="absolute inset-0 bg-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <span className="relative z-10">SL</span>
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="DEV CSL Logo" 
+              className="size-12 object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(16,185,129,0.5)]" 
+            />
             <span className="font-black tracking-tighter text-white text-3xl uppercase">dev<span className="text-emerald-500">.csl</span></span>
           </div>
           <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-light tracking-tight">
