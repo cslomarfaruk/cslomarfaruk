@@ -1,51 +1,61 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { Layout, Server, Cpu, ShieldCheck, Zap, BarChart3, Bot, Link2 } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
-
-const SERVICES = [
-  {
-    title: 'Custom SaaS & Web Apps',
-    description: 'High-performance, ROI-driven platforms engineered with Next.js and secure cloud architecture.',
-    icon: Layout,
-    impact: 'Scalable to millions',
-    tags: ['Next.js', 'React', 'TypeScript', 'Secure Auth']
-  },
-  {
-    title: 'Business Automation',
-    description: 'Custom workflow orchestration and bots that handle manual tasks while you sleep.',
-    icon: Bot,
-    impact: 'Save 40+ hours/week',
-    tags: ['Lead Bots', 'Auto-Invoicing', 'CRM Sync', 'WhatsApp']
-  },
-  {
-    title: 'Admin Panels & BI',
-    description: 'Centralized command centers with real-time analytics and role-based access control.',
-    icon: BarChart3,
-    impact: 'Data-driven decisions',
-    tags: ['Dashboards', 'RBAC', 'Live Data', 'Management']
-  },
-  {
-    title: 'API & Integrations',
-    description: 'Secure, low-latency connections between your business tools and third-party services.',
-    icon: Link2,
-    impact: 'Zero-friction data flow',
-    tags: ['Stripe', 'Twilio', 'Custom APIs', 'Webhooks']
-  }
-];
+import { useLanguage } from '@/lib/i18n';
 
 export default function Services() {
+  const { t, language } = useLanguage();
+
+  const SERVICES = [
+    {
+      title: t.services.s1_title,
+      description: t.services.s1_desc,
+      icon: Layout,
+      impact: t.services.s1_impact,
+      tags: ['Next.js', 'React', 'SEO', 'Tailwind']
+    },
+    {
+      title: t.services.s2_title,
+      description: t.services.s2_desc,
+      icon: Bot,
+      impact: t.services.s2_impact,
+      tags: ['Dashboards', 'Portals', 'Data Sync', 'Secure']
+    },
+    {
+      title: t.services.s3_title,
+      description: t.services.s3_desc,
+      icon: BarChart3,
+      impact: t.services.s3_impact,
+      tags: ['Dashboards', 'RBAC', 'Analytics', 'Management']
+    },
+    {
+      title: t.services.s4_title,
+      description: t.services.s4_desc,
+      icon: Zap,
+      impact: t.services.s4_impact,
+      tags: ['Workflows', 'Scripts', 'APIs', 'Webhooks']
+    }
+  ];
+
   return (
     <section id="skills" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t border-white/10">
       <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-20 md:mb-32">
         <div className="max-w-3xl">
-          <span className="mono-label text-emerald-500 font-black mb-6 md:mb-4 block tracking-[0.4em]">ELITE SOLUTIONS</span>
-          <h2 className="text-5xl md:text-8xl font-black tracking-tighter text-white uppercase leading-[0.9] md:leading-[0.8]">
-            Built for <br className="hidden md:block" /><span className="text-zinc-700 italic">Predictable</span> <br /> <span className="text-emerald-500 underline decoration-zinc-800">Growth.</span>
+          <span className="mono-label text-emerald-500 font-black mb-6 md:mb-4 block tracking-[0.4em]">{t.services.tagline}</span>
+          <h2 className={cn(
+            "text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase",
+            language === 'bn' ? "leading-[1.2] tracking-normal" : "tracking-tighter leading-[0.9] md:leading-[0.8] text-white"
+          )}>
+            <span className={cn(language === 'bn' && "bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 to-zinc-400 pb-2 inline-block")}>
+              {t.services.headline}
+            </span>
           </h2>
         </div>
         <div className="glass p-6 md:p-8 rounded-3xl md:rounded-[40px] border-white/10 max-w-sm md:max-w-xs shadow-2xl">
           <p className="text-zinc-500 text-sm md:text-base leading-relaxed font-light tracking-tight">
-            Leveraging enterprise architecture to ensure your mission-critical applications are secure, scalable, and built for market dominance.
+            {t.services.subheadline}
           </p>
         </div>
       </div>
@@ -53,7 +63,7 @@ export default function Services() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
         {SERVICES.map((service, index) => (
           <motion.div
-            key={service.title}
+            key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

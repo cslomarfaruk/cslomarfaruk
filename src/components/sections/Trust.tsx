@@ -1,46 +1,47 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { Shield, Zap, Lock, Cpu } from 'lucide-react';
-
-const TRUST_PILLARS = [
-  {
-    title: 'Security-First Core',
-    description: 'Engineered with TLS encryption, secure JWT auth, and role-based access control to keep your business data private.',
-    icon: Lock
-  },
-  {
-    title: 'Resilient Uptime',
-    description: 'Clean architecture and redundant deployments ensure your systems stay alive during high-traffic spikes.',
-    icon: Zap
-  },
-  {
-    title: 'Scalable Logic',
-    description: 'Modular codebases that grow with your user base, preventing technical debt before it even starts.',
-    icon: Cpu
-  },
-  {
-    title: 'Global Performance',
-    description: 'Edge-optimized delivery ensuring sub-second response times for users anywhere in the world.',
-    icon: Shield
-  }
-];
+import { cn } from '@/src/lib/utils';
+import { useLanguage } from '@/lib/i18n';
 
 export default function Trust() {
+  const { t, language } = useLanguage();
+
+  const TRUST_PILLARS = [
+    {
+      title: t.trust.p1_title,
+      description: t.trust.p1_desc,
+      icon: Lock
+    },
+    {
+      title: t.trust.p2_title,
+      description: t.trust.p2_desc,
+      icon: Zap
+    },
+    {
+      title: t.trust.p3_title,
+      description: t.trust.p3_desc,
+      icon: Shield
+    }
+  ];
+
   return (
     <section id="about" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t border-white/10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
         <div>
-          <span className="mono-label text-emerald-500 font-black mb-6 block tracking-[0.5em]">AUTHORITY</span>
-          <h2 className="text-5xl md:text-8xl font-black tracking-tighter text-white uppercase leading-[0.9] md:leading-[0.8] mb-12">
-            Mission <br /><span className="text-zinc-700 italic">Critical</span> <br /> 
-            <span className="text-gradient">Security.</span>
+          <span className="mono-label text-emerald-500 font-black mb-6 block tracking-[0.5em]">{t.trust.tagline}</span>
+          <h2 className={cn(
+            "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase mb-12",
+            language === 'bn' ? "leading-[1.2] tracking-normal" : "tracking-tighter leading-[0.9] md:leading-[1.1] text-white"
+          )}>
+            <span className={cn(language === 'bn' && "bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 to-zinc-400 pb-2 inline-block")}>
+              {t.trust.headline}
+            </span>
           </h2>
           <div className="space-y-8 text-zinc-400 leading-relaxed font-light text-xl tracking-tight">
-            <p>
-              I bridge the gap between <span className="text-white font-bold">Complex Engineering</span> and <span className="text-white font-bold">Business Strategy</span>. My focus is on architecting systems that don't just work, but scale and deliver measurable ROI.
-            </p>
-            <p>
-              From conversion-optimized SaaS products to deep business automation, I help founders and enterprises transform technical debt into digital assets that fuel growth.
-            </p>
+            <p>{t.trust.desc1}</p>
+            <p>{t.trust.desc2}</p>
           </div>
 
           <div className="mt-16 flex flex-wrap gap-6">
@@ -56,10 +57,10 @@ export default function Trust() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           {TRUST_PILLARS.map((item, index) => (
             <motion.div
-              key={item.title}
+              key={index}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}

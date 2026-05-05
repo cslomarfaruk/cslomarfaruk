@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Github, Linkedin, Mail, Smartphone, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -13,7 +15,7 @@ export default function Footer() {
       {/* Massive subtle background text for premium agency feel */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0">
         <h1 className="text-[12vw] font-black text-white/[0.02] whitespace-nowrap tracking-tighter uppercase leading-none">
-          OMAR FARUK
+          DEV.CSL
         </h1>
       </div>
 

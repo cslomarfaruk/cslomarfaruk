@@ -1,14 +1,17 @@
+'use client';
+
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Github, ArrowUpRight, FolderOpen, Play, ChevronLeft, ChevronRight, X, ExternalLink } from 'lucide-react';
+import { useLanguage } from '@/lib/i18n';
 
 const PROJECTS = [
   {
     title: 'SEC Admission Hub',
     niche: 'Government Education Portal',
     impact: 'Automated 15,000+ applicants, reducing manual processing by 95%',
-    period: 'Production',
-    description: 'Developed a full production-grade admission portal for Sylhet Engineering College. Integrated SSLCommerz and government scraping for automated results. Scaled to handle high concurrent load.',
+    period: 'Live System',
+    description: 'Built a production-grade admission portal for Sylhet Engineering College. This is a fully live system currently handling thousands of real students, securely processing payments via SSLCommerz, and automating results.',
     features: ['Admin Panel', 'Secure Auth', 'API Integration', 'Automated Scraping'],
     tags: ['Next.js', 'MySQL', 'SSLCommerz', 'DigitalOcean'],
     links: { live: 'https://admission.sec.ac.bd/', github: 'https://github.com/cslomarfaruk/admission.sec.ac.bd' },
@@ -36,8 +39,8 @@ const PROJECTS = [
     title: 'Academic Result Parser',
     niche: 'Student Utility Project',
     impact: 'Helped 200+ students download consolidated results instantly',
-    period: 'Student Project',
-    description: 'A tool built for university students to parse complex result PDFs and images into structured JSON/Excel data. Showcases ability to solve immediate campus problems.',
+    period: 'Live Utility',
+    description: 'A tool built for university students to parse complex result PDFs and images into structured Excel data. Showcases my ability to identify a real problem and build an automated tool that people actually use.',
     features: ['OCR Integration', 'PDF Parsing', 'Data Export', 'Fast UI'],
     tags: ['Python', 'React', 'Tesseract'],
     links: { live: '#', github: '#' },
@@ -49,8 +52,8 @@ const PROJECTS = [
     title: 'Library System Pro',
     niche: 'University Resource Management',
     impact: 'Automated 1,000+ book logs with QR-based check-in systems',
-    period: 'Final Year Project',
-    description: 'Sophisticated library management system with QR code seat booking and book tracking. Built as a proof-of-concept for the university library.',
+    period: 'Proof of Concept',
+    description: 'Sophisticated library management system built with QR code seat booking and real-time book tracking. Engineered to handle thousands of concurrent queries without performance drops.',
     features: ['QR Booking', 'Real-time Stats', 'Fine Management'],
     tags: ['Next.js', 'Firebase', 'QR-API'],
     links: { live: '#', github: '#' },
@@ -62,8 +65,8 @@ const PROJECTS = [
     title: 'ManageMed Enterprise',
     niche: 'Healthcare SaaS',
     impact: 'Increased patient booking capacity by 40% via digital transformation',
-    period: 'Production',
-    description: 'AI-powered clinic management platform. Modernized medical practices with advanced analytics, patient scheduling, and automated billing. High security compliance.',
+    period: 'Live System',
+    description: 'A fully functional clinic management platform. Modernized medical practices by providing real-time patient scheduling, advanced analytics, and automated billing with strict data security.',
     features: ['Patient Dashboard', 'AI Analytics', 'Automated Billing', 'HIPAA Focus'],
     tags: ['Next.js', 'AI Logic', 'Clinic MGMT', 'Enterprise'],
     links: { live: 'https://managemed.vercel.app/', github: 'https://github.com/cslomarfaruk/medicare-bd' },
@@ -78,8 +81,8 @@ const PROJECTS = [
     title: 'Hive Social Engine',
     niche: 'Real-time Social Platform',
     impact: 'Architected sub-100ms message latency for high-engagement feeds',
-    period: 'Architected',
-    description: 'A massive real-time social ecosystem engineered for scale. Features complex graph relations, modular feed algorithms, and low-latency global messaging.',
+    period: 'Production-Ready',
+    description: 'A massive real-time social ecosystem engineered for scale. Built to demonstrate my capability in handling complex graph relationships, modular feed algorithms, and low-latency global messaging.',
     features: ['Real-time Messaging', 'Feed Algorithms', 'Graph Data', 'NoSQL Scale'],
     tags: ['React', 'Firebase', 'Real-time', 'NoSQL'],
     links: { live: 'https://socialmedia-dc07a.web.app/', github: 'https://github.com/cslomarfaruk/hive' },
@@ -92,18 +95,26 @@ const PROJECTS = [
 ];
 
 export default function Projects() {
+  const { t, language } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<typeof PROJECTS[0] | null>(null);
 
   return (
     <section id="projects" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t border-white/10">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-20 md:mb-24">
         <div>
-          <span className="mono-label text-emerald-500 font-black mb-6 md:mb-4 block tracking-[0.4em]">PROVEN EXCELLENCE</span>
-          <h2 className="text-5xl md:text-8xl font-black tracking-tighter text-white uppercase leading-[0.9] md:leading-[0.8]">Strategic <br /><span className="text-zinc-700 italic">Deployment.</span></h2>
+          <span className="mono-label text-emerald-500 font-black mb-6 md:mb-4 block tracking-[0.4em]">{t.projects.tagline}</span>
+          <h2 className={cn(
+            "text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black uppercase",
+            language === 'bn' ? "leading-[1.2] tracking-normal" : "tracking-tighter leading-[0.9] md:leading-[0.8] text-white"
+          )}>
+            <span className={cn(language === 'bn' ? "bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 to-zinc-400 pb-2 inline-block" : "")}>
+              {t.projects.headline_pt1} <br /><span className="text-zinc-700 italic">{t.projects.headline_pt2}</span>
+            </span>
+          </h2>
         </div>
         <a href="https://github.com/cslomarfaruk/" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto flex items-center justify-center gap-3 text-zinc-500 hover:text-white transition-all group px-6 py-4 md:py-3 glass rounded-2xl border-white/10">
           <FolderOpen size={18} className="group-hover:text-emerald-400 transition-colors" />
-          <span className="mono-label !opacity-100 !text-inherit tracking-widest uppercase text-xs">Product Index</span>
+          <span className="mono-label !opacity-100 !text-inherit tracking-widest uppercase text-xs">{t.projects.index_btn}</span>
           <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform mb-1" />
         </a>
       </div>

@@ -1,18 +1,20 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Globe } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { ThemeToggle } from '../ThemeToggle';
+import { useLanguage } from '@/lib/i18n';
 
 const NAV_ITEMS = [
   { label: 'Work', href: '#projects' },
   { label: 'Services', href: '#skills' },
-  { label: 'Automation', href: '#automation' },
-  { label: 'Students', href: '#students' },
   { label: 'Trust', href: '#about' },
 ];
 
 export default function Navbar() {
+  const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -30,7 +32,6 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-[110] transition-all duration-500 flex justify-center w-full px-4 sm:px-6 pt-4 sm:pt-6 pointer-events-none">
-      {/* Scroll Progress Bar */}
       <div
         className="fixed top-0 left-0 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 shadow-[0_0_15px_rgba(16,185,129,0.8)] transition-all duration-100 ease-out z-[120]"
         style={{ width: `${scrollProgress}%` }}
@@ -56,7 +57,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {NAV_ITEMS.map(item => (
             <a
               key={item.label}
@@ -71,6 +72,13 @@ export default function Navbar() {
           <div className="w-[1px] h-4 bg-zinc-700 mx-2"></div>
 
           <div className="flex items-center gap-4">
+            <button
+              onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
+              className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors text-[10px] font-black tracking-widest uppercase bg-white/5 px-3 py-1.5 rounded-full border border-white/10"
+            >
+              <Globe size={12} />
+              {language === 'en' ? 'EN' : 'BN'}
+            </button>
             <ThemeToggle />
             <a
               href="#contact"
@@ -79,7 +87,7 @@ export default function Navbar() {
                 scrolled ? "px-5 py-2.5 rounded-full" : "px-6 py-3 rounded-2xl"
               )}
             >
-              Book A Call
+              Discuss Project
               <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
           </div>
@@ -87,6 +95,12 @@ export default function Navbar() {
 
         {/* Mobile Nav Toggle */}
         <div className="md:hidden flex items-center gap-3">
+           <button
+              onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
+              className="flex items-center justify-center size-8 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-white pointer-events-auto"
+            >
+              {language === 'en' ? 'EN' : 'BN'}
+            </button>
           <ThemeToggle />
           <button
             className="p-2 text-white bg-white/5 border border-white/10 rounded-full backdrop-blur-md"
