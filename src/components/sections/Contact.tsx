@@ -107,7 +107,8 @@ export default function Contact() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl px-5 md:px-8 py-4 md:py-5 text-white focus:outline-none focus:border-emerald-500/50 focus:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-300 font-light text-sm"
+                        placeholder={t.contact.form_name_ph}
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl px-5 md:px-8 py-4 md:py-5 text-white placeholder:text-zinc-500/80 focus:outline-none focus:border-emerald-500/50 focus:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-300 font-light text-sm"
                       />
                     </div>
                     <div className="space-y-2 md:space-y-3 relative group">
@@ -118,7 +119,8 @@ export default function Contact() {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl px-5 md:px-8 py-4 md:py-5 text-white focus:outline-none focus:border-emerald-500/50 focus:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-300 font-light text-sm"
+                        placeholder={t.contact.form_email_ph}
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl px-5 md:px-8 py-4 md:py-5 text-white placeholder:text-zinc-500/80 focus:outline-none focus:border-emerald-500/50 focus:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-300 font-light text-sm"
                       />
                     </div>
                   </div>
@@ -134,6 +136,7 @@ export default function Contact() {
                       >
                         <option className="bg-zinc-950 text-white" value="Business">Business / Founder</option>
                         <option className="bg-zinc-950 text-white" value="Agency">Agency Partner</option>
+                        <option className="bg-zinc-950 text-white" value="Startup">Startup Team</option>
                       </select>
                     </div>
                     <div className="space-y-2 md:space-y-3 relative group">
@@ -146,6 +149,7 @@ export default function Contact() {
                       >
                         <option className="bg-zinc-950 text-white" value="$500 - $2,000">$500 - $2,000</option>
                         <option className="bg-zinc-950 text-white" value="$2,000 - $5,000">$2,000 - $5,000</option>
+                        <option className="bg-zinc-950 text-white" value="$5,000 - $10,000">$5,000 - $10,000</option>
                         <option className="bg-zinc-950 text-white" value="$10,000+">$10,000+</option>
                       </select>
                     </div>
@@ -159,7 +163,8 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl md:rounded-[32px] px-5 md:px-8 py-4 md:py-6 text-white focus:outline-none focus:border-emerald-500/50 focus:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-300 font-light text-sm resize-none"
+                      placeholder={t.contact.form_brief_ph}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl md:rounded-[32px] px-5 md:px-8 py-4 md:py-6 text-white placeholder:text-zinc-500/80 focus:outline-none focus:border-emerald-500/50 focus:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-300 font-light text-sm resize-none"
                     />
                   </div>
 

@@ -15,13 +15,13 @@ export default function Hero() {
         animate={{ scale: [1, 1.2, 1], x: [0, 50, 0], y: [0, -50, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         style={{ willChange: "transform" }}
-        className="absolute top-1/4 -right-1/4 -z-10 w-[800px] h-[800px] bg-emerald-600/5 blur-[120px] rounded-full pointer-events-none"
+        className="absolute top-1/4 -right-1/4 -z-10 w-[800px] h-[800px] bg-emerald-600/4 blur-[150px] rounded-full pointer-events-none"
       />
       <motion.div
         animate={{ scale: [1, 1.3, 1], x: [0, -70, 0], y: [0, 30, 0] }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         style={{ willChange: "transform" }}
-        className="absolute -bottom-1/4 -left-1/4 -z-10 w-[600px] h-[600px] bg-emerald-600/5 blur-[100px] rounded-full pointer-events-none"
+        className="absolute -bottom-1/4 -left-1/4 -z-10 w-[600px] h-[600px] bg-emerald-600/4 blur-[130px] rounded-full pointer-events-none"
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -50,7 +50,7 @@ export default function Hero() {
                 language === 'bn' ? "leading-[1.2] tracking-normal" : "tracking-tighter leading-[1]"
               )}
             >
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-300 via-zinc-100 to-zinc-400 pb-2 inline-block">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-400 via-zinc-100 to-zinc-500 pb-2 inline-block">
                 {t.hero.headline_pt1}
               </span>
               <br />
@@ -63,24 +63,24 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg md:text-2xl lg:text-3xl text-zinc-400 max-w-2xl lg:mx-0 mx-auto leading-tight font-light tracking-tight"
+              className="text-lg md:text-2xl lg:text-3xl text-zinc-500 max-w-2xl lg:mx-0 mx-auto leading-tight font-light tracking-tight"
             >
               {t.hero.subheadline}
             </motion.p>
           </div>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
           >
-             <a href="#contact" className="px-8 py-4 bg-emerald-600 text-white rounded-full font-bold uppercase tracking-wider hover:bg-emerald-500 transition-colors">
-               {t.hero.cta_discuss}
-             </a>
-             <a href="#projects" className="px-8 py-4 glass border-white/10 text-white rounded-full font-bold uppercase tracking-wider hover:bg-white/5 transition-colors">
-               {t.hero.cta_portfolio}
-             </a>
+            <a href="#contact" className="px-8 py-4 glass bg-gradient-to-br from-emerald-600/30 to-emerald-400/20 text-zinc-100 rounded-full font-bold uppercase tracking-wider hover:bg-emerald-500 transition-colors">
+              {t.hero.cta_discuss}
+            </a>
+            <a href="#projects" className="px-8 py-4 glass border border-white/10 text-zinc-100 rounded-full font-bold uppercase tracking-wider hover:bg-white/5 transition-colors">
+              {t.hero.cta_portfolio}
+            </a>
           </motion.div>
         </div>
 
@@ -90,15 +90,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="lg:col-span-5 relative group perspective-1000 w-full max-w-[450px] mx-auto px-2 sm:px-4 md:px-0 order-2"
         >
-          <div className="absolute -inset-2 bg-emerald-500/10 blur-[40px] rounded-full group-hover:bg-emerald-500/20 transition-all duration-700 z-0"></div>
-          <div className="absolute -inset-[2px] rounded-[34px] overflow-hidden z-0 opacity-100 transition-opacity duration-500">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-              style={{ willChange: "transform" }}
-              className="w-[200%] h-[200%] absolute -top-[50%] -left-[50%] bg-[conic-gradient(from_0deg,transparent_0_180deg,rgba(16,185,129,0.8)_300deg,rgba(255,255,255,1)_360deg)]"
-            />
-          </div>
+          <div className="absolute -inset-2 bg-emerald-500/8 blur-[48px] rounded-full group-hover:bg-emerald-500/15 transition-all duration-700 z-0"></div>
 
           <div className="relative aspect-[4/5] w-full max-w-full mx-auto rounded-[32px] overflow-hidden border border-white/5 glass shadow-2xl z-10 bg-zinc-950 p-1 md:p-2">
             <motion.div
@@ -112,7 +104,7 @@ export default function Hero() {
                 alt="Omar Faruk"
                 loading="eager"
                 decoding="async"
-                className="h-full w-full object-cover rounded-[32px] transition-transform duration-700 group-hover:scale-105 brightness-[0.85] group-hover:brightness-110 will-change-transform"
+                className="h-full w-full object-cover rounded-[32px] transition-transform duration-700 group-hover:scale-105 brightness-[0.93] group-hover:brightness-100 will-change-transform"
               />
             </motion.div>
 
@@ -121,9 +113,9 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="glass-accent p-4 md:p-5 rounded-3xl border-emerald-500/30 shadow-glow shadow-emerald-500/10 flex items-center gap-4 w-full"
+                className="glass-accent p-4 md:p-5 rounded-3xl border-emerald-500/30 shadow-glow shadow-emerald-500/10 flex items-center gap-4"
               >
-                <div className="size-3 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.8)]"></div>
+                <div className="size-4 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.8)]"></div>
                 <div>
                   <span className="mono-label !text-emerald-400 !opacity-100 block mb-0.5">Studio Status</span>
                   <span className="text-sm md:text-lg font-black text-[#ffffff] tracking-tighter leading-none block">{t.hero.status}</span>
@@ -139,7 +131,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="lg:col-span-12 w-full order-3 mt-4 md:mt-8"
         >
-          <div className="glass rounded-[2rem] p-4 md:p-6 flex flex-col xl:flex-row items-center justify-between gap-6 border border-white/10 shadow-2xl">
+          <div className="glass section-shell rounded-[2rem] p-4 md:p-6 flex flex-col xl:flex-row items-center justify-between gap-6 border border-white/10 shadow-2xl">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6 md:gap-10 w-full xl:w-auto">
               <ContactItem icon={MessageCircle} label="WhatsApp" value="+880 1839 467728" href="https://wa.me/8801839467728" />
               <div className="hidden sm:block w-[1px] h-8 bg-white/10"></div>

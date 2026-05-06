@@ -41,30 +41,34 @@
   body {
     @apply bg-brand text-zinc-100 font-sans selection:bg-emerald-500/30 selection:text-white antialiased overflow-x-hidden;
     background-image:
-      radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.03) 0%, transparent 40%),
-      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 64px 64px, 64px 64px;
+      radial-gradient(circle at 12% 14%, rgba(16, 185, 129, 0.045) 0%, transparent 42%),
+      radial-gradient(circle at 88% 78%, rgba(16, 185, 129, 0.035) 0%, transparent 44%),
+      radial-gradient(circle at 50% 100%, rgba(255, 237, 213, 0.035) 0%, transparent 38%),
+      linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 72px 72px, 72px 72px;
   }
 
   :root.light body {
     background-image:
-      radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.02) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.01) 0%, transparent 40%),
-      linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+      radial-gradient(circle at 12% 14%, rgba(16, 185, 129, 0.018) 0%, transparent 42%),
+      radial-gradient(circle at 88% 78%, rgba(16, 185, 129, 0.012) 0%, transparent 44%),
+      radial-gradient(circle at 50% 100%, rgba(245, 158, 11, 0.022) 0%, transparent 38%),
+      linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 72px 72px, 72px 72px;
   }
 }
 
 .glass {
-  @apply bg-zinc-900/60 border border-white/10 shadow-glass;
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  background-image: linear-gradient(165deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  @apply bg-zinc-900/42 shadow-glass;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-image: linear-gradient(165deg, rgba(255, 250, 240, 0.1) 0%, rgba(255, 255, 255, 0.02) 45%, transparent 100%);
   box-shadow:
-    0 32px 128px -16px rgba(0, 0, 0, 0.5),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+    0 24px 96px -20px rgba(0, 0, 0, 0.42),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
   transform: translateZ(0);
   /* Force GPU layer */
 }
@@ -76,12 +80,35 @@
 }
 
 :root.light .glass {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.74);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
-  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: 0 14px 40px -16px rgba(0, 0, 0, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.84);
+  background-image: linear-gradient(180deg, rgba(255, 252, 244, 0.58) 0%, rgba(255, 255, 255, 0.08) 100%);
+}
+
+.section-shell {
+  @apply rounded-[2rem] md:rounded-[2.5rem] border border-white/10;
+  background: linear-gradient(160deg, rgba(255, 248, 235, 0.06) 0%, rgba(255, 255, 255, 0.015) 54%, rgba(16, 185, 129, 0.015) 100%);
+}
+
+:root.light .section-shell {
+  border-color: rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.5) 100%);
+}
+
+.subtle-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+:root.light .subtle-grid {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
 }
 
 .glass-accent {
@@ -104,7 +131,7 @@
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-emerald-100/40 via-emerald-200/50 to-emerald-500;
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-white to-emerald-500;
   background-size: 200% auto;
 }
 

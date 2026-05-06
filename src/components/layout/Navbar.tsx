@@ -13,11 +13,17 @@ const NAV_ITEMS = [
   { label: 'Trust', href: '#about' },
 ];
 
+const SECONDARY_NAV = [
+  { label: 'Top', href: '#hero' },
+  { label: 'Contact', href: '#contact' },
+];
+
 export default function Navbar() {
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,21 +32,39 @@ export default function Navbar() {
       const progress = (window.scrollY / totalHeight) * 100;
       setScrollProgress(progress);
     };
+
+    const sectionIds = ['hero', 'skills', 'about', 'projects', 'contact'];
+    const detectActiveSection = () => {
+      const y = window.scrollY + window.innerHeight * 0.35;
+      let current = 'hero';
+      for (const id of sectionIds) {
+        const section = document.getElementById(id);
+        if (!section) continue;
+        if (y >= section.offsetTop) current = id;
+      }
+      setActiveSection(current);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', detectActiveSection);
+    detectActiveSection();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', detectActiveSection);
+    };
   }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-[110] transition-all duration-500 flex justify-center w-full px-4 sm:px-6 pt-4 sm:pt-6 pointer-events-none">
       <div
-        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 shadow-[0_0_15px_rgba(16,185,129,0.8)] transition-all duration-100 ease-out z-[120]"
+        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 shadow-[0_0_15px_rgba(16,185,129,0.8)] transition-all duration-100 ease-out z-[120]"
         style={{ width: `${scrollProgress}%` }}
       />
 
       <div className={cn(
         "w-full flex items-center justify-between transition-all duration-500 pointer-events-auto",
         scrolled
-          ? "max-w-5xl lg:max-w-6xl glass px-4 md:px-6 py-3 rounded-full shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] border-white/10"
+          ? "max-w-5xl lg:max-w-6xl glass px-4 md:px-6 py-3 rounded-full shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] border border-white/10"
           : "max-w-7xl px-4 py-4 bg-transparent border-none shadow-none"
       )}>
         <a href="#" className="flex items-center gap-3 group">
@@ -53,7 +77,7 @@ export default function Navbar() {
             )}
           />
           <span className={cn(
-            "font-black tracking-tight text-white uppercase transition-all whitespace-nowrap",
+            "font-black tracking-tight text-zinc-100 uppercase transition-all whitespace-nowrap",
             scrolled ? "text-base" : "text-xl md:text-2xl"
           )}>DEV<span className="text-emerald-500">.CSL</span></span>
         </a>
@@ -64,10 +88,16 @@ export default function Navbar() {
             <a
               key={item.label}
               href={item.href}
-              className="text-[10px] uppercase tracking-[0.3em] font-black text-zinc-500 hover:text-white transition-all relative group"
+              className={cn(
+                "text-[10px] uppercase tracking-[0.3em] font-black transition-all relative group",
+                activeSection === item.href.replace('#', '') ? "text-zinc-100" : "text-zinc-500 hover:text-zinc-100"
+              )}
             >
               {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-emerald-500 transition-all group-hover:w-full"></span>
+              <span className={cn(
+                "absolute -bottom-1 left-0 h-[1px] bg-emerald-500 transition-all",
+                activeSection === item.href.replace('#', '') ? "w-full" : "w-0 group-hover:w-full"
+              )}></span>
             </a>
           ))}
 
@@ -76,7 +106,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-              className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors text-[10px] font-black tracking-widest uppercase glass px-3 py-1.5 rounded-full"
+              className="flex items-center gap-1.5 text-zinc-500 hover:text-zinc-100 transition-colors text-[10px] font-black tracking-widest uppercase glass px-3 py-1.5 rounded-full"
             >
               <Globe size={12} />
               {language === 'en' ? 'EN' : 'BN'}
@@ -89,7 +119,7 @@ export default function Navbar() {
                 scrolled ? "px-5 py-2.5 rounded-full" : "px-6 py-3 rounded-2xl"
               )}
             >
-              Discuss Project
+              Start Project
               <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
           </div>
@@ -99,13 +129,13 @@ export default function Navbar() {
         <div className="md:hidden flex items-center gap-3">
           <button
             onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-            className="flex items-center justify-center size-8 rounded-full glass text-zinc-400 hover:text-white pointer-events-auto"
+            className="flex items-center justify-center size-8 rounded-full bg-gradient-to-br from-emerald-600/30 to-emerald-400/20 border border-white/10 text-zinc-500 hover:text-zinc-100 hover:from-emerald-500/40 hover:to-emerald-300/30 transition-colors"
           >
             {language === 'en' ? 'EN' : 'BN'}
           </button>
           <ThemeToggle />
           <button
-            className="p-2 text-white glass rounded-full"
+            className="p-2 text-zinc-100 bg-gradient-to-br from-emerald-600/30 to-emerald-400/20 border border-white/10 rounded-full backdrop-blur-md hover:from-emerald-500/40 hover:to-emerald-300/30 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -129,7 +159,10 @@ export default function Navbar() {
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-2xl font-black tracking-tight text-white hover:text-emerald-400 text-center uppercase transition-colors"
+                  className={cn(
+                    "text-2xl font-black tracking-tight text-center uppercase transition-colors",
+                    activeSection === item.href.replace('#', '') ? "text-emerald-400" : "text-zinc-100 hover:text-emerald-400"
+                  )}
                 >
                   {item.label}
                 </a>
@@ -146,6 +179,27 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <div className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-[105] pointer-events-auto">
+        <div className="glass rounded-full border border-white/10 p-1.5 flex flex-col gap-1.5">
+          {SECONDARY_NAV.map(item => {
+            const id = item.href.replace('#', '');
+            const isActive = activeSection === id;
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                className={cn(
+                  "px-3 py-2 rounded-full text-[10px] uppercase tracking-[0.2em] font-black transition-all",
+                  isActive ? "bg-emerald-500 text-black" : "text-zinc-400 hover:text-zinc-100 hover:bg-white/10"
+                )}
+              >
+                {item.label}
+              </a>
+            );
+          })}
+        </div>
+      </div>
     </nav>
   );
 }

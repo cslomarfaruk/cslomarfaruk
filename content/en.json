@@ -1,12 +1,12 @@
 {
   "hero": {
-    "tagline": "Premium Software Studio",
-    "headline_pt1": "Software that",
-    "headline_pt2": "Drives Growth.",
-    "subheadline": "I design and develop production-ready websites, admin panels, and automation tools that help businesses operate faster and look professional.",
-    "cta_discuss": "Discuss Your Project",
+    "tagline": "Trusted Web Development Studio",
+    "headline_pt1": "Web products that",
+    "headline_pt2": "Win Client Trust.",
+    "subheadline": "I build fast, polished, SEO-friendly websites and business systems that look premium, perform smoothly, and help you convert visitors into real customers.",
+    "cta_discuss": "Start Your Project",
     "cta_portfolio": "View Portfolio",
-    "status": "Accepting Projects"
+    "status": "Open For New Projects"
   },
   "services": {
     "tagline": "Elite Solutions",
@@ -53,16 +53,19 @@
     "subheadline": "Need a reliable developer for your business? Send me a message and let's figure out the best technical solution for you.",
     "whatsapp_btn": "Chat on WhatsApp",
     "form_name": "Full Name",
+    "form_name_ph": "e.g. John Carter",
     "form_email": "Email Address",
+    "form_email_ph": "e.g. john@company.com",
     "form_type": "I am a...",
     "form_budget": "Budget Range",
     "form_brief": "Project Brief",
+    "form_brief_ph": "Share your goal, key features, timeline, and what success looks like for your business.",
     "form_submit": "Deploy Message"
   },
   "projects": {
-    "tagline": "LIVE & PRODUCTION-READY",
-    "headline_pt1": "Real-World",
-    "headline_pt2": "Projects.",
+    "tagline": "SELECTED CLIENT-FOCUSED WORK",
+    "headline_pt1": "Projects built for",
+    "headline_pt2": "real business goals.",
     "index_btn": "View All Work"
   }
 }

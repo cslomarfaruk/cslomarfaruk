@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Github, ArrowUpRight, FolderOpen, Play, ChevronLeft, ChevronRight, X, ExternalLink } from 'lucide-react';
+import { Github, ArrowUpRight, FolderOpen, X, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '@/lib/i18n';
+import { cn } from '@/src/lib/utils';
 
 const PROJECTS = [
   {
@@ -97,6 +98,7 @@ const PROJECTS = [
 export default function Projects() {
   const { t, language } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<typeof PROJECTS[0] | null>(null);
+  const [featured, ...remainingProjects] = PROJECTS;
 
   return (
     <section id="projects" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t border-white/10">
@@ -105,28 +107,65 @@ export default function Projects() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-20 md:mb-24"
+        className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-16 md:mb-20"
       >
         <div>
           <span className="mono-label text-emerald-500 font-black mb-6 md:mb-4 block tracking-[0.4em]">{t.projects.tagline}</span>
           <h2 className={cn(
-            "text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black uppercase",
+            "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase",
             language === 'bn' ? "leading-[1.2] tracking-normal" : "tracking-tighter leading-[0.9] md:leading-[0.8] text-white"
           )}>
             <span className={cn(language === 'bn' ? "bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 to-zinc-400 pb-2 inline-block" : "")}>
-              {t.projects.headline_pt1} <br /><span className="text-zinc-700 italic">{t.projects.headline_pt2}</span>
+              {t.projects.headline_pt1} <br /><span className="text-zinc-500 italic">{t.projects.headline_pt2}</span>
             </span>
           </h2>
         </div>
-        <a href="https://github.com/cslomarfaruk/" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto flex items-center justify-center gap-3 text-zinc-500 hover:text-white transition-all group px-6 py-4 md:py-3 glass rounded-2xl border-white/10">
+        <a href="https://github.com/cslomarfaruk/" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto flex items-center justify-center gap-3 text-zinc-500 hover:text-zinc-100 transition-all group px-6 py-4 md:py-3 glass rounded-2xl border border-white/10">
           <FolderOpen size={18} className="group-hover:text-emerald-400 transition-colors" />
           <span className="mono-label !opacity-100 !text-inherit tracking-widest uppercase text-xs">{t.projects.index_btn}</span>
           <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform mb-1" />
         </a>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        {PROJECTS.map((project, index) => (
+      <motion.button
+        type="button"
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        onClick={() => setSelectedProject(featured)}
+        className="w-full text-left glass section-shell subtle-grid overflow-hidden rounded-[2rem] md:rounded-[2.5rem] p-3 md:p-4 mb-8 group"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          <div className="lg:col-span-3 relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden aspect-[16/10]">
+            <img
+              src={featured.image}
+              alt={featured.title}
+              className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-[1.04]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent" />
+            <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              Featured Case Study
+            </span>
+          </div>
+
+          <div className="lg:col-span-2 p-3 md:p-5 flex flex-col">
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-black">{featured.period}</span>
+              <ArrowUpRight size={16} className="text-zinc-500 group-hover:text-emerald-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+            </div>
+            <h3 className="text-3xl md:text-4xl font-black tracking-tight text-zinc-100 mb-4 leading-tight">{featured.title}</h3>
+            <p className="text-zinc-500 leading-relaxed mb-6 line-clamp-4">{featured.description}</p>
+            <div className="mt-auto grid grid-cols-2 gap-3">
+              <MetricChip label="Niche" value={featured.niche} />
+              <MetricChip label="Stack" value={featured.tags[0]} />
+            </div>
+          </div>
+        </div>
+      </motion.button>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {remainingProjects.map((project, index) => (
           <motion.div
             key={project.title}
             initial={{ opacity: 0, y: 20 }}
@@ -135,64 +174,39 @@ export default function Projects() {
             transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             style={{ willChange: "transform, opacity" }}
             onClick={() => setSelectedProject(project)}
-            className={cn(
-              "group glass p-2 md:p-3 rounded-[32px] md:rounded-[40px] border-white/10 hover:border-emerald-500/30 hover:shadow-[0_0_80px_-20px_rgba(16,185,129,0.15)] transition-all duration-700 cursor-pointer flex flex-col",
-              index === 0 ? "md:col-span-2 md:flex-row" : ""
-            )}
+            className="group glass section-shell subtle-grid p-3 rounded-[1.75rem] hover:shadow-[0_0_80px_-20px_rgba(16,185,129,0.15)] transition-all duration-700 cursor-pointer flex flex-col"
           >
-            {/* Media Container */}
-            <div className={cn(
-              "relative overflow-hidden rounded-[24px] md:rounded-[32px] bg-zinc-950 flex-shrink-0",
-              index === 0 ? "md:w-3/5 aspect-[16/10] md:aspect-auto md:h-full min-h-[300px] md:min-h-[450px]" : "aspect-[16/10] w-full"
-            )}>
+            <div className="relative overflow-hidden rounded-[1.25rem] bg-zinc-950 flex-shrink-0 aspect-[16/10] w-full">
               <img
                 src={project.image}
                 alt={project.title}
-                className="object-cover w-full h-full scale-105 group-hover:scale-100 transition-transform duration-1000 grayscale-[0.2] group-hover:grayscale-0"
+                className="object-cover w-full h-full scale-105 group-hover:scale-100 transition-transform duration-1000"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/30 to-transparent opacity-70" />
 
-              <div className="absolute top-4 right-4 md:top-6 md:right-6">
-                <div className="p-3 glass bg-white/10 border-white/20 text-white rounded-full translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 shadow-2xl group-hover:bg-emerald-500 group-hover:border-emerald-400 group-hover:text-black">
-                  <ArrowUpRight size={20} />
-                </div>
-              </div>
+              <span className="absolute bottom-4 left-4 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] bg-black/30 text-zinc-100 border border-white/20">
+                {project.niche}
+              </span>
             </div>
 
-            {/* Content Container */}
-            <div className={cn(
-              "flex flex-col flex-1",
-              index === 0 ? "p-6 md:p-10 justify-center" : "p-5 md:p-8"
-            )}>
-              <div className="flex items-center justify-between gap-4 mb-6">
-                <span className="px-3 py-1.5 glass rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest text-emerald-400 border border-emerald-500/20">{project.niche}</span>
+            <div className="flex flex-col flex-1 p-4 md:p-5">
+              <div className="flex items-center justify-between gap-4 mb-4">
                 <span className="text-[9px] md:text-[10px] font-black font-mono text-zinc-500 uppercase tracking-[0.2em]">{project.period}</span>
+                <ArrowUpRight size={16} className="text-zinc-500 group-hover:text-emerald-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
               </div>
 
-              <h3 className={cn(
-                "font-black text-white leading-[0.9] uppercase tracking-tighter mb-4",
-                index === 0 ? "text-4xl md:text-6xl" : "text-3xl md:text-4xl"
-              )}>{project.title}</h3>
+              <h3 className="font-black text-zinc-100 leading-[1] tracking-tight mb-3 text-2xl md:text-3xl">{project.title}</h3>
 
-              <p className={cn(
-                "text-zinc-400 font-light tracking-tight mb-8 line-clamp-3",
-                index === 0 ? "text-lg md:text-xl" : "text-sm md:text-base"
-              )}>
+              <p className="text-zinc-500 tracking-tight mb-6 line-clamp-3 text-sm md:text-base">
                 {project.description}
               </p>
 
-              <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+              <div className="mt-auto pt-4 border-t border-white/10 flex items-center justify-between">
                 <div className="flex flex-wrap gap-2">
                   {project.tags.slice(0, 3).map(tag => (
-                    <span key={tag} className="text-[9px] md:text-[10px] uppercase font-bold tracking-widest text-zinc-300 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">{tag}</span>
+                    <span key={tag} className="text-[9px] md:text-[10px] uppercase font-bold tracking-widest text-zinc-400 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">{tag}</span>
                   ))}
                 </div>
-
-                {index !== 0 && (
-                  <span className="text-zinc-500 group-hover:text-white transition-colors">
-                    <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  </span>
-                )}
               </div>
             </div>
           </motion.div>
@@ -212,6 +226,7 @@ export default function Projects() {
 }
 
 function ProjectModal({ project, onClose }: { project: typeof PROJECTS[0], onClose: () => void }) {
+  const gallery = project.gallery.length ? project.gallery : [project.image];
   const [activeImageIdx, setActiveImageIdx] = useState(0);
 
   return (
@@ -227,66 +242,34 @@ function ProjectModal({ project, onClose }: { project: typeof PROJECTS[0], onClo
         initial={{ scale: 0.95, y: 40 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.95, y: 40 }}
-        className="glass w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-[48px] border-white/10 relative z-10 shadow-[0_0_100px_rgba(0,0,0,1)]"
+        className="glass section-shell w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-[2rem] md:rounded-[3rem] border border-white/10 relative z-10 shadow-[0_0_100px_rgba(0,0,0,1)]"
       >
         <button
           onClick={onClose}
-          className="absolute top-8 right-8 z-50 p-3 bg-zinc-900 border border-white/10 rounded-full text-white hover:bg-white hover:text-black transition-all"
+          className="absolute top-6 right-6 z-50 p-3 bg-zinc-900 border border-white/10 rounded-full text-zinc-100 hover:bg-white hover:text-black transition-all"
         >
           <X size={20} />
         </button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          {/* Media Section */}
-          <div className="bg-black/40 p-2 md:p-8 space-y-6">
-            <div className="aspect-[16/9] rounded-[32px] overflow-hidden bg-zinc-950 border border-white/5 relative group">
-              <iframe
-                src={project.videoUrl}
-                className="w-full h-full"
-                title="Video Demo"
-                allowFullScreen
-              />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+          <div className="p-3 md:p-8 space-y-4">
+            <div className="relative aspect-[16/10] rounded-[1.25rem] md:rounded-[2rem] overflow-hidden border border-white/10 bg-zinc-900 shadow-2xl">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={activeImageIdx}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  src={gallery[activeImageIdx]}
+                  alt={`${project.title} screenshot ${activeImageIdx + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </AnimatePresence>
             </div>
 
-            <div className="space-y-4">
-              <div className="relative aspect-[16/10] rounded-[32px] overflow-hidden border border-white/5 bg-zinc-900 shadow-2xl">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={activeImageIdx}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    src={project.gallery[activeImageIdx] || project.image}
-                    className="w-full h-full object-cover"
-                  />
-                </AnimatePresence>
-
-                {project.gallery.length > 1 && (
-                  <>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setActiveImageIdx(prev => (prev === 0 ? project.gallery.length - 1 : prev - 1));
-                      }}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 p-2 glass rounded-full text-white"
-                    >
-                      <ChevronLeft size={20} />
-                    </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setActiveImageIdx(prev => (prev === project.gallery.length - 1 ? 0 : prev + 1));
-                      }}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 p-2 glass rounded-full text-white"
-                    >
-                      <ChevronRight size={20} />
-                    </button>
-                  </>
-                )}
-              </div>
-
-              <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-none">
-                {project.gallery.map((img, idx) => (
+            {gallery.length > 1 && (
+              <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-none">
+                {gallery.map((img, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActiveImageIdx(idx)}
@@ -295,35 +278,48 @@ function ProjectModal({ project, onClose }: { project: typeof PROJECTS[0], onClo
                       activeImageIdx === idx ? "border-emerald-500 scale-95" : "border-transparent opacity-60 hover:opacity-100"
                     )}
                   >
-                    <img src={img} className="w-full h-full object-cover" />
+                    <img src={img} alt={`${project.title} thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>
-            </div>
+            )}
+
+            {project.videoUrl && (
+              <div className="aspect-[16/9] rounded-[1.25rem] overflow-hidden bg-zinc-950 border border-white/10">
+                <iframe
+                  src={project.videoUrl}
+                  className="w-full h-full"
+                  title={`${project.title} demo`}
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+            )}
           </div>
 
-          {/* Info Section */}
-          <div className="p-8 md:p-12 flex flex-col">
+          <div className="p-6 md:p-10 flex flex-col">
             <div className="flex items-center gap-3 mb-8">
               <span className="mono-label !text-emerald-400 !opacity-100 bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-500/20 tracking-widest">{project.period}</span>
             </div>
 
-            <h2 className="text-5xl md:text-6xl font-black text-white tracking-tighter mb-6 leading-none uppercase">{project.title}</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-zinc-100 tracking-tight mb-4 leading-none">{project.title}</h2>
+            <p className="text-zinc-500 uppercase text-xs tracking-[0.2em] mb-6">{project.niche}</p>
 
-            <div className="space-y-6 text-zinc-400 text-lg md:text-xl font-light leading-relaxed mb-4">
+            <div className="space-y-6 text-zinc-500 text-base md:text-lg leading-relaxed mb-4">
               <p>{project.description}</p>
             </div>
 
-            <div className="p-6 glass border-emerald-500/20 rounded-3xl mb-8">
+            <div className="p-6 glass border border-emerald-500/20 rounded-3xl mb-8">
               <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest block mb-4">Business Impact</span>
-              <p className="text-white font-bold italic text-lg leading-snug">"{project.impact}"</p>
+              <p className="text-zinc-100 font-semibold italic text-lg leading-snug">"{project.impact}"</p>
             </div>
 
             <div className="space-y-8 mt-auto">
               <div className="flex flex-wrap gap-2">
                 {project.features.map(feature => (
-                  <span key={feature} className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-zinc-300">
-                    {feature} ✓
+                  <span key={feature} className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-zinc-400 inline-flex items-center gap-1.5">
+                    <CheckCircle2 size={12} className="text-emerald-500" />
+                    {feature}
                   </span>
                 ))}
               </div>
@@ -356,4 +352,11 @@ function ProjectModal({ project, onClose }: { project: typeof PROJECTS[0], onClo
   );
 }
 
-import { cn } from '@/src/lib/utils';
+function MetricChip({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2">
+      <p className="text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-black mb-1">{label}</p>
+      <p className="text-xs md:text-sm font-semibold text-zinc-100 line-clamp-1">{value}</p>
+    </div>
+  );
+}

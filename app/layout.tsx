@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import Navbar from "@/src/components/layout/Navbar";
+import FloatingWhatsApp from "@/src/components/layout/FloatingWhatsApp";
 import Footer from "@/src/components/sections/Footer";
 import { ThemeProvider } from "@/src/components/ThemeProvider";
 import PageTransition from "@/src/components/layout/PageTransition";
@@ -75,6 +76,7 @@ export default function RootLayout({
             <PageTransition>
               {children}
             </PageTransition>
+            <FloatingWhatsApp />
             <Footer />
           </LanguageProvider>
         </ThemeProvider>
