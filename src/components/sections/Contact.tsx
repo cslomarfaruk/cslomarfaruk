@@ -67,7 +67,7 @@ export default function Contact() {
           </h2>
 
           <div className="space-y-8 md:space-y-10">
-             <p className="text-zinc-400 font-light tracking-tight text-xl">{t.contact.subheadline}</p>
+            <p className="text-zinc-400 font-light tracking-tight text-xl">{t.contact.subheadline}</p>
 
             <div className="bg-emerald-500/10 border border-emerald-500/20 p-6 rounded-3xl mb-8">
               <div className="flex items-center gap-4 mb-2">
@@ -137,6 +137,8 @@ export default function Contact() {
                         <option className="bg-zinc-950 text-white" value="Business">Business / Founder</option>
                         <option className="bg-zinc-950 text-white" value="Agency">Agency Partner</option>
                         <option className="bg-zinc-950 text-white" value="Startup">Startup Team</option>
+                        <option className="bg-zinc-950 text-white" value="Student">Student</option>
+                        <option className="bg-zinc-950 text-white" value="Others">Others</option>
                       </select>
                     </div>
                     <div className="space-y-2 md:space-y-3 relative group">
@@ -147,6 +149,7 @@ export default function Contact() {
                         onChange={handleChange}
                         className="w-full bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl px-5 md:px-8 py-4 md:py-5 text-white focus:outline-none focus:border-emerald-500/50 focus:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-300 font-light appearance-none text-sm cursor-pointer"
                       >
+                        <option className="bg-zinc-950 text-white" value="Student">Student pack</option>
                         <option className="bg-zinc-950 text-white" value="$500 - $2,000">$500 - $2,000</option>
                         <option className="bg-zinc-950 text-white" value="$2,000 - $5,000">$2,000 - $5,000</option>
                         <option className="bg-zinc-950 text-white" value="$5,000 - $10,000">$5,000 - $10,000</option>

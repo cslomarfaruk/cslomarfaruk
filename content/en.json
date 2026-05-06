@@ -6,7 +6,7 @@
     "subheadline": "I build fast, polished, SEO-friendly websites and business systems that look premium, perform smoothly, and help you convert visitors into real customers.",
     "cta_discuss": "Start Your Project",
     "cta_portfolio": "View Portfolio",
-    "status": "Open For New Projects"
+    "status": "Available"
   },
   "services": {
     "tagline": "Elite Solutions",
@@ -49,7 +49,7 @@
   },
   "contact": {
     "tagline": "Get in Touch",
-    "headline": "Let's discuss your next project.",
+    "headline": "Let's discuss your project.",
     "subheadline": "Need a reliable developer for your business? Send me a message and let's figure out the best technical solution for you.",
     "whatsapp_btn": "Chat on WhatsApp",
     "form_name": "Full Name",
@@ -60,12 +60,12 @@
     "form_budget": "Budget Range",
     "form_brief": "Project Brief",
     "form_brief_ph": "Share your goal, key features, timeline, and what success looks like for your business.",
-    "form_submit": "Deploy Message"
+    "form_submit": "Send Your message"
   },
   "projects": {
-    "tagline": "SELECTED CLIENT-FOCUSED WORK",
+    "tagline": "PREVIOUS WORK",
     "headline_pt1": "Projects built for",
-    "headline_pt2": "real business goals.",
-    "index_btn": "View All Work"
+    "headline_pt2": "real user.",
+    "index_btn": "View all source code"
   }
 }

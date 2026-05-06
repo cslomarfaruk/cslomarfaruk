@@ -6,15 +6,46 @@ import { Github, ArrowUpRight, FolderOpen, X, ExternalLink, CheckCircle2 } from 
 import { useLanguage } from '@/lib/i18n';
 import { cn } from '@/src/lib/utils';
 
-const PROJECTS = [
+interface Project {
+  title: string;
+  niche: string;
+  impact: string;
+  period: string;
+  description: string;
+  role?: string;
+  features_detailed?: { category: string; items: string[] }[];
+  security_highlights?: string[];
+  features: string[];
+  tags: string[];
+  links: { live: string; github: string };
+  image: string;
+  gallery: string[];
+  videoUrl: string;
+}
+
+const PROJECTS: Project[] = [
+
   {
-    title: 'SEC Admission Hub',
-    niche: 'Government Education Portal',
-    impact: 'Automated 15,000+ applicants, reducing manual processing by 95%',
-    period: 'Live System',
-    description: 'Built a production-grade admission portal for Sylhet Engineering College. This is a fully live system currently handling thousands of real students, securely processing payments via SSLCommerz, and automating results.',
-    features: ['Admin Panel', 'Secure Auth', 'API Integration', 'Automated Scraping'],
-    tags: ['Next.js', 'MySQL', 'SSLCommerz', 'DigitalOcean'],
+    title: 'SEC Admission Portal',
+    niche: 'End-to-End Applicant Management',
+    impact: 'Maintained for 2 admission cycles.',
+    period: 'Live Production',
+    description: 'A production-grade admission platform with student self-service and admin seat planning. It supports the complete workflow: applicant onboarding, OTP verification, document upload, SSLCommerz payments, and an issue ticket system.',
+    role: 'Designed full UX in Figma and implemented complete frontend/backend using Next.js. Deployed to VPS server and managed with git-runner CI/CD pipeline. Refactored for security and maintained across multiple cycles.',
+    features_detailed: [
+      { category: 'Public', items: ['Notices & Circulars', 'Results', 'Seat Plan'] },
+      { category: 'Applicant', items: ['Multi-step Flow', 'OTP Verification', 'Payments'] },
+      { category: 'Admin', items: ['Applicant MGMT', 'PDF/Excel Exports', 'Bulk SMS'] }
+    ],
+    security_highlights: [
+      'Centralized RBAC Middleware',
+      'Rate limiting & Bot protections',
+      'Hardened security headers',
+      'Protected SSLCommerz endpoints', 'Cloudflare Turnstile integration',
+
+    ],
+    features: ['Multi-step App', 'Seat Planning', 'RBAC Middleware', 'Rate Limiting'],
+    tags: ['Next.js', 'MySQL', 'Docker', 'SSLCommerz', 'CI/CD Pipeline', 'Admin Panel', 'Applicant Panel', 'RBAC Middleware', 'Rate Limiting'],
     links: { live: 'https://admission.sec.ac.bd/', github: 'https://github.com/cslomarfaruk/admission.sec.ac.bd' },
     image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop',
     gallery: [
@@ -22,6 +53,50 @@ const PROJECTS = [
       'https://images.unsplash.com/photo-1504868584819-f8e90526354a?q=80&w=1200&auto=format&fit=crop'
     ],
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+
+  {
+    title: 'Hive Social Media',
+    niche: 'Real-time Social Media Platform(Like facebook)',
+    impact: 'Architected sub-100ms message latency for high-engagement feeds',
+    period: 'Production-Ready',
+    description: 'A massive real-time social ecosystem engineered for scale. Built to demonstrate my capability in handling complex graph relationships, modular feed algorithms, and low-latency global messaging.',
+    features: ['Real-time Messaging', 'Feed Algorithms', 'Graph Data', 'NoSQL Scale'],
+    tags: ['React', 'Firebase', 'Real-time', 'NoSQL'],
+    links: { live: 'https://socialmedia-dc07a.web.app/', github: 'https://github.com/cslomarfaruk/hive' },
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop',
+    gallery: [
+      'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop'
+    ],
+    videoUrl: ''
+  },
+  {
+    title: 'Detect Vehicle AI',
+    niche: 'AI-Powered Mobility Intelligence',
+    impact: 'Engineered an end-to-end AI platform with real-time WebSocket inference and 11+ vehicle class support.',
+    period: 'Live Production',
+    description: 'A production-ready full-stack computer vision platform that performs AI-powered vehicle detection and classification across live streams, images, and video uploads. Built for traffic analysis and smart monitoring, it features low-latency WebSocket inference, speed estimation, and object tracking.',
+    role: 'Architected and built the full-stack system including the FastAPI backend with YOLO/ONNX inference and a real-time Next.js frontend with WebSocket streaming. Implemented secure deployment with Docker, Traefik, and Turnstile CAPTCHA.',
+    features_detailed: [
+      { category: 'Modes', items: ['Live Stream (WebSocket)', 'Image Upload', 'Video Upload'] },
+      { category: 'AI Engine', items: ['YOLO ONNX Inference', 'Speed Estimation', 'Object Tracking'] },
+      { category: 'Production', items: ['Docker + Traefik', 'Turnstile CAPTCHA', 'Rate Limiting'] }
+    ],
+    security_highlights: [
+      'Cloudflare Turnstile integration',
+      'Per-IP Rate Limiting Middleware',
+      'Request size validation',
+      'HSTS & Security Headers'
+    ],
+    features: ['Real-time WebSocket', 'ONNX Optimization', 'Speed Estimation', 'Dockerized'],
+    tags: ['Next.js', 'FastAPI', 'YOLO', 'WebSocket', 'Docker', 'OpenCV', 'Tailwind', 'Python', 'ONNX'],
+    links: { live: 'https://vehicle.devcsl.tech', github: 'https://github.com/cslomarfaruk/detect-vehicle-ai' },
+    image: 'https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=800&auto=format&fit=crop',
+    gallery: [
+      'https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1591115765373-520b7a21765b?q=80&w=1200&auto=format&fit=crop'
+    ],
+    videoUrl: ''
   },
   {
     title: 'DEV CSL Studio v2',
@@ -34,70 +109,143 @@ const PROJECTS = [
     links: { live: '#', github: '#' },
     image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop',
     gallery: [],
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    videoUrl: ''
   },
   {
-    title: 'Academic Result Parser',
-    niche: 'Student Utility Project',
-    impact: 'Helped 200+ students download consolidated results instantly',
-    period: 'Live Utility',
-    description: 'A tool built for university students to parse complex result PDFs and images into structured Excel data. Showcases my ability to identify a real problem and build an automated tool that people actually use.',
-    features: ['OCR Integration', 'PDF Parsing', 'Data Export', 'Fast UI'],
-    tags: ['Python', 'React', 'Tesseract'],
-    links: { live: '#', github: '#' },
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800&auto=format&fit=crop',
-    gallery: [],
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
-  },
-  {
-    title: 'Library System Pro',
-    niche: 'University Resource Management',
-    impact: 'Automated 1,000+ book logs with QR-based check-in systems',
-    period: 'Proof of Concept',
-    description: 'Sophisticated library management system built with QR code seat booking and real-time book tracking. Engineered to handle thousands of concurrent queries without performance drops.',
-    features: ['QR Booking', 'Real-time Stats', 'Fine Management'],
-    tags: ['Next.js', 'Firebase', 'QR-API'],
-    links: { live: '#', github: '#' },
-    image: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=800&auto=format&fit=crop',
-    gallery: [],
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
-  },
-  {
-    title: 'ManageMed Enterprise',
-    niche: 'Healthcare SaaS',
-    impact: 'Increased patient booking capacity by 40% via digital transformation',
-    period: 'Live System',
-    description: 'A fully functional clinic management platform. Modernized medical practices by providing real-time patient scheduling, advanced analytics, and automated billing with strict data security.',
-    features: ['Patient Dashboard', 'AI Analytics', 'Automated Billing', 'HIPAA Focus'],
-    tags: ['Next.js', 'AI Logic', 'Clinic MGMT', 'Enterprise'],
-    links: { live: 'https://managemed.vercel.app/', github: 'https://github.com/cslomarfaruk/medicare-bd' },
-    image: 'https://images.unsplash.com/photo-1576091160550-217359f45f4c?q=80&w=800&auto=format&fit=crop',
-    gallery: [
-      'https://images.unsplash.com/photo-1576091160550-217359f45f4c?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop'
+    title: 'Ultimate 9x9 Tic-Tac-Toe',
+    niche: 'Gaming / Strategic Logic',
+    impact: 'Implemented complex nested-grid state management with minimax-inspired AI logic',
+    period: 'Completed Project',
+    description: 'An advanced, multi-layered version of the classic Tic-Tac-Toe. Features a 9x9 grid where players must win small boards to conquer the larger arena. Includes a challenging AI opponent and a local multiplayer mode with a focus on seamless state synchronization.',
+    features: [
+      'Recursive Grid Logic',
+      'Intelligent AI Opponent',
+      'Dynamic Win-Condition Detection',
+      'Modern UI/UX',
+      'Real-time Score Tracking'
     ],
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    tags: ['Next.js', 'React', 'Tailwind CSS', 'Algorithms'],
+    links: {
+      live: 'https://advanched-ttt.vercel.app/',
+      github: 'https://github.com/cslomarfaruk/advanched-9x9--tic-tak-toe-gameplay-with-ai-or-friends'
+    },
+    image: 'https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=800&auto=format&fit=crop', // A high-quality abstract strategy/game image
+    gallery: [],
+    videoUrl: ''
   },
   {
-    title: 'Hive Social Engine',
-    niche: 'Real-time Social Platform',
-    impact: 'Architected sub-100ms message latency for high-engagement feeds',
-    period: 'Production-Ready',
-    description: 'A massive real-time social ecosystem engineered for scale. Built to demonstrate my capability in handling complex graph relationships, modular feed algorithms, and low-latency global messaging.',
-    features: ['Real-time Messaging', 'Feed Algorithms', 'Graph Data', 'NoSQL Scale'],
-    tags: ['React', 'Firebase', 'Real-time', 'NoSQL'],
-    links: { live: 'https://socialmedia-dc07a.web.app/', github: 'https://github.com/cslomarfaruk/hive' },
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop',
-    gallery: [
-      'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop'
+    title: 'ManageMed V2',
+    niche: 'Healthcare Management / SaaS',
+    impact: 'Architected a scalable patient-provider ecosystem with 100% type-safety and accessible UI components',
+    period: 'Active Development',
+    description: 'A comprehensive medical service platform designed to bridge the gap between patients and healthcare providers. Built with a focus on high-performance rendering and a "mobile-first" medical dashboard experience, featuring secure scheduling and provider discovery.',
+    features: [
+      'Modular Healthcare Dashboard',
+      'Type-Safe API Integration',
+      'Dynamic Appointment Scheduling',
+      'Custom shadcn/ui Component Library',
+      'Fluid Micro-interactions with Framer Motion'
     ],
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
-  }
+    tags: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Shadcn UI', 'Lucide React'],
+    links: {
+      live: 'https://managemed.vercel.app/',
+      github: 'https://github.com/cslomarfaruk/medicare-bd'
+    },
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800&auto=format&fit=crop',
+    gallery: [],
+    videoUrl: ''
+  },
+  {
+    title: 'EggFusionNet (DIP Project)',
+    niche: 'Deep Learning / Computer Vision',
+    impact: 'Co-authored a research-grade CNN architecture for automated eggplant leaf disease classification with 90%+ accuracy',
+    period: 'Completed Academic Project',
+    description: 'An advanced digital image processing project that utilizes a custom deep learning framework to identify various eggplant leaf diseases. This project involved complex data preprocessing, model training on specialized agricultural datasets, and evaluating performance metrics to ensure reliability in field conditions.',
+    features: [
+      'Custom CNN Architecture (EggFusionNet)',
+      'Automated Disease Detection',
+      'Image Preprocessing & Augmentation',
+      'Comprehensive Performance Analytics',
+      'Scalable Model Training Pipeline'
+    ],
+    tags: ['Python', 'TensorFlow', 'Keras', 'Computer Vision', 'Deep Learning'],
+    links: {
+      live: '#',
+      github: 'https://github.com/cslomarfaruk/dip_project'
+    },
+    image: 'https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=800&auto=format&fit=crop', // High-quality image of agricultural tech/research
+    gallery: [],
+    videoUrl: ''
+  },
+  {
+    title: 'SEC Mobile Commerce',
+    niche: 'E-commerce / Fintech',
+    impact: 'Developed a full-stack marketplace with secure payment integration and a comprehensive administrative ERP',
+    period: 'Completed Project',
+    description: 'A robust e-commerce solution tailored for mobile and electronics. Features a high-performance Next.js frontend paired with a Django REST Framework backend, offering seamless product management, secure checkout workflows, and a dual-interface system for customers and administrators.',
+    features: [
+      'Dynamic Product Cataloging',
+      'Secure Payment Gateway Integration',
+      'Advanced Admin Dashboard (Product/Order Management)',
+      'JWT-based Authentication System',
+      'Full-stack API Synchronization'
+    ],
+    tags: ['Django', 'Next.js', 'PostgreSQL', 'Tailwind CSS', 'REST API'],
+    links: {
+      live: '#',
+      github: 'https://github.com/cslomarfaruk/sec-mobile-commerce'
+    },
+    image: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=800&auto=format&fit=crop',
+    gallery: [],
+    videoUrl: ''
+  }, {
+    title: 'Personal Portfolio v1',
+    niche: 'Digital Identity / Web Presence',
+    impact: 'First-generation professional showcase establishing a baseline for minimalist dev-branding',
+    period: 'Legacy Project (2025)',
+    description: 'The initial iteration of my professional identity. Built with a focus on simplicity and clean typography to highlight core engineering skills and early projects during my CSE undergraduate tenure.',
+    features: [
+      'Minimalist Design Language',
+      'Project Showcase Gallery',
+      'Integrated Contact System',
+      'Responsive Layout Architecture'
+    ],
+    tags: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite'],
+    links: {
+      live: 'https://cslomarfaruk.vercel.app/',
+      github: 'https://github.com/cslomarfaruk/portfolio-v1'
+    },
+    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop',
+    gallery: [],
+    videoUrl: ''
+  }, {
+    title: 'IUPC Registration Portal',
+    niche: 'Event Management / Automation',
+    impact: 'Streamlined multi-team registration and automated participant verification for high-stakes programming contests',
+    period: 'Completed Project',
+    description: 'A dedicated registration platform engineered to manage the complex intake process of Inter-University Programming Contests. The system handles team credentials, institution verification, and participant data with a focus on data integrity and administrative ease of use.',
+    features: [
+      'Multi-Step Team Registration Workflow',
+      'Institutional Verification Logic',
+      'Real-time Registration Status Tracking',
+      'Admin Dashboard for Participant Management',
+      'Optimized SQL Database for High-Concurrency Intake'
+    ],
+    tags: ['Next.js', 'PostgreSQL', 'Tailwind CSS', 'shadcn/ui', 'Prisma'],
+    links: {
+      live: '#',
+      github: 'https://github.com/cslomarfaruk/cse-iupc-registration'
+    },
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop',
+    gallery: [],
+    videoUrl: ''
+  },
+
 ];
 
 export default function Projects() {
   const { t, language } = useLanguage();
-  const [selectedProject, setSelectedProject] = useState<typeof PROJECTS[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [featured, ...remainingProjects] = PROJECTS;
 
   return (
@@ -308,6 +456,45 @@ function ProjectModal({ project, onClose }: { project: typeof PROJECTS[0], onClo
             <div className="space-y-6 text-zinc-500 text-base md:text-lg leading-relaxed mb-4">
               <p>{project.description}</p>
             </div>
+
+            {project.role && (
+              <div className="mb-8">
+                <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest block mb-3">Ownership & Role</span>
+                <p className="text-zinc-300 text-sm md:text-base leading-relaxed">{project.role}</p>
+              </div>
+            )}
+
+            {project.features_detailed && (
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+                {project.features_detailed.map((cat) => (
+                  <div key={cat.category} className="space-y-2">
+                    <span className="text-[9px] font-black text-zinc-600 uppercase tracking-tighter">{cat.category}</span>
+                    <ul className="space-y-1">
+                      {cat.items.map((item) => (
+                        <li key={item} className="text-xs text-zinc-400 flex items-center gap-2">
+                          <div className="size-1 bg-emerald-500/50 rounded-full" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {project.security_highlights && (
+              <div className="p-5 rounded-3xl bg-red-500/5 border border-red-500/10 mb-8">
+                <span className="text-[10px] font-black text-red-400 uppercase tracking-widest block mb-3">Security Infrastructure</span>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                  {project.security_highlights.map((item) => (
+                    <span key={item} className="text-[10px] text-zinc-400 flex items-center gap-2">
+                      <div className="size-1 bg-red-400/50 rounded-full" />
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="p-6 glass border border-emerald-500/20 rounded-3xl mb-8">
               <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest block mb-4">Business Impact</span>

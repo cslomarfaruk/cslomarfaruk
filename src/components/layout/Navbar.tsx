@@ -8,9 +8,9 @@ import { ThemeToggle } from '../ThemeToggle';
 import { useLanguage } from '@/lib/i18n';
 
 const NAV_ITEMS = [
-  { label: 'Work', href: '#projects' },
   { label: 'Services', href: '#skills' },
-  { label: 'Trust', href: '#about' },
+  { label: 'About', href: '#about' },
+  { label: 'Work/Projects', href: '#projects' },
 ];
 
 const SECONDARY_NAV = [
@@ -119,7 +119,7 @@ export default function Navbar() {
                 scrolled ? "px-5 py-2.5 rounded-full" : "px-6 py-3 rounded-2xl"
               )}
             >
-              Start Project
+              Contact Us
               <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
           </div>
@@ -173,33 +173,14 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="w-full py-5 bg-emerald-600 text-zinc-100 text-center rounded-[24px] font-black text-[12px] uppercase tracking-[0.2em] shadow-xl shadow-emerald-500/20"
               >
-                Start A Project
+                Contact Us
               </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-[105] pointer-events-auto">
-        <div className="glass rounded-full border border-white/10 p-1.5 flex flex-col gap-1.5">
-          {SECONDARY_NAV.map(item => {
-            const id = item.href.replace('#', '');
-            const isActive = activeSection === id;
-            return (
-              <a
-                key={item.label}
-                href={item.href}
-                className={cn(
-                  "px-3 py-2 rounded-full text-[10px] uppercase tracking-[0.2em] font-black transition-all",
-                  isActive ? "bg-emerald-500 text-black" : "text-zinc-400 hover:text-zinc-100 hover:bg-white/10"
-                )}
-              >
-                {item.label}
-              </a>
-            );
-          })}
-        </div>
-      </div>
+
     </nav>
   );
 }

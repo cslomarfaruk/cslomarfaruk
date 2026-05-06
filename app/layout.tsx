@@ -8,8 +8,8 @@ import { ThemeProvider } from "@/src/components/ThemeProvider";
 import PageTransition from "@/src/components/layout/PageTransition";
 
 export const metadata: Metadata = {
-// ... existing metadata ...
-  title: "DEV CSL | Omar Faruk - Expert Web Developer & Software Engineer",
+  // ... existing metadata ...
+  title: "DEV.CSL | Web Development platform",
   description: "DEV CSL by Omar Faruk (cslomarfaruk) is a premium web engineering studio building production-ready, secure, and scalable web systems. Expert in Next.js, React, and DevOps.",
   keywords: "omar faruk dev, dev, csl, omar, faruk, omar faruk, dev omar, dev omar faruk, devcsl, devcsl.tech, dev csl tech, cslomarfaruk, csl omar faruk, omar faruk developer, web developer omar faruk, full stack developer bangladesh, next.js expert, software engineer, devops engineer, web engineering studio, custom software development, premium web systems, production-ready web apps",
   authors: [{ name: "Omar Faruk", url: "https://devcsl.tech" }],
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "DEV CSL | Omar Faruk - Expert Web Developer & Software Engineer",
+    title: "DEV CSL | Expert Web Development & Software Engineering platform",
     description: "Production-ready, secure, and scalable web systems engineered by Omar Faruk (cslomarfaruk). Premium Web Engineering Studio.",
     url: "https://devcsl.tech",
     siteName: "DEV CSL",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "DEV CSL | Omar Faruk - Expert Web Developer",
+    title: "DEV CSL | Web Developement platform",
     description: "Premium Web Engineering Studio. Building production-ready software and scalable systems.",
     images: ['https://devcsl.tech/logo.png'],
   }
