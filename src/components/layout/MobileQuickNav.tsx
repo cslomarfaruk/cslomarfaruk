@@ -55,7 +55,7 @@ export default function MobileQuickNav() {
         href="https://wa.me/8801839467728"
         target="_blank"
         rel="noopener noreferrer"
-        className="size-14 bg-emerald-600 !text-[#ffffff] rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(16,185,129,0.4)] border border-white/20"
+        className="size-14 glass border-emerald-500/30 !text-white rounded-full flex items-center justify-center shadow-[0_10px_40px_rgba(16,185,129,0.2)] hover:border-emerald-500/60 hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] transition-all"
         aria-label="Contact on WhatsApp"
       >
         <svg 

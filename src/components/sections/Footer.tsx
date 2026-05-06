@@ -13,8 +13,8 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"></div>
 
       {/* Massive subtle background text for premium agency feel */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0">
-        <h1 className="text-[12vw] font-black text-white/[0.02] whitespace-nowrap tracking-tighter uppercase leading-none">
+      <div className="absolute top-[55%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0 overflow-hidden">
+        <h1 className="text-[20vw] md:text-[12vw] font-black text-white/[0.02] whitespace-nowrap tracking-tighter uppercase leading-none">
           DEV.CSL
         </h1>
       </div>
@@ -22,10 +22,10 @@ export default function Footer() {
       <div className="relative z-10 flex flex-col md:flex-row justify-between items-start gap-16">
         <div className="space-y-8 max-w-sm">
           <div className="flex items-center gap-4 group cursor-pointer w-fit">
-            <img 
-              src="/logo.png" 
-              alt="DEV CSL Logo" 
-              className="size-12 object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(16,185,129,0.5)]" 
+            <img
+              src="/logo.png"
+              alt="DEV CSL Logo"
+              className="size-12 object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(16,185,129,0.5)]"
             />
             <span className="font-black tracking-tighter text-white text-3xl uppercase">dev<span className="text-emerald-500">.csl</span></span>
           </div>
@@ -44,7 +44,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="space-y-6">
-            <span className="text-[10px] uppercase font-black tracking-[0.3em] text-emerald-500">Syndicate</span>
+            <span className="text-[10px] uppercase font-black tracking-[0.3em] text-emerald-500">Connect</span>
             <ul className="flex flex-col gap-4">
               <li><FooterLink href="https://github.com/cslomarfaruk/">GitHub</FooterLink></li>
               <li><FooterLink href="https://www.linkedin.com/in/csl-omarfaruk/">LinkedIn</FooterLink></li>
@@ -52,17 +52,17 @@ export default function Footer() {
               <li><FooterLink href="https://x.com/cslomarfaruk">X / Twitter</FooterLink></li>
             </ul>
           </div>
-          <div className="space-y-6 hidden lg:block">
+          <div className="space-y-6 col-span-2 lg:col-span-1">
             <span className="text-[10px] uppercase font-black tracking-[0.3em] text-emerald-500">Direct Line</span>
-            <div className="space-y-3">
-              <a href="https://wa.me/8801839467728" target="_blank" rel="noopener noreferrer" className="block text-xl text-white font-black tracking-tighter transition-colors hover:text-emerald-400 cursor-pointer">+880 1839 467728</a>
-              <a href="mailto:omar@devcsl.tech" className="block text-xs text-zinc-500 hover:text-white transition-colors tracking-widest">omar@devcsl.tech</a>
+            <div className="flex flex-col sm:flex-row lg:flex-col sm:items-center lg:items-start gap-4 sm:gap-8 lg:gap-3">
+              <a href="https://wa.me/8801839467728" target="_blank" rel="noopener noreferrer" className="block text-base md:text-xl text-white font-black tracking-tighter transition-colors hover:text-emerald-400 cursor-pointer whitespace-nowrap">+880 1839 467728</a>
+              <a href="mailto:omar@devcsl.tech" className="block text-xs text-zinc-500 hover:text-white transition-colors tracking-widest whitespace-nowrap">omar@devcsl.tech</a>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="relative z-10 mt-32 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div className="relative z-10 mt-12 md:mt-32 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
 
         <p className="text-zinc-500 text-[10px] md:text-xs font-mono tracking-[0.2em] uppercase font-bold text-center md:text-left">

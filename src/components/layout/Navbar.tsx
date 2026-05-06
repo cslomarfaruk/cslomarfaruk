@@ -106,9 +106,9 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-              className="flex items-center gap-1.5 text-zinc-500 hover:text-zinc-100 transition-colors text-[10px] font-black tracking-widest uppercase glass px-3 py-1.5 rounded-full"
+              className="flex items-center gap-1.5 text-zinc-400 hover:text-zinc-100 transition-all text-[10px] font-black tracking-widest uppercase border border-white/10 px-4 py-2 rounded-full border-white/5 hover:border-emerald-500/30 hover:bg-emerald-500/5 group"
             >
-              <Globe size={12} />
+              <Globe size={12} className="group-hover:text-emerald-400 transition-colors" />
               {language === 'en' ? 'EN' : 'BN'}
             </button>
             <ThemeToggle />
@@ -126,16 +126,16 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Nav Toggle */}
-        <div className="md:hidden flex items-center gap-3">
+        <div className="md:hidden flex items-center gap-2">
           <button
             onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-            className="flex items-center justify-center size-8 rounded-full bg-gradient-to-br from-emerald-600/30 to-emerald-400/20 border border-white/10 text-zinc-500 hover:text-zinc-100 hover:from-emerald-500/40 hover:to-emerald-300/30 transition-colors"
+            className="flex items-center justify-center size-10 rounded-2xl border border-white/10 text-zinc-400 hover:text-zinc-100 hover:border-emerald-500/30 hover:bg-emerald-500/10 transition-all font-black text-[10px]"
           >
             {language === 'en' ? 'EN' : 'BN'}
           </button>
           <ThemeToggle />
           <button
-            className="p-2 text-zinc-100 bg-gradient-to-br from-emerald-600/30 to-emerald-400/20 border border-white/10 rounded-full backdrop-blur-md hover:from-emerald-500/40 hover:to-emerald-300/30 transition-colors"
+            className="p-2.5 text-zinc-100 border border-white/10 rounded-2xl hover:border-emerald-500/30 transition-all"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -171,7 +171,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="w-full py-5 bg-emerald-600 text-zinc-100 text-center rounded-[24px] font-black text-[12px] uppercase tracking-[0.2em] shadow-xl shadow-emerald-500/20"
+                className="w-full py-5 glass border-emerald-500/20 text-white text-center rounded-[24px] font-black text-[12px] uppercase tracking-[0.2em] shadow-xl shadow-emerald-500/10 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all"
               >
                 Contact Us
               </a>
