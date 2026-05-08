@@ -26,8 +26,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "DEV.CSL | Web Development platform",
-  description: "DEV CSL by Omar Faruk (cslomarfaruk) is a premium web engineering studio building production-ready, secure, and scalable web systems. Expert in Next.js, React, and DevOps.",
-  keywords: "omar faruk dev, dev, csl, omar, faruk, omar faruk, dev omar, dev omar faruk, devcsl, devcsl.tech, dev csl tech, cslomarfaruk, csl omar faruk, omar faruk developer, web developer omar faruk, full stack developer bangladesh, next.js expert, software engineer, devops engineer, web engineering studio, custom software development, premium web systems, production-ready web apps",
+  description: "DEV CSL by Omar Faruk is a premium web engineering studio and development platform. We build production-ready web applications using modern technology, offering fully managed VPS servers, domain hosting, and scalable systems.",
+  keywords: "development platform, web development platform, software development platform, enterprise development platform, custom software development platform, SaaS development platform, scalable development platform, managed vps servers, domain hosting, end-to-end web solutions, modern web technology, omar faruk dev, dev, csl, omar, faruk, omar faruk, dev omar, dev omar faruk, devcsl, devcsl.tech, dev csl tech, cslomarfaruk, csl omar faruk, omar faruk developer, web developer omar faruk, full stack developer bangladesh, next.js expert, software engineer, devops engineer, web engineering studio, custom software development, premium web systems, production-ready web apps",
   authors: [{ name: "Omar Faruk", url: "https://devcsl.tech" }],
   creator: "Omar Faruk",
   publisher: "DEV.CSL",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "DEV CSL | Expert Web Development & Software Engineering platform",
-    description: "Production-ready, secure, and scalable web systems engineered by Omar Faruk (cslomarfaruk). Premium Web Engineering Studio.",
+    description: "End-to-end web application development. From fully managed VPS servers and domain hosting to cutting-edge web apps. Engineered by Omar Faruk.",
     url: "https://devcsl.tech",
     siteName: "DEV CSL",
     locale: "en_US",
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "DEV CSL | Web Developement platform",
-    description: "Premium Web Engineering Studio. Building production-ready software and scalable systems.",
+    description: "End-to-end web application development, fully managed VPS hosting, and scalable systems. Premium Web Engineering Studio.",
     images: ['https://devcsl.tech/logo.png'],
     creator: '@cslomarfaruk',
   },
