@@ -78,12 +78,12 @@ export default function Services() {
             className="glass p-8 md:p-10 rounded-[40px] md:rounded-[48px] border-white/10 hover:glass-accent transition-all group overflow-hidden relative"
           >
             <div className="absolute -top-12 -right-12 size-32 bg-emerald-500/10 blur-3xl group-hover:bg-emerald-500/20 transition-all duration-700"></div>
-            
+
             <div className="flex flex-col gap-8 md:gap-10 relative z-10">
               <div className="size-14 rounded-[20px] glass border-white/10 flex items-center justify-center text-zinc-500 group-hover:bg-emerald-600 group-hover:text-white group-hover:glow-emerald transition-all duration-500">
                 <service.icon size={28} />
               </div>
-              
+
               <div className="space-y-6">
                 <div>
                   <h3 className="font-black text-white text-lg md:text-xl tracking-tight leading-none uppercase mb-2">{service.title}</h3>
@@ -94,7 +94,7 @@ export default function Services() {
                   <span className="text-emerald-500 text-[10px] font-black uppercase tracking-widest block mb-4 md:mb-3">Stack</span>
                   <div className="flex flex-wrap gap-2">
                     {service.tags.map((item) => (
-                      <span 
+                      <span
                         key={item}
                         className="px-3 py-1 text-[8px] md:text-[9px] font-mono font-bold bg-white/5 text-zinc-400 rounded-full border border-white/5 transition-all group-hover:border-emerald-500/30 group-hover:text-white"
                       >
