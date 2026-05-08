@@ -1,56 +1,56 @@
 {
   "hero": {
-    "tagline": "Trusted Web Development Studio",
+    "tagline": "Web Development for Growing Businesses",
     "headline_pt1": "Web products that",
-    "headline_pt2": "Win Client Trust.",
-    "subheadline": "I build fast, polished, SEO-friendly websites and business systems that look premium, perform smoothly, and help you convert visitors into real customers.",
-    "cta_discuss": "Start Your Project",
-    "cta_portfolio": "View Portfolio",
-    "status": "Available"
+    "headline_pt2": "build trust & drive results.",
+    "subheadline": "I design and develop fast, SEO-optimized websites and business systems that look professional, perform reliably, and turn visitors into paying customers.",
+    "cta_discuss": "Start a Project",
+    "cta_portfolio": "View Work",
+    "status": "Available for New Projects"
   },
   "services": {
-    "tagline": "Elite Solutions",
-    "headline": "Built for Predictable Growth.",
-    "subheadline": "Leveraging enterprise architecture to ensure your applications are secure, scalable, and built for market dominance.",
+    "tagline": "Services",
+    "headline": "Built to scale with your business.",
+    "subheadline": "I create reliable, scalable web solutions with clean architecture, strong performance, and long-term maintainability.",
     "s1_title": "Business Websites",
-    "s1_desc": "Fast, SEO-optimized websites that turn visitors into customers.",
-    "s1_impact": "High Conversion",
-    "s2_title": "Education Portals",
-    "s2_desc": "Complete management systems for schools, colleges, and training centers.",
-    "s2_impact": "Streamlined Ops",
+    "s1_desc": "Modern, high-performance websites built to rank on search engines and convert visitors into leads.",
+    "s1_impact": "Increase Conversions",
+    "s2_title": "Education Platforms",
+    "s2_desc": "Custom systems for schools, colleges, and training centers to manage admissions, students, and operations.",
+    "s2_impact": "Simplified Management",
     "s3_title": "Admin Dashboards",
-    "s3_desc": "Centralized panels to manage your data, employees, and operations securely.",
-    "s3_impact": "Data-driven decisions",
+    "s3_desc": "Secure, user-friendly dashboards to manage data, users, and business workflows efficiently.",
+    "s3_impact": "Better Control",
     "s4_title": "Business Automation",
-    "s4_desc": "Connect your tools and automate repetitive tasks to save hours every week.",
-    "s4_impact": "Save 40+ hours/week"
+    "s4_desc": "Automate repetitive tasks and integrate your tools to save time and reduce manual work.",
+    "s4_impact": "Save Time Weekly"
   },
   "trust": {
-    "tagline": "Why Trust Me?",
-    "headline": "Real experience, powered by automation.",
-    "desc1": "With over 3 years of hands-on experience running production servers and live web apps, I know what it takes to build a platform that won't crash. I don't just use AI; I build custom AI agents that automate my development pipeline, allowing me to ship your project faster than a traditional agency.",
-    "desc2": "From fully managed VPS hosting to highly secure, scalable architecture, I personally guarantee your project will be delivered on time and engineered to perfection.",
-    "p1_title": "Highly Secured",
-    "p1_desc": "Enterprise-grade security protocols implemented from day one to protect your data.",
-    "p2_title": "Rapid Delivery",
-    "p2_desc": "My custom AI assistants allow me to code, test, and deploy in record time.",
-    "p3_title": "3+ Years Experience",
-    "p3_desc": "Battle-tested knowledge from maintaining live systems, servers, and modern web apps."
+    "tagline": "Why Work With Me",
+    "headline": "Practical experience. Reliable delivery.",
+    "desc1": "I have over 3 years of hands-on experience building and maintaining live web applications, servers, and business systems. I focus on stability, performance, and clean architecture — so your product works smoothly under real-world usage.",
+    "desc2": "I use modern development workflows and automation to deliver faster without compromising quality. Every project is built with scalability, security, and long-term maintainability in mind.",
+    "p1_title": "Security-Focused",
+    "p1_desc": "Built with secure authentication, protected APIs, and best practices to keep your data safe.",
+    "p2_title": "Fast Delivery",
+    "p2_desc": "Efficient workflow and tooling help reduce development time while maintaining code quality.",
+    "p3_title": "Proven Experience",
+    "p3_desc": "Real-world experience managing production apps, databases, and server infrastructure."
   },
   "process": {
     "step1": "Discovery",
-    "step1_desc": "Understanding your business goals and bottlenecks.",
-    "step2": "Architecture",
-    "step2_desc": "Planning the database, UI/UX, and technical stack.",
+    "step1_desc": "Understand your business goals, users, and key requirements.",
+    "step2": "Planning",
+    "step2_desc": "Define system architecture, database structure, and user experience.",
     "step3": "Development",
-    "step3_desc": "Writing clean, secure, and scalable code.",
-    "step4": "Deployment",
-    "step4_desc": "Launching the platform with SEO metadata and analytics setup."
+    "step3_desc": "Build a clean, scalable, and secure application step by step.",
+    "step4": "Launch",
+    "step4_desc": "Deploy with SEO setup, analytics, and performance optimization."
   },
   "contact": {
-    "tagline": "Get in Touch",
-    "headline": "Let's discuss your project.",
-    "subheadline": "Need a reliable developer for your business? Send me a message and let's figure out the best technical solution for you.",
+    "tagline": "Contact",
+    "headline": "Let’s build something that works.",
+    "subheadline": "If you need a reliable developer for your project, send a message with your requirements. I’ll help you define the right solution.",
     "whatsapp_btn": "Chat on WhatsApp",
     "form_name": "Full Name",
     "form_name_ph": "e.g. John Carter",
@@ -58,14 +58,14 @@
     "form_email_ph": "e.g. john@company.com",
     "form_type": "I am a...",
     "form_budget": "Budget Range",
-    "form_brief": "Project Brief",
-    "form_brief_ph": "Share your goal, key features, timeline, and what success looks like for your business.",
-    "form_submit": "Send Your message"
+    "form_brief": "Project Details",
+    "form_brief_ph": "Describe your goals, required features, timeline, and expected outcome.",
+    "form_submit": "Send Message"
   },
   "projects": {
-    "tagline": "PREVIOUS WORK",
+    "tagline": "Portfolio",
     "headline_pt1": "Projects built for",
-    "headline_pt2": "real user.",
-    "index_btn": "View all source code"
+    "headline_pt2": "real-world use.",
+    "index_btn": "View All Projects"
   }
 }
