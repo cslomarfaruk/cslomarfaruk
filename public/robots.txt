@@ -1,0 +1,28 @@
+# Allow all crawlers for maximum visibility
+User-agent: *
+Allow: /
+Disallow:
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# AI Crawlers (ChatGPT, Claude, etc.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Sitemap
+Sitemap: /sitemap.xml
+
+# Crawl delay (optional - no delay means crawl as fast as possible)
+# Crawl-delay: 1

@@ -1,6 +1,6 @@
 # 🐳 Docker + Traefik Deployment Guide
 **Project:** Detect Vehicle AI
-**Domain:** `detect-vehicle.devcsl.tech`
+**Domain:** `vehicle.devcsl.tech`
 
 Since you are using Traefik, this is the most professional and "independent" way to run your app without touching your other Docker containers.
 

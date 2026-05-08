@@ -1,0 +1,19 @@
+/* TEAM */
+Lead Developer: Omar Faruk (cslomarfaruk)
+Contact: omar@devcsl.tech
+Twitter: @cslomarfaruk
+GitHub: github.com/cslomarfaruk
+LinkedIn: linkedin.com/in/csl-omarfaruk/
+
+/* SITE */
+Last Update: 2026-05-09
+Language: English, Bengali
+Standards: HTML5, CSS3, JavaScript, Next.js
+Components: React 19, TypeScript, Tailwind CSS
+Hosting: Neon Database, Vercel/Docker
+Code Repository: https://github.com/cslomarfaruk/devcsl
+
+/* SITE INFO */
+Name: DEV CSL
+Description: Premium Web Engineering Studio
+URL: https://devcsl.tech

@@ -1,18 +1,23 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const baseUrl = 'https://devcsl.tech';
+
+  // Main pages
+  const pages: MetadataRoute.Sitemap = [
     {
-      url: 'https://devcsl.tech',
+      url: baseUrl,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1.0,
       alternates: {
         languages: {
-          en: 'https://devcsl.tech/?lang=en',
-          bn: 'https://devcsl.tech/?lang=bn',
+          en: `${baseUrl}/?lang=en`,
+          bn: `${baseUrl}/?lang=bn`,
         },
       },
     },
   ];
+
+  return pages;
 }

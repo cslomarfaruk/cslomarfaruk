@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Omar Faruk", url: "https://devcsl.tech" }],
   creator: "Omar Faruk",
   publisher: "DEV.CSL",
+  formatDetection: {
+    email: true,
+    telephone: true,
+    address: true,
+  },
   alternates: {
     canonical: "https://devcsl.tech",
     languages: {
@@ -30,6 +35,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -44,6 +50,7 @@ export const metadata: Metadata = {
     url: "https://devcsl.tech",
     siteName: "DEV CSL",
     locale: "en_US",
+    alternateLocale: ["bn_BD"],
     type: "website",
     images: [
       {
@@ -51,6 +58,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: 'DEV CSL Studio Logo',
+        type: 'image/png',
       }
     ]
   },
@@ -59,7 +67,19 @@ export const metadata: Metadata = {
     title: "DEV CSL | Web Developement platform",
     description: "Premium Web Engineering Studio. Building production-ready software and scalable systems.",
     images: ['https://devcsl.tech/logo.png'],
-  }
+    creator: '@cslomarfaruk',
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'DEV CSL',
+  },
+  manifest: '/manifest.json',
+  category: 'technology',
+  verification: {
+    google: 'your-google-verification-code',
+    yandex: 'your-yandex-verification-code',
+  },
 };
 
 export default function RootLayout({
@@ -69,6 +89,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* DNS Prefetch for external resources */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+        {/* Preconnect for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* Web App Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+
+        {/* Theme color for browser */}
+        <meta name="theme-color" content="#000000" />
+
+        {/* Mobile app meta tags */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="DEV CSL" />
+
+        {/* Additional SEO */}
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+      </head>
       <body className="antialiased min-h-screen">
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <LanguageProvider>
