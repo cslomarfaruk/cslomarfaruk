@@ -26,10 +26,8 @@ export default function Hero() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         <div className="lg:col-span-7 space-y-8 md:space-y-10 text-center lg:text-left w-full order-1">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass-accent border-emerald-500/20 shadow-2xl shadow-emerald-500/10"
+          <div
+            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass-accent border-emerald-500/20 shadow-2xl shadow-emerald-500/10 animate-in fade-in slide-in-from-left-4 duration-700"
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -38,15 +36,12 @@ export default function Hero() {
             <span className="mono-label !opacity-100 !text-emerald-400 font-black tracking-[0.2em] md:tracking-[0.4em] text-[10px] md:text-xs">
               {t.hero.tagline}
             </span>
-          </motion.div>
+          </div>
 
           <div className="space-y-4 md:space-y-6">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            <h1
               className={cn(
-                "text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5.5rem] font-black uppercase",
+                "text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5.5rem] font-black uppercase animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 fill-mode-both",
                 language === 'bn' ? "leading-[1.2] tracking-normal" : "tracking-tighter leading-[1]"
               )}
             >
@@ -57,23 +52,17 @@ export default function Hero() {
               <span className="bg-clip-text text-gradient inline-block mt-2 pb-4">
                 {t.hero.headline_pt2}
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg md:text-2xl lg:text-3xl text-zinc-500 max-w-2xl lg:mx-0 mx-auto leading-tight font-light tracking-tight"
+            <p
+              className="text-lg md:text-xl lg:text-2xl text-zinc-400 max-w-2xl lg:mx-0 mx-auto leading-relaxed font-light tracking-tight animate-in fade-in slide-in-from-bottom-6 duration-700 delay-300 fill-mode-both"
             >
               {t.hero.subheadline}
-            </motion.p>
+            </p>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-in fade-in slide-in-from-bottom-6 duration-700 delay-500 fill-mode-both"
           >
             <a href="#contact" className="px-8 py-4 glass bg-gradient-to-br from-emerald-600/30 to-emerald-400/20 text-zinc-100 rounded-full font-bold uppercase tracking-wider hover:bg-emerald-500 transition-colors">
               {t.hero.cta_discuss}

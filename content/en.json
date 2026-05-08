@@ -26,16 +26,16 @@
     "s4_impact": "Save 40+ hours/week"
   },
   "trust": {
-    "tagline": "Authority",
-    "headline": "Engineering solutions, not just writing code.",
-    "desc1": "Most businesses don't need unnecessarily complex software; they need reliable systems that solve real problems. I focus on building secure, scalable, and easy-to-use platforms.",
-    "desc2": "Whether you need a corporate website or a custom internal tool, my approach is strictly business-first.",
-    "p1_title": "Production-Ready",
-    "p1_desc": "Code that works flawlessly in the real world, not just locally.",
-    "p2_title": "SEO & Speed",
-    "p2_desc": "Built with Next.js for maximum search engine visibility and sub-second load times.",
-    "p3_title": "Transparent Process",
-    "p3_desc": "Clear timelines, straightforward pricing, and regular updates. No hidden surprises."
+    "tagline": "Why Trust Me?",
+    "headline": "Real experience, powered by automation.",
+    "desc1": "With over 3 years of hands-on experience running production servers and live web apps, I know what it takes to build a platform that won't crash. I don't just use AI; I build custom AI agents that automate my development pipeline, allowing me to ship your project faster than a traditional agency.",
+    "desc2": "From fully managed VPS hosting to highly secure, scalable architecture, I personally guarantee your project will be delivered on time and engineered to perfection.",
+    "p1_title": "Highly Secured",
+    "p1_desc": "Enterprise-grade security protocols implemented from day one to protect your data.",
+    "p2_title": "Rapid Delivery",
+    "p2_desc": "My custom AI assistants allow me to code, test, and deploy in record time.",
+    "p3_title": "3+ Years Experience",
+    "p3_desc": "Battle-tested knowledge from maintaining live systems, servers, and modern web apps."
   },
   "process": {
     "step1": "Discovery",
