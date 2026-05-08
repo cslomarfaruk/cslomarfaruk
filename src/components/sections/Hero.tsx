@@ -104,6 +104,8 @@ export default function Hero() {
                 alt="Omar Faruk"
                 loading="eager"
                 decoding="async"
+                width={400}
+                height={500}
                 className="h-full w-full object-cover rounded-[32px] transition-transform duration-700 group-hover:scale-105 brightness-[0.93] group-hover:brightness-100 will-change-transform"
               />
             </motion.div>

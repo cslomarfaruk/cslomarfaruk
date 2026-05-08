@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Inter, Poppins } from "next/font/google";
 import { LanguageProvider } from "@/lib/i18n";
 import Navbar from "@/src/components/layout/Navbar";
 import FloatingWhatsApp from "@/src/components/layout/FloatingWhatsApp";
@@ -7,8 +8,23 @@ import Footer from "@/src/components/sections/Footer";
 import { ThemeProvider } from "@/src/components/ThemeProvider";
 import PageTransition from "@/src/components/layout/PageTransition";
 
+// Font optimization - preload critical fonts
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-inter',
+});
+
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-poppins',
+});
+
 export const metadata: Metadata = {
-  // ... existing metadata ...
   title: "DEV.CSL | Web Development platform",
   description: "DEV CSL by Omar Faruk (cslomarfaruk) is a premium web engineering studio building production-ready, secure, and scalable web systems. Expert in Next.js, React, and DevOps.",
   keywords: "omar faruk dev, dev, csl, omar, faruk, omar faruk, dev omar, dev omar faruk, devcsl, devcsl.tech, dev csl tech, cslomarfaruk, csl omar faruk, omar faruk developer, web developer omar faruk, full stack developer bangladesh, next.js expert, software engineer, devops engineer, web engineering studio, custom software development, premium web systems, production-ready web apps",
@@ -88,30 +104,42 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${poppins.variable}`}>
       <head>
-        {/* DNS Prefetch for external resources */}
+        {/* Performance: DNS Prefetch & Preconnect */}
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-
-        {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         {/* Web App Manifest */}
         <link rel="manifest" href="/manifest.json" />
 
-        {/* Theme color for browser */}
+        {/* Theme & Mobile */}
         <meta name="theme-color" content="#000000" />
-
-        {/* Mobile app meta tags */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="DEV CSL" />
-
-        {/* Additional SEO */}
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        {/* Viewport optimization */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+
+        {/* Performance optimization */}
+        <meta httpEquiv="x-ua-compatible" content="IE=edge" />
+
+        {/* Preload critical images */}
+        <link rel="preload" as="image" href="/logo.png" />
+
+        {/* Prevent layout shift - declare font sizes */}
+        <style>{`
+          html {
+            font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+          }
+          :root {
+            color-scheme: light dark;
+          }
+        `}</style>
       </head>
       <body className="antialiased min-h-screen">
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">

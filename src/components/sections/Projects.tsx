@@ -289,6 +289,8 @@ export default function Projects() {
             <img
               src={featured.image}
               alt={featured.title}
+              loading="eager"
+              decoding="async"
               className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-[1.04]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent" />
@@ -328,6 +330,8 @@ export default function Projects() {
               <img
                 src={project.image}
                 alt={project.title}
+                loading="lazy"
+                decoding="async"
                 className="object-cover w-full h-full scale-105 group-hover:scale-100 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/30 to-transparent opacity-70" />
