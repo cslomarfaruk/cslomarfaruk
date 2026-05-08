@@ -6,19 +6,17 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/', '/.*'],
+        disallow: '/api/',
       },
       // Allow Google
       {
         userAgent: 'Googlebot',
         allow: '/',
-        crawlDelay: 0,
       },
       // Allow Bing
       {
         userAgent: 'Bingbot',
         allow: '/',
-        crawlDelay: 0,
       },
       // Allow AI Crawlers
       {
@@ -39,6 +37,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: 'https://devcsl.tech/sitemap.xml',
-    host: 'https://devcsl.tech',
   };
 }
