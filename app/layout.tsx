@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter, Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 import { LanguageProvider } from "@/lib/i18n";
 import Navbar from "@/src/components/layout/Navbar";
 import FloatingWhatsApp from "@/src/components/layout/FloatingWhatsApp";
@@ -8,7 +8,7 @@ import Footer from "@/src/components/sections/Footer";
 import { ThemeProvider } from "@/src/components/ThemeProvider";
 import PageTransition from "@/src/components/layout/PageTransition";
 
-// Font optimization - preload critical fonts
+// Font optimization — Inter only (Poppins was never used)
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
@@ -16,18 +16,10 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const poppins = Poppins({
-  weight: ['400', '500', '600', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-  preload: true,
-  variable: '--font-poppins',
-});
-
 export const metadata: Metadata = {
-  title: "DEV.CSL | Web Development platform",
-  description: "DEV CSL by Omar Faruk is a premium web engineering studio and development platform. We build production-ready web applications using modern technology, offering fully managed VPS servers, domain hosting, and scalable systems.",
-  keywords: "development platform, web development platform, software development platform, enterprise development platform, custom software development platform, SaaS development platform, scalable development platform, managed vps servers, domain hosting, end-to-end web solutions, modern web technology, omar faruk dev, dev, csl, omar, faruk, omar faruk, dev omar, dev omar faruk, devcsl, devcsl.tech, dev csl tech, cslomarfaruk, csl omar faruk, omar faruk developer, web developer omar faruk, full stack developer bangladesh, next.js expert, software engineer, devops engineer, web engineering studio, custom software development, premium web systems, production-ready web apps, ওয়েব ডেভেলপমেন্ট, সফটওয়্যার ডেভেলপমেন্ট, ওয়েবসাইট তৈরি, সফটওয়্যার ইঞ্জিনিয়ার, ডোমেইন হোস্টিং, ভিপিএস সার্ভার, ওমার ফারুক, ই-কমার্স ওয়েবসাইট তৈরি, বাংলাদেশ, সেরা ওয়েব ডেভেলপার",
+  title: "Omar Faruk — SaaS Developer, Technical Mentor & Product Builder | DEV.CSL",
+  description: "Full-stack engineer with 3+ years building production SaaS for businesses, mentoring aspiring developers, and shipping digital products. Expert in Next.js, React, Node.js, DevOps, and managed VPS hosting. Based in Bangladesh, serving clients worldwide.",
+  keywords: "SaaS developer, technical mentor, full stack developer, web development, software engineer, Next.js expert, React developer, Node.js, DevOps, managed VPS hosting, domain hosting, freelance developer, code mentorship, career coaching for developers, university project help, Omar Faruk, cslomarfaruk, devcsl, dev csl tech, web engineering studio, custom software development, production-ready web apps, ওয়েব ডেভেলপমেন্ট, সফটওয়্যার ডেভেলপমেন্ট, মেন্টরশিপ, ওমার ফারুক",
   authors: [{ name: "Omar Faruk", url: "https://devcsl.tech" }],
   creator: "Omar Faruk",
   publisher: "DEV.CSL",
@@ -61,8 +53,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "DEV CSL | Expert Web Development & Software Engineering platform",
-    description: "End-to-end web application development. From fully managed VPS servers and domain hosting to cutting-edge web apps. Engineered by Omar Faruk.",
+    title: "Omar Faruk — SaaS Developer, Technical Mentor & Product Builder",
+    description: "Full-stack engineer building production SaaS, mentoring developers, and shipping digital products. 3+ years of battle-tested experience.",
     url: "https://devcsl.tech",
     siteName: "DEV CSL",
     locale: "en_US",
@@ -73,15 +65,15 @@ export const metadata: Metadata = {
         url: 'https://devcsl.tech/logo.png',
         width: 1200,
         height: 630,
-        alt: 'DEV CSL Studio Logo',
+        alt: 'DEV CSL — Omar Faruk',
         type: 'image/png',
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: "DEV CSL | Web Developement platform",
-    description: "End-to-end web application development, fully managed VPS hosting, and scalable systems. Premium Web Engineering Studio.",
+    title: "Omar Faruk — SaaS Developer, Mentor & Builder | DEV.CSL",
+    description: "Full-stack engineer with 3+ years building production SaaS, mentoring developers, and shipping digital products.",
     images: ['https://devcsl.tech/logo.png'],
     creator: '@cslomarfaruk',
   },
@@ -104,7 +96,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
         {/* Performance: DNS Prefetch & Preconnect */}
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
@@ -112,26 +104,20 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
 
-        {/* Web App Manifest */}
-        <link rel="manifest" href="/manifest.json" />
-
         {/* Theme & Mobile */}
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#0A0A0B" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="DEV CSL" />
         <meta name="mobile-web-app-capable" content="yes" />
 
-        {/* Viewport optimization */}
+        {/* Viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
-
-        {/* Performance optimization */}
-        <meta httpEquiv="x-ua-compatible" content="IE=edge" />
 
         {/* Preload critical images */}
         <link rel="preload" as="image" href="/logo.png" />
 
-        {/* Prevent layout shift - declare font sizes */}
+        {/* Font declaration */}
         <style>{`
           html {
             font-family: var(--font-inter), system-ui, -apple-system, sans-serif;

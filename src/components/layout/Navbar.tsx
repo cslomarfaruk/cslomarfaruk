@@ -9,8 +9,9 @@ import { useLanguage } from '@/lib/i18n';
 
 const NAV_ITEMS = [
   { label: 'Services', href: '#skills' },
+  { label: 'Mentorship', href: '#mentorship' },
   { label: 'About', href: '#about' },
-  { label: 'Work/Projects', href: '#projects' },
+  { label: 'Work', href: '#projects' },
 ];
 
 const SECONDARY_NAV = [
@@ -33,7 +34,7 @@ export default function Navbar() {
       setScrollProgress(progress);
     };
 
-    const sectionIds = ['hero', 'skills', 'about', 'projects', 'contact'];
+    const sectionIds = ['hero', 'skills', 'mentorship', 'about', 'projects', 'testimonials', 'contact'];
     const detectActiveSection = () => {
       const y = window.scrollY + window.innerHeight * 0.35;
       let current = 'hero';

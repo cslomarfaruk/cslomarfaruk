@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { Quote, Star } from 'lucide-react';
 
@@ -24,7 +26,7 @@ const PROMISES = [
 
 export default function Testimonials() {
   return (
-    <section className="px-6 py-40 max-w-7xl mx-auto border-t border-white/10">
+    <section id="testimonials" className="px-6 py-40 max-w-7xl mx-auto border-t border-white/10">
       <div className="text-center mb-24">
         <span className="mono-label text-emerald-500 font-black mb-6 block tracking-[0.5em]">CLIENT COMMITMENTS</span>
         <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-white uppercase leading-none mb-6">
