@@ -17,8 +17,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Omar Faruk — SaaS Developer, Academic Project Expert & Product Builder | DEV.CSL",
-  description: "Full-stack engineer with 3+ years building production SaaS for businesses, high-quality academic projects for students, and shipping digital products. Expert in Next.js, React, Node.js, DevOps, and managed VPS hosting. Based in Bangladesh, serving clients worldwide.",
+  title: "DEV CSL — Web Development Platform | Omar Faruk",
+  description: "Full-stack engineer, Web Developer and Web Design expert, and the best academic project developer in Bangladesh. Building production SaaS, high-quality academic projects, and shipping digital products. 3+ years of battle-tested experience.",
   keywords: "SaaS developer, academic projects, final year project help, university project developer, full stack developer, web development, software engineer, Next.js expert, React developer, Node.js, DevOps, managed VPS hosting, domain hosting, freelance developer, IEEE project implementation, board viva help, Omar Faruk, cslomarfaruk, devcsl, dev csl tech, web engineering studio, custom software development, production-ready web apps, ওয়েব ডেভেলপমেন্ট, সফটওয়্যার ডেভেলপমেন্ট, একাডেমিক প্রজেক্ট, ওমার ফারুক",
   authors: [{ name: "Omar Faruk", url: "https://devcsl.tech" }],
   creator: "Omar Faruk",
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Omar Faruk — SaaS Developer, Academic Project Expert & Product Builder",
-    description: "Full-stack engineer building production SaaS, high-quality academic projects, and shipping digital products. 3+ years of battle-tested experience.",
+    title: "DEV CSL — Web Development Platform",
+    description: "Full-stack engineer, Web Developer and Web Design expert, and the best academic project developer in Bangladesh. Building production SaaS, high-quality academic projects, and shipping digital products. 3+ years of battle-tested experience.",
     url: "https://devcsl.tech",
     siteName: "DEV CSL",
     locale: "en_US",
@@ -72,8 +72,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Omar Faruk — SaaS Developer, Project Expert & Builder | DEV.CSL",
-    description: "Full-stack engineer with 3+ years building production SaaS, high-quality academic projects, and shipping digital products.",
+    title: "DEV CSL — Web Development Platform",
+    description: "Full-stack engineer, Web Developer and Web Design expert, and the best academic project developer in Bangladesh. Building production SaaS, high-quality academic projects, and shipping digital products.",
     images: ['https://devcsl.tech/logo.png'],
     creator: '@cslomarfaruk',
   },

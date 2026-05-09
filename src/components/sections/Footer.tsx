@@ -35,7 +35,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-12 md:gap-24 w-full md:w-auto p-8 border-4 border-white/10 bg-zinc-950/10 backdrop-blur shadow-brutal-white">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-12 md:gap-24 w-full md:w-auto p-8 border-4 border-white/10 bg-zinc-950/10 shadow-brutal-white">
           <div className="space-y-6">
             <span className="text-[10px] uppercase font-black tracking-widest text-accent border-b-2 border-white/20 pb-1 block w-fit">Navigation</span>
             <ul className="flex flex-col gap-4">
