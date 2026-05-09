@@ -1,15 +1,14 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { GraduationCap, Code2, Rocket, HeartHandshake, ArrowRight } from 'lucide-react';
+import { GraduationCap, Code2, Rocket, ArrowRight } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { useLanguage } from '@/lib/i18n';
 
-const SPRING = { type: "spring", stiffness: 100, damping: 30, mass: 0.8 } as const;
-const EASE_OUT = [0.16, 1, 0.3, 1] as const;
+const FAST_EASE = [0.0, 0.0, 0.2, 1] as const;
 const ICONS = [GraduationCap, Code2, Rocket];
 
-export default function Mentorship() {
+export default function StudentHub() {
   const { t, language } = useLanguage();
 
   const benefits = [
@@ -19,38 +18,35 @@ export default function Mentorship() {
   ];
 
   return (
-    <section id="mentorship" className="px-5 sm:px-6 py-20 md:py-32 lg:py-40 max-w-7xl mx-auto border-t border-white/[0.06] relative overflow-hidden">
-      {/* Ambient glow */}
-      <div className="absolute -bottom-1/4 -right-1/4 -z-10 w-[500px] h-[500px] bg-emerald-600/[0.04] blur-[150px] rounded-full" />
-
+    <section id="students" className="px-5 sm:px-6 py-20 md:py-32 lg:py-40 max-w-7xl mx-auto border-t-2 border-white/10 relative overflow-hidden">
+      
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: EASE_OUT }}
-        className="text-center mb-16 md:mb-24 max-w-3xl mx-auto"
+        transition={{ duration: 0.6, ease: FAST_EASE }}
+        className="text-center mb-16 md:mb-24 max-w-4xl mx-auto flex flex-col items-center"
       >
-        <span className="mono-label text-emerald-500 mb-5 block tracking-[0.4em]">
-          {t.mentorship.tagline}
-        </span>
-        <h2 className={cn(
-          "text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-8",
-          language === 'bn'
-            ? "leading-[1.2] tracking-normal"
-            : "tracking-tighter leading-[0.9] text-white"
-        )}>
-          <span className={cn(language === 'bn' && "bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 to-zinc-400 pb-2 inline-block")}>
-            {t.mentorship.headline}
+        <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-accent bg-accent/10 mb-8">
+          <span className="font-mono text-[11px] font-black tracking-[0.2em] text-accent uppercase">
+            {t.mentorship.tagline}
           </span>
+        </div>
+        
+        <h2 className={cn(
+          "text-4xl sm:text-5xl md:text-7xl lg:text-[6rem] font-black uppercase mb-8 text-white tracking-tighter leading-[0.9]",
+          language === 'bn' && "leading-[1.2] tracking-normal"
+        )}>
+          {t.mentorship.headline}
         </h2>
-        <p className="text-zinc-400 font-light text-base md:text-lg leading-relaxed tracking-tight max-w-2xl mx-auto">
+        <p className="text-zinc-400 font-medium text-base md:text-xl leading-relaxed tracking-tight max-w-2xl mx-auto border-l-4 border-accent pl-4 text-left">
           {t.mentorship.subheadline}
         </p>
       </motion.div>
 
       {/* Benefit Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mb-16 md:mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 md:mb-20">
         {benefits.map((item, index) => {
           const Icon = ICONS[index];
           return (
@@ -59,14 +55,14 @@ export default function Mentorship() {
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ ...SPRING, delay: index * 0.08 }}
-              className="group p-6 md:p-8 rounded-3xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-emerald-500/20 transition-all duration-300"
+              transition={{ delay: index * 0.1, duration: 0.4, ease: FAST_EASE }}
+              className="brutal-card p-8 group"
             >
-              <div className="size-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:bg-emerald-500/20 group-hover:scale-105 transition-all duration-300">
-                <Icon size={24} />
+              <div className="size-16 border-2 border-white/20 bg-brand flex items-center justify-center text-zinc-400 mb-8 group-hover:bg-accent group-hover:text-black group-hover:border-accent transition-all duration-200">
+                <Icon size={32} />
               </div>
-              <h3 className="text-lg font-bold text-white tracking-tight mb-3">{item.title}</h3>
-              <p className="text-zinc-500 font-light leading-relaxed text-sm">{item.desc}</p>
+              <h3 className="text-xl font-black text-white tracking-tight uppercase mb-4">{item.title}</h3>
+              <p className="text-zinc-400 font-medium leading-relaxed text-sm">{item.desc}</p>
             </motion.div>
           );
         })}
@@ -77,20 +73,18 @@ export default function Mentorship() {
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: EASE_OUT }}
-        className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
+        transition={{ duration: 0.4, ease: FAST_EASE }}
+        className="flex flex-col items-center justify-center gap-6"
       >
-        <a
-          href="#contact"
-          className="group px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full font-bold text-sm flex items-center gap-2.5 shadow-lg shadow-emerald-600/20 hover:shadow-emerald-500/30 transition-all active:scale-[0.98]"
-        >
-          <HeartHandshake size={16} />
+        <a href="#contact" className="brutal-btn group">
           {t.mentorship.cta_text}
-          <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
         </a>
-        <p className="text-zinc-500 text-xs font-mono uppercase tracking-widest">
-          {t.mentorship.note}
-        </p>
+        <div className="border-2 border-white/10 px-4 py-2 bg-brand inline-block">
+          <p className="text-zinc-400 text-[10px] font-mono font-black uppercase tracking-widest text-center">
+            {t.mentorship.note}
+          </p>
+        </div>
       </motion.div>
     </section>
   );

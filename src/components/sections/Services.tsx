@@ -1,9 +1,11 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { Layout, Server, Cpu, ShieldCheck, Zap, BarChart3, Bot, Link2 } from 'lucide-react';
+import { Layout, BarChart3, Bot, Zap, ArrowRight } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { useLanguage } from '@/lib/i18n';
+
+const FAST_EASE = [0.0, 0.0, 0.2, 1] as const;
 
 export default function Services() {
   const { t, language } = useLanguage();
@@ -40,27 +42,33 @@ export default function Services() {
   ];
 
   return (
-    <section id="skills" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t border-white/10">
+    <section id="skills" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t-2 border-white/10 relative">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-20 md:mb-32"
+        transition={{ duration: 0.6, ease: FAST_EASE }}
+        className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-20 md:mb-32 relative z-10"
       >
         <div className="max-w-3xl">
-          <span className="mono-label text-emerald-500 font-black mb-6 md:mb-4 block tracking-[0.4em]">{t.services.tagline}</span>
-          <h2 className={cn(
-            "text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase",
-            language === 'bn' ? "leading-[1.2] tracking-normal" : "tracking-tighter leading-[0.9] md:leading-[0.8] text-white"
-          )}>
-            <span className={cn(language === 'bn' && "bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 to-zinc-400 pb-2 inline-block")}>
-              {t.services.headline}
+          <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-accent bg-accent/10 mb-6">
+            <span className="font-mono text-[11px] font-black tracking-[0.2em] text-accent uppercase">
+              {t.services.tagline}
             </span>
+          </div>
+          <h2 className={cn(
+            "text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-black uppercase tracking-tighter leading-[0.85] text-white",
+            language === 'bn' && "leading-[1.2] tracking-normal"
+          )}>
+            {t.services.headline}
           </h2>
         </div>
-        <div className="glass p-6 md:p-8 rounded-3xl md:rounded-[40px] border-white/10 max-w-sm md:max-w-xs shadow-2xl">
-          <p className="text-zinc-500 text-sm md:text-base leading-relaxed font-light tracking-tight">
+        
+        <div className="bg-brand p-6 md:p-8 border-2 border-accent max-w-sm md:max-w-xs shadow-brutal relative">
+          <div className="absolute top-0 right-0 p-2 bg-accent text-black font-black">
+            <ArrowRight size={20} />
+          </div>
+          <p className="text-zinc-300 text-sm md:text-base leading-relaxed font-medium tracking-tight mt-4">
             {t.services.subheadline}
           </p>
         </div>
@@ -73,40 +81,36 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            style={{ willChange: "transform, opacity" }}
-            className="glass p-8 md:p-10 rounded-[40px] md:rounded-[48px] border-white/10 hover:glass-accent transition-all group overflow-hidden relative"
+            transition={{ delay: index * 0.1, duration: 0.4, ease: FAST_EASE }}
+            className="brutal-card p-8 md:p-10 group"
           >
-            <div className="absolute -top-12 -right-12 size-32 bg-emerald-500/10 blur-3xl group-hover:bg-emerald-500/20 transition-all duration-700"></div>
-
-            <div className="flex flex-col gap-8 md:gap-10 relative z-10">
-              <div className="size-14 rounded-[20px] glass border-white/10 flex items-center justify-center text-zinc-500 group-hover:bg-emerald-600 group-hover:text-white group-hover:glow-emerald transition-all duration-500">
+            <div className="flex flex-col h-full gap-8 md:gap-10">
+              <div className="size-14 bg-brand border-2 border-white/20 flex items-center justify-center text-zinc-400 group-hover:bg-accent group-hover:text-black group-hover:border-accent group-hover:shadow-[4px_4px_0px_rgba(255,255,255,0.2)] transition-all duration-200">
                 <service.icon size={28} />
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-6 flex-grow flex flex-col justify-between">
                 <div>
-                  <h3 className="font-black text-white text-lg md:text-xl tracking-tight leading-none uppercase mb-2">{service.title}</h3>
-                  <p className="text-zinc-500 text-xs md:text-sm font-light leading-snug">{service.description}</p>
+                  <h3 className="font-black text-white text-xl tracking-tight leading-none uppercase mb-4">{service.title}</h3>
+                  <p className="text-zinc-400 text-sm font-medium leading-relaxed">{service.description}</p>
                 </div>
 
-                <div className="pt-4 border-t border-white/5">
-                  <span className="text-emerald-500 text-[10px] font-black uppercase tracking-widest block mb-4 md:mb-3">Stack</span>
-                  <div className="flex flex-wrap gap-2">
+                <div className="pt-6 border-t-2 border-white/10">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {service.tags.map((item) => (
                       <span
                         key={item}
-                        className="px-3 py-1 text-[8px] md:text-[9px] font-mono font-bold bg-white/5 text-zinc-400 rounded-full border border-white/5 transition-all group-hover:border-emerald-500/30 group-hover:text-white"
+                        className="px-2 py-1 text-[10px] font-mono font-bold bg-zinc-900 text-zinc-400 border-2 border-white/10 group-hover:border-accent group-hover:text-white transition-all uppercase"
                       >
                         {item}
                       </span>
                     ))}
                   </div>
-                </div>
 
-                <div className="mt-4 flex items-center gap-2">
-                  <Zap size={14} className="text-emerald-500" />
-                  <span className="text-[10px] md:text-[11px] font-black text-white uppercase italic tracking-tighter">{service.impact}</span>
+                  <div className="flex items-center gap-2 bg-accent/10 border-l-4 border-accent p-3 group-hover:bg-accent transition-colors">
+                    <Zap size={16} className="text-accent group-hover:text-black" />
+                    <span className="text-[11px] font-black text-accent group-hover:text-black uppercase tracking-wider">{service.impact}</span>
+                  </div>
                 </div>
               </div>
             </div>

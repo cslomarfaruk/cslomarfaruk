@@ -1,5 +1,7 @@
 import { motion } from 'motion/react';
-import { GraduationCap, Code2, Rocket, HeartHandshake, ArrowRight, Zap } from 'lucide-react';
+import { GraduationCap, Code2, Rocket, HeartHandshake, Zap } from 'lucide-react';
+
+const FAST_EASE = [0.0, 0.0, 0.2, 1] as const;
 
 const STUDENT_BENEFITS = [
   {
@@ -21,16 +23,18 @@ const STUDENT_BENEFITS = [
 
 export default function StudentHub() {
   return (
-    <section id="students" className="px-6 py-40 max-w-7xl mx-auto border-t border-white/10 relative overflow-hidden">
-      <div className="absolute -bottom-1/4 -right-1/4 -z-10 size-[500px] bg-emerald-600/5 blur-[120px] rounded-full"></div>
-
-      <div className="text-center mb-24">
-        <span className="mono-label text-emerald-400 font-black mb-6 block tracking-[0.5em]">STUDENT SYNDICATE</span>
-        <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-white uppercase leading-tight mb-8">
-          Fueling the Next <br /> <span className="text-zinc-700 italic">Generation of</span> <br />
-          <span className="bg-gradient-to-r from-emerald-500 to-emerald-800 bg-clip-text text-transparent">Builders.</span>
+    <section id="students" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t-2 border-border-subtle">
+      <div className="text-center mb-24 flex flex-col items-center">
+        <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-accent bg-accent/10 mb-8">
+          <span className="font-mono text-[11px] font-black tracking-[0.2em] text-accent uppercase">
+            STUDENT SYNDICATE
+          </span>
+        </div>
+        <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-text-primary uppercase leading-[0.9] mb-8">
+          Fueling the Next <br /> <span className="text-accent">Generation</span> <br />
+          of Builders.
         </h2>
-        <p className="text-zinc-500 max-w-2xl mx-auto font-light text-lg italic">
+        <p className="text-text-secondary max-w-2xl mx-auto font-medium text-lg border-l-4 border-accent pl-4 text-left">
           "I remember being a student with big ideas but limited capital. I'm here to bridge that gap for the next wave of engineers and founders."
         </p>
       </div>
@@ -42,55 +46,56 @@ export default function StudentHub() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="glass p-8 md:p-10 rounded-[40px] md:rounded-[48px] border-white/5 hover:border-emerald-500/20 transition-all group relative overflow-hidden"
+            transition={{ delay: index * 0.1, duration: 0.4, ease: FAST_EASE }}
+            className="brutal-card p-8 md:p-10 group"
           >
-            <div className="absolute -top-12 -right-12 size-32 bg-emerald-500/5 blur-3xl group-hover:bg-emerald-500/10 transition-all duration-700"></div>
-            <div className="size-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-8 group-hover:scale-110 transition-transform duration-500 relative z-10">
+            <div className="size-14 bg-brand border-2 border-border-brutal flex items-center justify-center text-text-secondary mb-8 group-hover:bg-accent group-hover:text-[#000] group-hover:border-accent group-hover:-translate-y-1 transition-all">
               {item.icon ? <item.icon size={28} /> : <Zap size={28} />}
             </div>
-            <h3 className="text-xl font-black text-white uppercase tracking-tight mb-4 relative z-10">{item.title}</h3>
-            <p className="text-zinc-500 font-light leading-relaxed text-sm relative z-10">{item.description}</p>
+            <h3 className="text-xl font-black text-text-primary uppercase tracking-tight mb-4 group-hover:text-accent transition-colors">{item.title}</h3>
+            <p className="text-text-secondary font-medium leading-relaxed text-sm">{item.description}</p>
           </motion.div>
         ))}
       </div>
 
-      <div className="mt-20 glass p-8 md:p-12 rounded-[40px] border-emerald-500/20 max-w-4xl mx-auto">
+      <div className="mt-16 md:mt-24 bg-brand p-8 md:p-12 border-2 border-border-brutal max-w-4xl mx-auto shadow-brutal-solid relative">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div className="space-y-4">
-            <h4 className="text-white font-black uppercase tracking-tight text-xl">University Project Spec</h4>
-            <p className="text-zinc-500 text-sm font-light">From IEEE paper implementation to complex final year hardware-software integrations. I provide full documentation support.</p>
-            <ul className="space-y-2">
-              <li className="flex items-center gap-3 text-[10px] uppercase font-black tracking-widest text-emerald-400">
-                <Zap size={14} /> Full Report Mentorship
+            <h4 className="text-text-primary font-black uppercase tracking-tighter text-2xl">University Project Spec</h4>
+            <p className="text-text-secondary text-sm font-medium">From IEEE paper implementation to complex final year hardware-software integrations. I provide full documentation support.</p>
+            <ul className="space-y-4 pt-4">
+              <li className="flex items-center gap-3 text-[10px] uppercase font-black tracking-widest text-text-primary">
+                <span className="bg-accent text-[#000] p-1 border-2 border-accent"><Zap size={14} /></span>
+                Full Report Mentorship
               </li>
-              <li className="flex items-center gap-3 text-[10px] uppercase font-black tracking-widest text-emerald-400">
-                <Zap size={14} /> Viva Defense Prep
+              <li className="flex items-center gap-3 text-[10px] uppercase font-black tracking-widest text-text-primary">
+                <span className="bg-accent text-[#000] p-1 border-2 border-accent"><Zap size={14} /></span>
+                Viva Defense Prep
               </li>
             </ul>
           </div>
-          <div className="bg-white/5 p-6 rounded-3xl border border-white/5">
+          <div className="bg-surface p-6 border-2 border-border-brutal shadow-brutal-white group hover:border-accent hover:shadow-brutal transition-all">
             <div className="flex items-center gap-4 mb-4">
-              <div className="size-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-500">
+              <div className="size-12 bg-brand border-2 border-border-brutal flex items-center justify-center text-text-primary group-hover:bg-accent group-hover:text-[#000] group-hover:border-accent transition-colors">
                 <GraduationCap size={20} />
               </div>
-              <span className="text-white font-black text-sm uppercase tracking-tighter">Student Project Index</span>
+              <span className="text-text-primary font-black text-sm uppercase tracking-tighter">Student Project Index</span>
             </div>
-            <p className="text-zinc-400 text-xs mb-6 italic">"Past projects include Hospital Management, AI Classify, and Secure E-Voting systems for university modules."</p>
-            <a href="#projects" className="text-[10px] font-black uppercase border-b border-emerald-400 text-emerald-400 pb-1">View Student Portfolio</a>
+            <p className="text-text-secondary font-medium text-xs mb-6">"Past projects include Hospital Management, AI Classify, and Secure E-Voting systems for university modules."</p>
+            <a href="#projects" className="text-[10px] font-black uppercase text-accent border-b-2 border-accent pb-1 hover:text-text-primary hover:border-text-primary transition-colors">View Student Portfolio</a>
           </div>
         </div>
       </div>
 
-      <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-6">
+      <div className="mt-16 flex flex-col items-center justify-center gap-6">
         <a
           href="#contact"
-          className="px-10 py-5 bg-white text-black font-black uppercase text-xs tracking-[0.2em] rounded-2xl flex items-center gap-3 shadow-2xl hover:scale-105 transition-all"
+          className="brutal-btn"
         >
           Request Student ID Discount
-          <HeartHandshake size={16} />
+          <HeartHandshake size={18} className="group-hover:translate-x-1 transition-transform" />
         </a>
-        <p className="text-zinc-500 text-xs font-mono uppercase tracking-widest">
+        <p className="text-text-secondary text-[10px] font-mono uppercase font-bold tracking-widest">
           * Valid Student ID or .edu email required
         </p>
       </div>

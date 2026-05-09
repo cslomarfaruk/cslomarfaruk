@@ -1,9 +1,11 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { Shield, Zap, Lock, Cpu } from 'lucide-react';
+import { Shield, Zap, Lock } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { useLanguage } from '@/lib/i18n';
+
+const FAST_EASE = [0.0, 0.0, 0.2, 1] as const;
 
 export default function Trust() {
   const { t, language } = useLanguage();
@@ -27,36 +29,41 @@ export default function Trust() {
   ];
 
   return (
-    <section id="about" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t border-white/10">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+    <section id="about" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t-2 border-white/10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.6, ease: FAST_EASE }}
+          className=""
         >
-          <span className="mono-label text-emerald-500 font-black mb-6 block tracking-[0.5em]">{t.trust.tagline}</span>
-          <h2 className={cn(
-            "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase mb-12",
-            language === 'bn' ? "leading-[1.2] tracking-normal" : "tracking-tighter leading-[0.9] md:leading-[1.1] text-white"
-          )}>
-            <span className={cn(language === 'bn' && "bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 to-zinc-400 pb-2 inline-block")}>
-              {t.trust.headline}
+          <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-accent bg-accent/10 mb-8">
+            <span className="font-mono text-[11px] font-black tracking-[0.2em] text-accent uppercase">
+              {t.trust.tagline}
             </span>
+          </div>
+          
+          <h2 className={cn(
+            "text-5xl sm:text-6xl md:text-[5rem] lg:text-[6rem] font-black uppercase mb-12 text-white tracking-tighter leading-[0.9]",
+            language === 'bn' && "leading-[1.2] tracking-normal"
+          )}>
+            {t.trust.headline}
           </h2>
-          <div className="space-y-8 text-zinc-400 leading-relaxed font-light text-xl tracking-tight">
+          
+          <div className="space-y-6 text-zinc-300 leading-relaxed font-medium text-lg md:text-xl border-l-4 border-accent pl-6">
             <p>{t.trust.desc1}</p>
             <p>{t.trust.desc2}</p>
           </div>
 
-          <div className="mt-16 flex flex-wrap gap-6">
-            <div className="glass p-8 rounded-[40px] border-emerald-500/20 flex items-center gap-6 shadow-2xl">
-              <div className="size-16 rounded-full glass border-emerald-500/30 flex items-center justify-center font-mono text-emerald-500 text-xl font-black shadow-inner">
+          <div className="mt-16">
+            <div className="border-2 border-white/20 bg-brand p-6 inline-flex items-center gap-6 group hover:border-accent hover:shadow-brutal transition-all duration-200">
+              <div className="size-16 bg-accent border-2 border-accent text-black flex items-center justify-center font-black text-2xl group-hover:-translate-y-1 transition-transform">
                 99%
               </div>
               <div>
-                <h4 className="text-xl font-black text-white tracking-tight uppercase">Code Quality</h4>
-                <p className="mono-label !text-zinc-500 tracking-[0.2em]">Verified Documentation</p>
+                <h4 className="text-xl font-black text-white tracking-tighter uppercase leading-none mb-2">Code Quality</h4>
+                <p className="font-mono text-[10px] text-accent font-black uppercase tracking-widest">Verified Documentation</p>
               </div>
             </div>
           </div>
@@ -66,18 +73,20 @@ export default function Trust() {
           {TRUST_PILLARS.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="glass p-10 rounded-[48px] border-white/10 hover:border-emerald-500/30 transition-all group overflow-hidden"
+              transition={{ delay: index * 0.1, duration: 0.5, ease: FAST_EASE }}
+              className="brutal-card p-8 md:p-10 group"
             >
-              <div className="p-4 glass-accent rounded-[24px] w-fit mb-8 text-emerald-400 group-hover:bg-white group-hover:text-emerald-600 transition-all duration-500 shadow-xl">
-                <item.icon size={28} />
-              </div>
-              <div className="space-y-3">
-                <h4 className="text-lg font-black text-white tracking-widest uppercase group-hover:text-emerald-400 transition-colors leading-tight">{item.title}</h4>
-                <p className="text-sm text-zinc-500 leading-relaxed font-light">{item.description}</p>
+              <div className="flex flex-col sm:flex-row gap-6 md:gap-8 items-start">
+                <div className="p-4 border-2 border-white/20 bg-brand text-zinc-400 group-hover:bg-accent group-hover:text-black group-hover:border-accent transition-all duration-200 shrink-0">
+                  <item.icon size={32} />
+                </div>
+                <div className="space-y-3 pt-1">
+                  <h4 className="text-2xl font-black text-white tracking-tighter uppercase leading-none group-hover:text-accent transition-colors">{item.title}</h4>
+                  <p className="text-sm md:text-base text-zinc-400 font-medium leading-relaxed">{item.description}</p>
+                </div>
               </div>
             </motion.div>
           ))}

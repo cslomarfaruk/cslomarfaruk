@@ -30,20 +30,20 @@ export function ThemeToggle() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2.5 rounded-2xl border border-white/10 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all group shadow-xl"
+        className="px-2 py-1.5 border-2 border-white/20 hover:border-accent bg-brand transition-colors group"
         aria-label="Toggle theme"
       >
-        <CurrentIcon className="w-5 h-5 text-zinc-400 group-hover:text-emerald-400 transition-colors" />
+        <CurrentIcon className="w-4 h-4 text-white group-hover:text-accent transition-colors" />
       </button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 mt-2 p-2 w-36 rounded-2xl glass z-50 flex flex-col gap-1"
+            className="absolute right-0 mt-2 w-32 border-2 border-white/20 bg-brand z-50 flex flex-col shadow-brutal"
           >
             {themes.map(({ name, icon: Icon, label }) => (
               <button
@@ -52,12 +52,12 @@ export function ThemeToggle() {
                   setTheme(name as "light" | "dark" | "system");
                   setIsOpen(false);
                 }}
-                className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium transition-all ${theme === name
-                  ? "bg-emerald-500/10 text-emerald-400"
-                  : "text-zinc-400 hover:bg-white/5 hover:text-white"
+                className={`flex items-center gap-3 px-3 py-2 text-[10px] font-black uppercase tracking-widest transition-all border-b-2 border-transparent last:border-b-0 ${theme === name
+                  ? "bg-accent text-black border-accent"
+                  : "text-white hover:bg-accent/10 hover:text-accent"
                   }`}
               >
-                <Icon className="w-4 h-4" />
+                <Icon className="w-3 h-3" />
                 {label}
               </button>
             ))}

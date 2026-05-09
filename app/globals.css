@@ -7,157 +7,164 @@
   --font-sans: "Inter", "Noto Sans Bengali", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-brand: #0A0A0B;
-  --color-accent: #10b981;
-  --color-emerald: #10b981;
+  /* Override standard Tailwind colors to react to our light/dark mode */
+  --color-white: var(--theme-white);
+  --color-black: var(--theme-black);
 
-  --shadow-glass: 0 24px 80px -16px rgba(0, 0, 0, 0.5);
-  --shadow-glass-accent: 0 0 40px rgba(16, 185, 129, 0.08);
-  --shadow-glow-emerald: 0 0 80px -20px rgba(16, 185, 129, 0.25);
+  --color-zinc-100: var(--theme-zinc-100);
+  --color-zinc-300: var(--theme-zinc-300);
+  --color-zinc-400: var(--theme-zinc-400);
+  --color-zinc-500: var(--theme-zinc-500);
+  --color-zinc-900: var(--theme-zinc-900);
+  --color-zinc-950: var(--theme-zinc-950);
+
+  /* Semantic Theme Colors */
+  --color-brand: var(--theme-brand);
+  --color-accent: var(--theme-accent);
+
+  --shadow-brutal: 6px 6px 0px var(--theme-accent);
+  --shadow-brutal-hover: 10px 10px 0px var(--theme-accent);
+}
+
+:root {
+  /* LIGHT MODE */
+  color-scheme: light;
+
+  --theme-white: #000000;
+  /* White text becomes black */
+  --theme-black: #ffffff;
+  /* Black backgrounds become white */
+
+  --theme-zinc-100: #18181b;
+  --theme-zinc-300: #3f3f46;
+  --theme-zinc-400: #52525b;
+  --theme-zinc-500: #71717a;
+
+  --theme-zinc-900: #e4e4e7;
+  --theme-zinc-950: #f4f4f5;
+
+  --theme-brand: #ffffff;
+  --theme-accent: #2a9d8f;
+  /* Persian Green - Soothing & Trustworthy */
+
+  --grid-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  /* DARK MODE */
+  color-scheme: dark;
+
+  --theme-white: #ffffff;
+  --theme-black: #000000;
+
+  --theme-zinc-100: #f4f4f5;
+  --theme-zinc-300: #d4d4d8;
+  --theme-zinc-400: #a1a1aa;
+  --theme-zinc-500: #71717a;
+
+  --theme-zinc-900: #18181b;
+  --theme-zinc-950: #09090b;
+
+  --theme-brand: #050505;
+  --theme-accent: #2a9d8f;
+  /* Persian Green - Soothing & Trustworthy */
+
+  --grid-color: rgba(255, 255, 255, 0.15);
 }
 
 @layer base {
-  :root.light {
-    --color-brand: #fafaf9;
-    --color-zinc-950: #ffffff;
-    --color-zinc-900: #f4f4f5;
-    --color-zinc-800: #e4e4e7;
-    --color-zinc-700: #d4d4d8;
-    --color-zinc-600: #a1a1aa;
-    --color-zinc-500: #6b7280;
-    --color-zinc-400: #4b5563;
-    --color-zinc-300: #374151;
-    --color-zinc-200: #1f2937;
-    --color-zinc-100: #111827;
-    --color-zinc-50: #030712;
-
-    --color-white: #0a0a0a;
-    --color-black: #ffffff;
-  }
-
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-brand text-zinc-100 font-sans selection:bg-emerald-500/30 selection:text-white antialiased overflow-x-hidden;
-    /* Clean ambient gradients — no grid pattern */
-    background-image:
-      radial-gradient(ellipse 80% 60% at 10% 15%, rgba(16, 185, 129, 0.035) 0%, transparent 50%),
-      radial-gradient(ellipse 70% 50% at 90% 85%, rgba(16, 185, 129, 0.025) 0%, transparent 50%);
-  }
-
-  :root.light body {
-    background-image:
-      radial-gradient(ellipse 80% 60% at 10% 15%, rgba(16, 185, 129, 0.015) 0%, transparent 50%),
-      radial-gradient(ellipse 70% 50% at 90% 85%, rgba(16, 185, 129, 0.01) 0%, transparent 50%);
+    @apply bg-brand text-white font-sans selection:bg-accent selection:text-[#000] antialiased overflow-x-hidden;
+    /* Brutalist Dotted Grid */
+    background-image: radial-gradient(var(--grid-color) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: 0 0;
   }
 }
 
-/* ── Glassmorphism System ── */
+/* ── Tech Brutalism System ── */
 
+.brutal-card {
+  @apply bg-zinc-950 border-2 border-white/20 transition-all duration-200 relative;
+}
+
+.brutal-card:hover {
+  @apply border-accent shadow-brutal -translate-y-1 -translate-x-1;
+}
+
+.brutal-btn {
+  @apply bg-accent text-[#000] font-black uppercase px-8 py-4 border-2 border-accent transition-all duration-200 inline-flex items-center justify-center gap-2;
+  box-shadow: 6px 6px 0px var(--theme-white);
+}
+
+.brutal-btn:hover {
+  @apply -translate-y-1 -translate-x-1;
+  box-shadow: 10px 10px 0px var(--theme-white);
+}
+
+.brutal-btn-outline {
+  @apply bg-transparent text-white font-black uppercase px-8 py-4 border-2 border-white/20 transition-all duration-200 inline-flex items-center justify-center gap-2;
+  box-shadow: 6px 6px 0px var(--theme-white);
+}
+
+.brutal-btn-outline:hover {
+  @apply border-accent text-accent -translate-y-1 -translate-x-1 bg-accent/5;
+  box-shadow: var(--shadow-brutal);
+}
+
+/* Fallback legacy classes to prevent breaking other sections while transitioning */
 .glass {
-  @apply bg-zinc-900/40 shadow-glass;
+  @apply bg-zinc-900/40;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  background-image: linear-gradient(165deg, rgba(255, 255, 255, 0.04) 0%, transparent 100%);
-  transform: translateZ(0);
 }
 
 .glass-clean {
   @apply bg-transparent border border-white/[0.08];
-  background-image: linear-gradient(165deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
-}
-
-:root.light .glass {
-  background-color: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
-  background-image: linear-gradient(180deg, rgba(255, 252, 244, 0.5) 0%, rgba(255, 255, 255, 0.05) 100%);
 }
 
 .section-shell {
-  @apply rounded-[2rem] md:rounded-[2.5rem] border border-white/[0.06];
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
-}
-
-:root.light .section-shell {
-  border-color: rgba(0, 0, 0, 0.08);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.45) 100%);
+  @apply rounded-[2rem] border border-white/[0.06];
 }
 
 .subtle-grid {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-  background-size: 36px 36px;
-}
-
-:root.light .subtle-grid {
-  background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
-}
-
-.glass-accent {
-  @apply bg-emerald-500/[0.06] border border-emerald-500/10 shadow-glass-accent;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  transform: translateZ(0);
-}
-
-/* ── Typography Utilities ── */
-
-.mono-label {
-  font-family: var(--font-mono);
-  @apply text-[10px] uppercase tracking-[0.4em] font-bold text-emerald-500/70;
-}
-
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-br from-white to-emerald-500;
-  background-size: 200% auto;
-}
-
-/* ── Effects ── */
-
-.glow-emerald {
-  @apply shadow-glow-emerald;
-}
-
-.gpu-accelerated {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-/* ── Scrollbar ── */
-
-::-webkit-scrollbar {
-  width: 3px;
-}
-
-::-webkit-scrollbar-track {
   @apply bg-transparent;
 }
 
+.glass-accent {
+  @apply bg-emerald-500/[0.06] border border-emerald-500/10;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  @apply text-[10px] uppercase tracking-[0.4em] font-bold text-accent;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-white to-zinc-500;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-brand border-l border-white/20;
+}
+
 ::-webkit-scrollbar-thumb {
-  @apply bg-zinc-800/50 rounded-full hover:bg-emerald-500/60 transition-all;
+  @apply bg-white rounded-none hover:bg-accent transition-all;
 }
 
-/* ── Keyframes ── */
-
-@keyframes textShine {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+.shadow-brutal-white {
+  box-shadow: 6px 6px 0px var(--theme-white);
 }
 
-.animate-text-shine {
-  background-size: 200% auto;
-  animation: textShine 4s linear infinite;
+.filter-accent {
+  filter: hue-rotate(25deg) brightness(0.9) saturate(0.9);
 }

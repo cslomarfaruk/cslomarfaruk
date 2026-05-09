@@ -15,9 +15,8 @@ export default function FloatingWhatsApp() {
       className="fixed bottom-6 right-5 md:bottom-8 md:right-8 z-[130] group"
       aria-label="Chat on WhatsApp"
     >
-      <span className="absolute -inset-1 rounded-full bg-emerald-500/25 blur-xl group-hover:bg-emerald-500/35 transition-colors" />
-      <span className="relative flex items-center gap-2 rounded-full bg-emerald-500 text-black px-4 py-3 md:px-5 md:py-3.5 font-black text-[10px] md:text-xs uppercase tracking-[0.18em] shadow-2xl shadow-emerald-500/30 hover:scale-[1.02] active:scale-95 transition-all">
-        <MessageCircle size={16} />
+      <span className="relative flex items-center gap-2 border-2 border-accent bg-accent text-black px-4 py-3 md:px-5 md:py-3.5 font-black text-[10px] md:text-xs uppercase tracking-widest shadow-[4px_4px_0px_rgba(255,255,255,0.2)] hover:shadow-brutal hover:-translate-y-1 hover:-translate-x-1 transition-all group-hover:bg-white group-hover:border-white">
+        <MessageCircle size={18} />
         WhatsApp
       </span>
     </motion.a>

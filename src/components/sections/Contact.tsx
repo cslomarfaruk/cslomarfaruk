@@ -6,6 +6,8 @@ import { Send, CheckCircle2, Loader2, MessageSquare, ArrowRight } from 'lucide-r
 import { cn } from '@/src/lib/utils';
 import { useLanguage } from '@/lib/i18n';
 
+const FAST_EASE = [0.0, 0.0, 0.2, 1] as const;
+
 export default function Contact() {
   const { t, language } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -53,35 +55,40 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t border-white/10">
+    <section id="contact" className="px-6 py-24 md:py-40 max-w-7xl mx-auto border-t-2 border-white/10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
         <div>
-          <span className="mono-label text-emerald-500 font-black mb-6 block tracking-[0.5em]">{t.contact.tagline}</span>
-          <h2 className={cn(
-            "text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black uppercase mb-12",
-            language === 'bn' ? "leading-[1.2] tracking-normal" : "tracking-tighter leading-[0.9] text-white"
-          )}>
-            <span className={cn(language === 'bn' && "bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 to-zinc-400 pb-2 inline-block")}>
-              {t.contact.headline}
+          <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-accent bg-accent/10 mb-6">
+            <span className="font-mono text-[11px] font-black tracking-[0.2em] text-accent uppercase">
+              {t.contact.tagline}
             </span>
+          </div>
+          
+          <h2 className={cn(
+            "text-5xl sm:text-6xl md:text-7xl lg:text-[7rem] font-black uppercase mb-12 tracking-tighter leading-[0.85] text-white",
+            language === 'bn' && "leading-[1.2] tracking-normal"
+          )}>
+            {t.contact.headline}
           </h2>
 
           <div className="space-y-8 md:space-y-10">
-            <p className="text-zinc-400 font-light tracking-tight text-xl">{t.contact.subheadline}</p>
+            <p className="text-zinc-300 font-medium tracking-tight text-xl border-l-4 border-accent pl-4">
+              {t.contact.subheadline}
+            </p>
 
-            <div className="bg-emerald-500/10 border border-emerald-500/20 p-6 rounded-3xl mb-8">
-              <div className="flex items-center gap-4 mb-2">
-                <MessageSquare className="text-emerald-500" size={20} />
-                <span className="text-emerald-500 font-black uppercase text-xs tracking-widest">Instant Contact</span>
+            <div className="border-2 border-accent bg-brand p-8 shadow-brutal w-fit group">
+              <div className="flex items-center gap-4 mb-4">
+                <MessageSquare className="text-accent" size={24} />
+                <span className="text-accent font-black uppercase text-xs tracking-widest">Instant Communication</span>
               </div>
               <a
                 href="https://wa.me/8801839467728"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3 rounded-2xl font-black uppercase text-[10px] tracking-widest transition-all"
+                className="inline-flex items-center gap-3 bg-accent hover:bg-white text-black px-8 py-4 font-black uppercase text-[11px] tracking-widest transition-all shadow-brutal-white hover:shadow-brutal hover:-translate-y-1 hover:-translate-x-1"
               >
                 {t.contact.whatsapp_btn}
-                <ArrowRight size={14} />
+                <ArrowRight size={18} />
               </a>
             </div>
           </div>
@@ -95,12 +102,12 @@ export default function Contact() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                className="glass p-6 sm:p-8 md:p-16 rounded-[32px] md:rounded-[64px] border-white/5 relative shadow-2xl"
+                className="brutal-card p-6 sm:p-10 border-4 border-white/20 bg-zinc-950"
               >
                 <form className="space-y-6 md:space-y-8 relative z-10" onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
-                    <div className="space-y-2 md:space-y-3 relative group">
-                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 ml-2 md:ml-4 group-focus-within:text-emerald-400 transition-colors">{t.contact.form_name}</label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-3 relative group">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white bg-black px-2 py-1 border-2 border-white/20 inline-block group-focus-within:border-accent group-focus-within:text-accent transition-colors">{t.contact.form_name}</label>
                       <input
                         required
                         type="text"
@@ -108,11 +115,11 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder={t.contact.form_name_ph}
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl px-5 md:px-8 py-4 md:py-5 text-white placeholder:text-zinc-500/80 focus:outline-none focus:border-emerald-500/50 focus:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-300 font-light text-sm"
+                        className="w-full bg-brand border-2 border-white/20 px-5 md:px-6 py-4 text-white placeholder:text-zinc-500 focus:outline-none focus:border-accent focus:shadow-brutal transition-all duration-200 font-bold"
                       />
                     </div>
-                    <div className="space-y-2 md:space-y-3 relative group">
-                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 ml-2 md:ml-4 group-focus-within:text-emerald-400 transition-colors">{t.contact.form_email}</label>
+                    <div className="space-y-3 relative group">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white bg-black px-2 py-1 border-2 border-white/20 inline-block group-focus-within:border-accent group-focus-within:text-accent transition-colors">{t.contact.form_email}</label>
                       <input
                         required
                         type="email"
@@ -120,46 +127,46 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder={t.contact.form_email_ph}
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl px-5 md:px-8 py-4 md:py-5 text-white placeholder:text-zinc-500/80 focus:outline-none focus:border-emerald-500/50 focus:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-300 font-light text-sm"
+                        className="w-full bg-brand border-2 border-white/20 px-5 md:px-6 py-4 text-white placeholder:text-zinc-500 focus:outline-none focus:border-accent focus:shadow-brutal transition-all duration-200 font-bold"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
-                    <div className="space-y-2 md:space-y-3 relative group">
-                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 ml-2 md:ml-4 group-focus-within:text-emerald-400 transition-colors">{t.contact.form_type}</label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-3 relative group">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white bg-black px-2 py-1 border-2 border-white/20 inline-block group-focus-within:border-accent group-focus-within:text-accent transition-colors">{t.contact.form_type}</label>
                       <select
                         name="businessType"
                         value={formData.businessType}
                         onChange={handleChange}
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl px-5 md:px-8 py-4 md:py-5 text-white focus:outline-none focus:border-emerald-500/50 focus:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-300 font-light appearance-none text-sm cursor-pointer"
+                        className="w-full bg-brand border-2 border-white/20 px-5 md:px-6 py-4 text-white focus:outline-none focus:border-accent focus:shadow-brutal transition-all duration-200 font-bold appearance-none cursor-pointer"
                       >
-                        <option className="bg-zinc-950 text-white" value="Business">Business / Founder</option>
-                        <option className="bg-zinc-950 text-white" value="Agency">Agency Partner</option>
-                        <option className="bg-zinc-950 text-white" value="Startup">Startup Team</option>
-                        <option className="bg-zinc-950 text-white" value="Student">Student</option>
-                        <option className="bg-zinc-950 text-white" value="Others">Others</option>
+                        <option className="bg-brand text-white" value="Business">Business / Founder</option>
+                        <option className="bg-brand text-white" value="Agency">Agency Partner</option>
+                        <option className="bg-brand text-white" value="Startup">Startup Team</option>
+                        <option className="bg-brand text-white" value="Student">Student</option>
+                        <option className="bg-brand text-white" value="Others">Others</option>
                       </select>
                     </div>
-                    <div className="space-y-2 md:space-y-3 relative group">
-                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 ml-2 md:ml-4 group-focus-within:text-emerald-400 transition-colors">{t.contact.form_budget}</label>
+                    <div className="space-y-3 relative group">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white bg-black px-2 py-1 border-2 border-white/20 inline-block group-focus-within:border-accent group-focus-within:text-accent transition-colors">{t.contact.form_budget}</label>
                       <select
                         name="budget"
                         value={formData.budget}
                         onChange={handleChange}
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl px-5 md:px-8 py-4 md:py-5 text-white focus:outline-none focus:border-emerald-500/50 focus:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-300 font-light appearance-none text-sm cursor-pointer"
+                        className="w-full bg-brand border-2 border-white/20 px-5 md:px-6 py-4 text-white focus:outline-none focus:border-accent focus:shadow-brutal transition-all duration-200 font-bold appearance-none cursor-pointer"
                       >
-                        <option className="bg-zinc-950 text-white" value="Student">Student pack</option>
-                        <option className="bg-zinc-950 text-white" value="$500 - $2,000">$500 - $2,000</option>
-                        <option className="bg-zinc-950 text-white" value="$2,000 - $5,000">$2,000 - $5,000</option>
-                        <option className="bg-zinc-950 text-white" value="$5,000 - $10,000">$5,000 - $10,000</option>
-                        <option className="bg-zinc-950 text-white" value="$10,000+">$10,000+</option>
+                        <option className="bg-brand text-white" value="Student">Student pack</option>
+                        <option className="bg-brand text-white" value="$500 - $2,000">$500 - $2,000</option>
+                        <option className="bg-brand text-white" value="$2,000 - $5,000">$2,000 - $5,000</option>
+                        <option className="bg-brand text-white" value="$5,000 - $10,000">$5,000 - $10,000</option>
+                        <option className="bg-brand text-white" value="$10,000+">$10,000+</option>
                       </select>
                     </div>
                   </div>
 
-                  <div className="space-y-2 md:space-y-3 relative group">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 ml-2 md:ml-4 group-focus-within:text-emerald-400 transition-colors">{t.contact.form_brief}</label>
+                  <div className="space-y-3 relative group">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white bg-black px-2 py-1 border-2 border-white/20 inline-block group-focus-within:border-accent group-focus-within:text-accent transition-colors">{t.contact.form_brief}</label>
                     <textarea
                       required
                       name="message"
@@ -167,20 +174,20 @@ export default function Contact() {
                       onChange={handleChange}
                       rows={4}
                       placeholder={t.contact.form_brief_ph}
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl md:rounded-[32px] px-5 md:px-8 py-4 md:py-6 text-white placeholder:text-zinc-500/80 focus:outline-none focus:border-emerald-500/50 focus:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-300 font-light text-sm resize-none"
+                      className="w-full bg-brand border-2 border-white/20 px-5 md:px-6 py-4 text-white placeholder:text-zinc-500 focus:outline-none focus:border-accent focus:shadow-brutal transition-all duration-200 font-bold resize-none"
                     />
                   </div>
 
                   <button
                     disabled={isSubmitting}
-                    className="w-full py-4 md:py-6 bg-emerald-600 text-white rounded-2xl md:rounded-[32px] font-black uppercase text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] flex items-center justify-center gap-3 hover:bg-white hover:text-emerald-600 transition-all shadow-2xl shadow-emerald-500/20 group"
+                    className="w-full py-5 bg-accent border-4 border-accent text-black font-black uppercase tracking-widest text-sm flex items-center justify-center gap-3 hover:-translate-y-1 hover:-translate-x-1 transition-all shadow-brutal-white hover:shadow-brutal disabled:opacity-50 group mt-4"
                   >
                     {isSubmitting ? (
-                      <Loader2 className="animate-spin" size={16} />
+                      <Loader2 className="animate-spin" size={20} />
                     ) : (
                       <>
                         <span className="relative z-10">{t.contact.form_submit}</span>
-                        <Send size={16} className="relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        <Send size={20} className="relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                       </>
                     )}
                   </button>
@@ -191,23 +198,23 @@ export default function Contact() {
                 key="success"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="glass p-10 md:p-16 rounded-[64px] border-emerald-500/30 flex flex-col items-center text-center justify-center min-h-[500px]"
+                className="brutal-card border-4 border-accent p-10 md:p-16 flex flex-col items-center text-center justify-center min-h-[500px] shadow-brutal bg-brand"
               >
-                <div className="size-24 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 mb-8 border border-emerald-500/20">
+                <div className="size-24 bg-accent flex items-center justify-center text-black mb-8 border-4 border-black shadow-brutal-white">
                   <CheckCircle2 size={48} />
                 </div>
-                <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-4">Brief Received.</h3>
-                <p className="text-zinc-400 font-light text-lg max-w-sm mb-12">
+                <h3 className="text-4xl font-black text-white uppercase tracking-tighter mb-4">Brief Received.</h3>
+                <p className="text-zinc-400 font-bold text-lg max-w-sm mb-12">
                   I've received your inquiry. For an immediate response, follow up on WhatsApp.
                 </p>
 
                 <div className="flex flex-col w-full gap-4">
                   <button
                     onClick={() => setIsSuccess(false)}
-                    className="w-full py-5 glass border-white/10 text-zinc-400 rounded-3xl font-black uppercase text-[10px] tracking-widest flex items-center justify-center gap-2 hover:text-white transition-all"
+                    className="w-full py-5 border-2 border-white/20 text-white font-black uppercase text-[10px] tracking-widest flex items-center justify-center gap-2 hover:border-accent hover:text-accent hover:shadow-brutal hover:-translate-y-1 hover:-translate-x-1 transition-all"
                   >
                     Back to Form
-                    <ArrowRight size={14} />
+                    <ArrowRight size={16} />
                   </button>
                 </div>
               </motion.div>

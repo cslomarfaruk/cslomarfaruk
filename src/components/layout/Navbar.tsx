@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import Image from 'next/image';
 import { Menu, X, ArrowUpRight, Globe } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { ThemeToggle } from '../ThemeToggle';
@@ -9,14 +10,9 @@ import { useLanguage } from '@/lib/i18n';
 
 const NAV_ITEMS = [
   { label: 'Services', href: '#skills' },
-  { label: 'Mentorship', href: '#mentorship' },
+  { label: 'Student Hub', href: '#students' },
   { label: 'About', href: '#about' },
   { label: 'Work', href: '#projects' },
-];
-
-const SECONDARY_NAV = [
-  { label: 'Top', href: '#hero' },
-  { label: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar() {
@@ -34,7 +30,7 @@ export default function Navbar() {
       setScrollProgress(progress);
     };
 
-    const sectionIds = ['hero', 'skills', 'mentorship', 'about', 'projects', 'testimonials', 'contact'];
+    const sectionIds = ['hero', 'skills', 'students', 'about', 'projects', 'testimonials', 'contact'];
     const detectActiveSection = () => {
       const y = window.scrollY + window.innerHeight * 0.35;
       let current = 'hero';
@@ -56,103 +52,109 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[110] transition-all duration-500 flex justify-center w-full px-4 sm:px-6 pt-4 sm:pt-6 pointer-events-none">
+    <nav className="fixed top-0 left-0 right-0 z-[110] transition-all duration-200 flex justify-center w-full px-4 sm:px-6 pt-4 sm:pt-6 pointer-events-none">
+      {/* Brutalist scroll progress */}
       <div
-        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 shadow-[0_0_15px_rgba(16,185,129,0.8)] transition-all duration-100 ease-out z-[120]"
+        className="fixed top-0 left-0 h-1.5 bg-accent z-[120]"
         style={{ width: `${scrollProgress}%` }}
       />
 
       <div className={cn(
-        "w-full flex items-center justify-between transition-all duration-500 pointer-events-auto",
+        "w-full flex items-center justify-between transition-all duration-200 pointer-events-auto",
         scrolled
-          ? "max-w-5xl lg:max-w-6xl glass px-4 md:px-6 py-3 rounded-full shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] border border-white/10"
+          ? "max-w-6xl bg-brand border-2 border-white/20 px-6 py-3 shadow-brutal"
           : "max-w-7xl px-4 py-4 bg-transparent border-none shadow-none"
       )}>
+        {/* LOGO */}
         <a href="#" className="flex items-center gap-3 group">
-          <img
-            src="/logo.png"
-            alt="DEV.CSL"
-            className={cn(
-              "transition-all group-hover:scale-105 object-contain",
-              scrolled ? "h-8 w-8" : "h-10 w-10"
-            )}
-          />
+          <div className="size-10 relative transition-all duration-300 group-hover:rotate-12">
+            <Image 
+              src="/logo.png" 
+              alt="DEV.CSL" 
+              width={40} 
+              height={40} 
+              className="object-contain filter-accent"
+            />
+          </div>
           <span className={cn(
-            "font-black tracking-tight text-zinc-100 uppercase transition-all whitespace-nowrap",
-            scrolled ? "text-base" : "text-xl md:text-2xl"
-          )}>DEV<span className="text-emerald-500">.CSL</span></span>
+            "font-black tracking-tighter uppercase transition-all whitespace-nowrap",
+            scrolled ? "text-xl text-white" : "text-2xl text-white"
+          )}>
+            DEV<span className="text-accent">.CSL</span>
+          </span>
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-8">
           {NAV_ITEMS.map(item => (
             <a
               key={item.label}
               href={item.href}
               className={cn(
-                "text-[10px] uppercase tracking-[0.3em] font-black transition-all relative group",
-                activeSection === item.href.replace('#', '') ? "text-zinc-100" : "text-zinc-500 hover:text-zinc-100"
+                "text-xs uppercase tracking-widest font-black transition-all relative group py-2",
+                activeSection === item.href.replace('#', '') ? "text-accent" : "text-white hover:text-accent"
               )}
             >
               {item.label}
-              <span className={cn(
-                "absolute -bottom-1 left-0 h-[1px] bg-emerald-500 transition-all",
-                activeSection === item.href.replace('#', '') ? "w-full" : "w-0 group-hover:w-full"
-              )}></span>
+              {activeSection === item.href.replace('#', '') && (
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-accent" />
+              )}
+              {activeSection !== item.href.replace('#', '') && (
+                <span className="absolute bottom-0 left-0 w-0 h-1 bg-accent transition-all group-hover:w-full" />
+              )}
             </a>
           ))}
 
-          <div className="w-[1px] h-4 bg-zinc-700 mx-2"></div>
+          <div className="w-[2px] h-6 bg-white/20 mx-2"></div>
 
           <div className="flex items-center gap-4">
             <button
               onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-              className="flex items-center gap-1.5 text-zinc-400 hover:text-zinc-100 transition-all text-[10px] font-black tracking-widest uppercase border border-white/10 px-4 py-2 rounded-full border-white/5 hover:border-emerald-500/30 hover:bg-emerald-500/5 group"
+              className="font-mono text-[10px] font-black uppercase tracking-widest px-3 py-1.5 border-2 border-white/20 hover:border-accent hover:bg-accent hover:text-[#000] text-white transition-all"
             >
-              <Globe size={12} className="group-hover:text-emerald-400 transition-colors" />
               {language === 'en' ? 'EN' : 'BN'}
             </button>
             <ThemeToggle />
             <a
               href="#contact"
               className={cn(
-                "bg-emerald-600 text-zinc-100 text-[10px] uppercase tracking-[0.2em] font-black flex items-center gap-2 hover:bg-emerald-500 hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-emerald-600/20 whitespace-nowrap",
-                scrolled ? "px-5 py-2.5 rounded-full" : "px-6 py-3 rounded-2xl"
+                "bg-accent text-[#000] text-xs uppercase tracking-widest font-black flex items-center gap-2 hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all whitespace-nowrap border-2 border-accent",
+                scrolled ? "px-6 py-2 shadow-brutal-white" : "px-6 py-3 shadow-brutal-white"
               )}
             >
-              Contact Us
-              <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              Contact
+              <ArrowUpRight size={16} />
             </a>
           </div>
         </div>
 
         {/* Mobile Nav Toggle */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="md:hidden flex items-center gap-3">
           <button
             onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-            className="flex items-center justify-center size-10 rounded-2xl border border-white/10 text-zinc-400 hover:text-zinc-100 hover:border-emerald-500/30 hover:bg-emerald-500/10 transition-all font-black text-[10px]"
+            className="font-mono text-[10px] font-black uppercase px-2 py-1 border-2 border-white/20 hover:border-accent hover:text-accent text-white"
           >
             {language === 'en' ? 'EN' : 'BN'}
           </button>
           <ThemeToggle />
           <button
-            className="p-2.5 text-zinc-100 border border-white/10 rounded-2xl hover:border-emerald-500/30 transition-all"
+            className="p-2 text-white border-2 border-white/20 hover:border-accent hover:text-accent transition-colors bg-brand"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Brutalist Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-20 left-4 right-4 glass p-6 rounded-[32px] md:hidden pointer-events-auto border border-white/10 shadow-2xl"
+            className="absolute top-24 left-4 right-4 bg-brand border-2 border-white/20 p-6 md:hidden pointer-events-auto shadow-brutal z-[150]"
           >
             <div className="flex flex-col gap-6">
               {NAV_ITEMS.map(item => (
@@ -161,27 +163,24 @@ export default function Navbar() {
                   href={item.href}
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    "text-2xl font-black tracking-tight text-center uppercase transition-colors",
-                    activeSection === item.href.replace('#', '') ? "text-emerald-400" : "text-zinc-100 hover:text-emerald-400"
+                    "text-3xl font-black tracking-tighter uppercase transition-colors border-b-2 border-white/20 pb-4",
+                    activeSection === item.href.replace('#', '') ? "text-accent border-accent" : "text-white hover:text-accent"
                   )}
                 >
                   {item.label}
                 </a>
               ))}
-              <hr className="border-white/5 my-2" />
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="w-full py-5 glass border-emerald-500/20 text-white text-center rounded-[24px] font-black text-[12px] uppercase tracking-[0.2em] shadow-xl shadow-emerald-500/10 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all"
+                className="w-full mt-4 bg-accent text-[#000] py-4 border-2 border-accent text-center font-black text-lg uppercase tracking-widest hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0px_var(--theme-white)] transition-all"
               >
-                Contact Us
+                Start a Project
               </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-
-
     </nav>
   );
 }

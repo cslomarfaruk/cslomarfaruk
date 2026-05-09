@@ -1,24 +1,24 @@
 {
   "hero": {
-    "tagline": "ENGINEER · MENTOR · BUILDER",
+    "tagline": "ENGINEER · DEVELOPER · BUILDER",
     "headline_pt1": "I Build Software",
-    "headline_pt2": "& Grow Engineers",
-    "subheadline": "Full-stack developer with 3+ years shipping production SaaS for ambitious businesses, mentoring aspiring developers through real-world challenges, and crafting digital products — from architecture to deployment.",
+    "headline_pt2": "& Elevate Brands",
+    "subheadline": "Full-stack developer with 3+ years shipping production SaaS for ambitious businesses, engineering academic solutions for students, and crafting high-impact digital products — from landing pages to complex systems.",
     "cta_discuss": "Start a Project",
     "cta_portfolio": "See My Work",
-    "status": "Accepting Projects & Mentees",
+    "status": "Accepting New Projects",
     "metric_projects": "15+",
     "metric_projects_label": "Projects Shipped",
     "metric_experience": "3+",
     "metric_experience_label": "Years in Production",
     "metric_clients": "100%",
     "metric_clients_label": "Client Satisfaction",
-    "pillar1_title": "SaaS Development",
-    "pillar1_desc": "Production-grade web apps, dashboards & automation for businesses.",
-    "pillar2_title": "Technical Mentorship",
-    "pillar2_desc": "Architecture guidance, code reviews & career coaching for developers.",
-    "pillar3_title": "Digital Products",
-    "pillar3_desc": "Premium templates & tools built from real-world experience."
+    "pillar1_title": "SaaS & Web Apps",
+    "pillar1_desc": "Production-grade dashboards, automation & complex systems for businesses.",
+    "pillar2_title": "Academic Projects",
+    "pillar2_desc": "Final year projects, IEEE implementations & theses with full technical support.",
+    "pillar3_title": "Digital Branding",
+    "pillar3_desc": "High-converting landing pages, portfolios & marketing sites that drive ROI."
   },
   "services": {
     "tagline": "Services",
@@ -38,17 +38,17 @@
     "s4_impact": "10+ Hours Saved Weekly"
   },
   "mentorship": {
-    "tagline": "Technical Mentorship",
-    "headline": "Guiding the Next Generation of Engineers",
-    "subheadline": "I don't just build — I teach. From university project support to production architecture reviews, I help aspiring developers level up with real-world guidance.",
-    "b1_title": "Project Mentorship",
-    "b1_desc": "End-to-end guidance for university projects, final-year theses, and IEEE paper implementations — with full documentation support.",
-    "b2_title": "Code & Architecture Reviews",
-    "b2_desc": "Deep-dive reviews of your codebase, helping you build systems that are maintainable, secure, and ready to scale.",
-    "b3_title": "Career Coaching",
-    "b3_desc": "From portfolio building to interview prep — practical guidance to land your first developer role or level up your career.",
-    "cta_text": "Book a Mentorship Session",
-    "note": "Student ID or .edu email gets subsidized rates"
+    "tagline": "Student Hub",
+    "headline": "Fueling the Next Generation of Builders",
+    "subheadline": "I specialize in engineering high-quality academic projects. From university final-year theses to IEEE paper implementations, I deliver the code and technical support you need.",
+    "b1_title": "Project Engineering",
+    "b1_desc": "End-to-end development for university projects and final-year theses with industry-standard clean architecture.",
+    "b2_title": "Technical Defense Prep",
+    "b2_desc": "I deliver your project and walk you through the architecture so you can confidently defend your work during board vivas.",
+    "b3_title": "Portfolio Building",
+    "b3_desc": "Get a custom, high-impact portfolio that showcases your skills and sets you apart in the job market.",
+    "cta_text": "Request Project Quote",
+    "note": "Valid Student ID required for subsidized academic rates"
   },
   "trust": {
     "tagline": "Why Work With Me",

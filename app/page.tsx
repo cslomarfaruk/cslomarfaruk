@@ -1,6 +1,6 @@
 import Hero from "@/src/components/sections/Hero";
 import Services from "@/src/components/sections/Services";
-import Mentorship from "@/src/components/sections/Mentorship";
+import StudentHub from "@/src/components/sections/Mentorship";
 import Trust from "@/src/components/sections/Trust";
 import Projects from "@/src/components/sections/Projects";
 import Testimonials from "@/src/components/sections/Testimonials";
@@ -18,7 +18,7 @@ export default function Home() {
       />
       <Hero />
       <Services />
-      <Mentorship />
+      <StudentHub />
       <Trust />
       <Projects />
       <Testimonials />

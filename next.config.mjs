@@ -30,6 +30,20 @@ const nextConfig = {
 
   // Headers for performance & security
   async headers() {
+    if (process.env.NODE_ENV !== 'production') {
+      return [
+        {
+          source: '/:path*',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'no-store, no-cache, must-revalidate, proxy-revalidate'
+            }
+          ]
+        }
+      ];
+    }
+
     return [
       // Security headers
       {
