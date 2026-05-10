@@ -63,7 +63,7 @@ const PROJECTS: Project[] = [
     description: 'A massive real-time social ecosystem engineered for scale. Built to demonstrate my capability in handling complex graph relationships, modular feed algorithms, and low-latency global messaging.',
     features: ['Real-time Messaging', 'Feed Algorithms', 'Graph Data', 'NoSQL Scale'],
     tags: ['React', 'Firebase', 'Real-time', 'NoSQL'],
-    links: { live: 'https://socialmedia-dc07a.web.app/', github: 'https://github.com/cslomarfaruk/hive' },
+    links: { live: 'https://hive.devcsl.tech/', github: 'https://github.com/cslomarfaruk/hive' },
     image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop',
     gallery: [
       'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop'
