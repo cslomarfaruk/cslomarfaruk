@@ -128,7 +128,7 @@ export default function RootLayout({
         `}</style>
       </head>
       <body className="antialiased min-h-screen">
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
           <LanguageProvider>
             <Navbar />
             <PageTransition>

@@ -3,10 +3,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Menu, X, ArrowUpRight, Globe } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { ThemeToggle } from '../ThemeToggle';
 import { useLanguage } from '@/lib/i18n';
+
+import { usePathname } from 'next/navigation';
 
 const NAV_ITEMS = [
   { label: 'Services', href: '#skills' },
@@ -16,7 +19,12 @@ const NAV_ITEMS = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const { language, setLanguage } = useLanguage();
+  
+  // Hide global navbar on project detail pages as they have their own specialized navbar
+  const isProjectDetailPage = pathname.startsWith('/projects/') && pathname.split('/').length > 2;
+  
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -51,6 +59,8 @@ export default function Navbar() {
     };
   }, []);
 
+  if (isProjectDetailPage) return null;
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-[110] transition-all duration-200 flex justify-center w-full px-4 sm:px-6 pt-4 sm:pt-6 pointer-events-none">
       {/* Brutalist scroll progress */}
@@ -66,14 +76,14 @@ export default function Navbar() {
           : "max-w-7xl px-4 py-4 bg-transparent border-none shadow-none"
       )}>
         {/* LOGO */}
-        <a href="#" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group">
           <div className="size-10 relative transition-all duration-300 group-hover:rotate-12">
-            <Image 
-              src="/logo.png" 
-              alt="DEV.CSL" 
-              width={40} 
-              height={40} 
-              className="object-contain filter-accent"
+            <Image
+              src="/icon.png"
+              alt="DEV.CSL"
+              width={40}
+              height={40}
+              className="object-contain"
             />
           </div>
           <span className={cn(
@@ -82,35 +92,40 @@ export default function Navbar() {
           )}>
             DEV<span className="text-accent">.CSL</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          {NAV_ITEMS.map(item => (
-            <a
-              key={item.label}
-              href={item.href}
-              className={cn(
-                "text-xs uppercase tracking-widest font-black transition-all relative group py-2",
-                activeSection === item.href.replace('#', '') ? "text-accent" : "text-white hover:text-accent"
-              )}
-            >
-              {item.label}
-              {activeSection === item.href.replace('#', '') && (
-                <span className="absolute bottom-0 left-0 w-full h-1 bg-accent" />
-              )}
-              {activeSection !== item.href.replace('#', '') && (
-                <span className="absolute bottom-0 left-0 w-0 h-1 bg-accent transition-all group-hover:w-full" />
-              )}
-            </a>
-          ))}
+          {NAV_ITEMS.map(item => {
+            const isHomePage = pathname === '/';
+            const href = isHomePage ? item.href : `/${item.href}`;
+            
+            return (
+              <a
+                key={item.label}
+                href={href}
+                className={cn(
+                  "text-xs uppercase tracking-widest font-black transition-all relative group py-2",
+                  activeSection === item.href.replace('#', '') ? "text-accent" : "text-white hover:text-accent"
+                )}
+              >
+                {item.label}
+                {activeSection === item.href.replace('#', '') && (
+                  <span className="absolute bottom-0 left-0 w-full h-1 bg-accent" />
+                )}
+                {activeSection !== item.href.replace('#', '') && (
+                  <span className="absolute bottom-0 left-0 w-0 h-1 bg-accent transition-all group-hover:w-full" />
+                )}
+              </a>
+            );
+          })}
 
           <div className="w-[2px] h-6 bg-white/20 mx-2"></div>
 
           <div className="flex items-center gap-4">
             <button
               onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-              className="font-mono text-[10px] font-black uppercase tracking-widest px-3 py-1.5 border-2 border-white/20 hover:border-accent hover:bg-accent hover:text-[#000] text-white transition-all"
+              className="font-mono text-[10px] font-black uppercase px-3 py-2 border-2 border-white/20 hover:border-accent hover:bg-accent hover:text-[#000] text-white transition-all h-10 min-w-[40px] flex items-center justify-center"
             >
               {language === 'en' ? 'EN' : 'BN'}
             </button>
@@ -118,8 +133,8 @@ export default function Navbar() {
             <a
               href="#contact"
               className={cn(
-                "bg-accent text-[#000] text-xs uppercase tracking-widest font-black flex items-center gap-2 hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all whitespace-nowrap border-2 border-accent",
-                scrolled ? "px-6 py-2 shadow-brutal-white" : "px-6 py-3 shadow-brutal-white"
+                "bg-accent text-[#000] text-xs uppercase tracking-widest font-black flex items-center gap-2 hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all whitespace-nowrap border-2 border-accent h-10",
+                scrolled ? "px-6" : "px-6"
               )}
             >
               Contact
@@ -132,13 +147,13 @@ export default function Navbar() {
         <div className="md:hidden flex items-center gap-3">
           <button
             onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-            className="font-mono text-[10px] font-black uppercase px-2 py-1 border-2 border-white/20 hover:border-accent hover:text-accent text-white"
+            className="font-mono text-[10px] font-black uppercase px-3 py-2 border-2 border-white/20 hover:border-accent hover:text-accent text-white h-10 min-w-[40px] flex items-center justify-center"
           >
             {language === 'en' ? 'EN' : 'BN'}
           </button>
           <ThemeToggle />
           <button
-            className="p-2 text-white border-2 border-white/20 hover:border-accent hover:text-accent transition-colors bg-brand"
+            className="h-10 w-10 flex items-center justify-center text-white border-2 border-white/20 hover:border-accent hover:text-accent transition-colors bg-brand"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -157,19 +172,24 @@ export default function Navbar() {
             className="absolute top-24 left-4 right-4 bg-brand border-2 border-white/20 p-6 md:hidden pointer-events-auto shadow-brutal z-[150]"
           >
             <div className="flex flex-col gap-6">
-              {NAV_ITEMS.map(item => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={cn(
-                    "text-3xl font-black tracking-tighter uppercase transition-colors border-b-2 border-white/20 pb-4",
-                    activeSection === item.href.replace('#', '') ? "text-accent border-accent" : "text-white hover:text-accent"
-                  )}
-                >
-                  {item.label}
-                </a>
-              ))}
+              {NAV_ITEMS.map(item => {
+                const isHomePage = pathname === '/';
+                const href = isHomePage ? item.href : `/${item.href}`;
+                
+                return (
+                  <a
+                    key={item.label}
+                    href={href}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "text-3xl font-black tracking-tighter uppercase transition-colors border-b-2 border-white/20 pb-4",
+                      activeSection === item.href.replace('#', '') ? "text-accent border-accent" : "text-white hover:text-accent"
+                    )}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
