@@ -21,10 +21,10 @@ const NAV_ITEMS = [
 export default function Navbar() {
   const pathname = usePathname();
   const { language, setLanguage } = useLanguage();
-  
+
   // Hide global navbar on project detail pages as they have their own specialized navbar
   const isProjectDetailPage = pathname.startsWith('/projects/') && pathname.split('/').length > 2;
-  
+
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -38,7 +38,7 @@ export default function Navbar() {
       setScrollProgress(progress);
     };
 
-    const sectionIds = ['hero', 'skills', 'students', 'about', 'projects', 'testimonials', 'contact'];
+    const sectionIds = ['hero', 'skills', 'students', 'about', 'projects', 'contact'];
     const detectActiveSection = () => {
       const y = window.scrollY + window.innerHeight * 0.35;
       let current = 'hero';
@@ -99,7 +99,7 @@ export default function Navbar() {
           {NAV_ITEMS.map(item => {
             const isHomePage = pathname === '/';
             const href = isHomePage ? item.href : `/${item.href}`;
-            
+
             return (
               <a
                 key={item.label}
@@ -175,7 +175,7 @@ export default function Navbar() {
               {NAV_ITEMS.map(item => {
                 const isHomePage = pathname === '/';
                 const href = isHomePage ? item.href : `/${item.href}`;
-                
+
                 return (
                   <a
                     key={item.label}

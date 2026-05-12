@@ -21,7 +21,7 @@ export default function Home() {
       <StudentHub />
       <Trust />
       <Projects />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Contact />
     </main>
   );
