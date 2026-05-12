@@ -21,11 +21,11 @@ export default function Footer() {
           <div className="flex items-center gap-3 group cursor-pointer w-fit">
             <div className="size-12 relative transition-all duration-300 group-hover:scale-110">
               <Image
-                src="/logo.png"
+                src="/icon.png"
                 alt="DEV.CSL"
                 width={48}
                 height={48}
-                className="object-contain filter-accent"
+                className="object-contain"
               />
             </div>
             <span className="font-black tracking-tighter text-white text-3xl uppercase">dev<span className="text-accent">.csl</span></span>
