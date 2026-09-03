@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, CheckCircle2, Loader2, MessageSquare, Mail, Phone, ArrowRight, ChevronDown } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
@@ -14,6 +14,16 @@ export default function Contact() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string>('');
   const [turnstileError, setTurnstileError] = useState<string | null>(null);
+
+  const handleVerify = useCallback((token: string) => {
+    setTurnstileToken(token);
+    setTurnstileError(null);
+  }, []);
+
+  const handleExpire = useCallback(() => {
+    setTurnstileToken('');
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -254,11 +264,8 @@ export default function Contact() {
                   {/* Cloudflare Turnstile Bot Protection */}
                   <div className="pt-1">
                     <Turnstile
-                      onVerify={(token) => {
-                        setTurnstileToken(token);
-                        setTurnstileError(null);
-                      }}
-                      onExpire={() => setTurnstileToken('')}
+                      onVerify={handleVerify}
+                      onExpire={handleExpire}
                     />
                     {turnstileError && (
                       <p className="text-xs text-red-500 font-medium mt-1.5">
