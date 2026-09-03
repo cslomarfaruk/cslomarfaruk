@@ -109,7 +109,7 @@ export default function Footer() {
               </li>
               <li className="pt-1">
                 <a
-                  href="/omar_cv (4).pdf"
+                  href="/omar_cv (7).pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-accent hover:text-accent-hover transition-colors inline-flex items-center gap-1.5 font-medium"

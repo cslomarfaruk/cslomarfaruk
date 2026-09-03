@@ -81,7 +81,7 @@ export default function Hero() {
               <span>{t.hero.cta_portfolio}</span>
             </Link>
             <a
-              href="/omar_cv (4).pdf"
+              href="/omar_cv (7).pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary w-full sm:w-auto inline-flex items-center justify-center gap-2 group"

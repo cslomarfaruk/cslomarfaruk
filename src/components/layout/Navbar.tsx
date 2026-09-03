@@ -142,7 +142,7 @@ export default function Navbar() {
 
             {/* CV Download / View Link */}
             <a
-              href="/omar_cv (4).pdf"
+              href="/omar_cv (7).pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-border bg-surface/60 hover:bg-surface-subtle hover:border-border-hover text-text-secondary hover:text-text-primary transition-all duration-200"
@@ -249,7 +249,7 @@ export default function Navbar() {
 
                 <div className="pt-4 mt-2 border-t border-border flex flex-col gap-2.5">
                   <a
-                    href="/omar_cv (4).pdf"
+                    href="/omar_cv (7).pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
