@@ -1,16 +1,18 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import Link from 'next/link';
 import {
   GraduationCap,
   Award,
   FileText,
-  ExternalLink,
   BookOpen,
   ArrowUpRight,
-  ShieldCheck,
   Sparkles,
+  LineChart,
+  X,
+  ExternalLink,
 } from 'lucide-react';
 import { useLanguage } from '@/lib/i18n';
 import { cn } from '@/src/lib/utils';
@@ -18,6 +20,7 @@ import { cn } from '@/src/lib/utils';
 export default function Education() {
   const { t, language } = useLanguage();
   const edu = t.education;
+  const [showGraphModal, setShowGraphModal] = useState(false);
 
   if (!edu) return null;
 
@@ -73,23 +76,41 @@ export default function Education() {
                   Higher Education
                 </span>
               </div>
-              <span className="pill-badge-neutral text-xs">
-                {edu.timeline}
-              </span>
+              <div className="flex items-center gap-2 text-xs text-text-muted">
+                <span className="pill-badge-neutral">{edu.duration}</span>
+                <span className="pill-badge-neutral">{edu.timeline}</span>
+              </div>
             </div>
 
             <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-1 tracking-tight">
               {edu.degree}
             </h3>
 
-            <p className="text-sm font-semibold text-text-secondary mb-4">
+            <p className="text-sm font-semibold text-text-primary mb-1">
               {edu.institution}
             </p>
 
-            {/* Academic Standing & Distinction */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-accent-subtle border border-accent/20 text-accent text-xs font-semibold mb-6">
-              <Award className="w-4 h-4 shrink-0" />
-              <span>{edu.grade}</span>
+            <p className="text-xs text-text-muted mb-4">
+              {edu.affiliation}
+            </p>
+
+            {/* Academic Standing & Graph Toggle Button */}
+            <div className="flex flex-wrap items-center gap-2.5 mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-accent-subtle border border-accent/20 text-accent text-xs font-semibold">
+                <Award className="w-4 h-4 shrink-0" />
+                <span>{edu.grade}</span>
+              </div>
+
+              {/* Optional Graph Modal Trigger */}
+              <button
+                type="button"
+                onClick={() => setShowGraphModal(true)}
+                className="btn-secondary text-xs py-1.5 px-3 rounded-xl inline-flex items-center gap-1.5 hover:border-accent hover:text-accent transition-colors cursor-pointer"
+                title="View semester SGPA & CGPA progression chart"
+              >
+                <LineChart className="w-3.5 h-3.5 text-accent" />
+                <span>{edu.graph_btn}</span>
+              </button>
             </div>
 
             {/* Core Coursework & Engineering Foundations */}
@@ -97,9 +118,9 @@ export default function Education() {
               <span className="text-xs font-bold uppercase tracking-wider text-text-muted block mb-3">
                 {edu.coursework_label}
               </span>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {edu.coursework.map((course: string) => (
-                  <span key={course} className="pill-badge-neutral text-xs">
+                  <span key={course} className="pill-badge-neutral text-[11px] sm:text-xs">
                     {course}
                   </span>
                 ))}
@@ -151,7 +172,7 @@ export default function Education() {
                 className="btn-secondary text-xs py-2 px-3 rounded-xl inline-flex items-center gap-1.5"
               >
                 <BookOpen className="w-3.5 h-3.5 text-accent" />
-                <span>Thesis Report</span>
+                <span>{edu.thesis_pdf_label}</span>
               </a>
             </div>
           </motion.div>
@@ -197,6 +218,62 @@ export default function Education() {
           </motion.div>
         </div>
       </div>
+
+      {/* Lightbox Modal for Semester SGPA & CGPA Graph */}
+      <AnimatePresence>
+        {showGraphModal && (
+          <div className="fixed inset-0 z-[150] flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowGraphModal(false)}
+              className="fixed inset-0 bg-black/75 backdrop-blur-md"
+            />
+
+            {/* Modal Dialog */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full max-w-3xl rounded-3xl border border-border bg-surface p-4 sm:p-6 shadow-soft-lg z-[160] overflow-hidden"
+            >
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-border">
+                <div className="flex items-center gap-2">
+                  <LineChart className="w-4 h-4 text-accent" />
+                  <span className="text-sm font-bold text-text-primary">
+                    Academic SGPA & CGPA Progression (8 Semesters)
+                  </span>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setShowGraphModal(false)}
+                  className="size-8 rounded-xl border border-border bg-surface-subtle hover:bg-surface text-text-muted hover:text-text-primary flex items-center justify-center transition-colors cursor-pointer"
+                  aria-label="Close modal"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              <div className="relative rounded-2xl overflow-hidden border border-border bg-black/20">
+                <img
+                  src="/gpa_graph.png"
+                  alt="Omar Faruk Semester-wise SGPA and CGPA Progression Graph"
+                  className="w-full h-auto object-contain max-h-[70vh]"
+                />
+              </div>
+
+              <div className="mt-3 flex items-center justify-between text-xs text-text-muted">
+                <span>Sylhet Engineering College &bull; CSE</span>
+                <span className="font-semibold text-accent">{edu.grade}</span>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

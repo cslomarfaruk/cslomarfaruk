@@ -96,19 +96,34 @@
   },
   "education": {
     "tagline": "Academic Foundation",
-    "headline": "Education & Research",
-    "subheadline": "Rigorous computer science fundamentals paired with hands-on systems engineering, Linux architecture, and blockchain research.",
-    "degree": "B.Sc. in Computer Science & Engineering",
+    "headline": "Education & Academic Background",
+    "subheadline": "Undergraduate computer science engineering fundamentals from Sylhet Engineering College (Affiliated with SUST).",
+    "degree": "B.Sc. in Engineering (CSE)",
     "institution": "Sylhet Engineering College",
-    "timeline": "Graduated: 2026",
+    "affiliation": "Affiliated with Shahjalal University of Science & Technology (SUST)",
+    "duration": "4 Years · 8 Semesters",
+    "timeline": "Graduated 2026",
     "grade": "CGPA: 3.75 / 4.00 (with distinction)",
+    "graph_btn": "View Semester GPA Graph",
+    "coursework_label": "Key Coursework & Engineering Subjects",
+    "coursework": [
+      "Data Structures & Algorithms",
+      "Operating Systems & Linux",
+      "Object Oriented Programming (Java/Python)",
+      "Compiler Design",
+      "Microprocessors & Peripherals",
+      "Structured Programming (C)",
+      "Assembly Language",
+      "Discrete Mathematics",
+      "Database & Information Systems",
+      "Electrical & Electronics (EEE)"
+    ],
     "thesis_title": "Final Year Thesis: CertiChain",
     "thesis_desc": "Blockchain-based certificate generation and verification using zero-knowledge proofs (ZK-proofs) and face recognition.",
-    "thesis_link_label": "Explore Case Study",
+    "thesis_link_label": "Case Study",
+    "thesis_pdf_label": "Thesis Report",
     "publication_title": "Research Paper Submitted to ICCIT 2026",
     "publication_desc": "Co-authored research on privacy-preserving academic credential verification.",
-    "publication_link_label": "Read Paper (PDF)",
-    "coursework_label": "Core Focus Areas",
-    "coursework": ["Software Architecture", "Operating Systems & Linux", "Distributed Systems", "Database Design", "Computer Networks", "Information Security"]
+    "publication_link_label": "Paper (PDF)"
   }
 }

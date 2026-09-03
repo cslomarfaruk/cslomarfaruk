@@ -6,10 +6,14 @@ import { Send, CheckCircle2, Loader2, MessageSquare, Mail, Phone, ArrowRight, Ch
 import { cn } from '@/src/lib/utils';
 import { useLanguage } from '@/lib/i18n';
 
+import Turnstile from '../Turnstile';
+
 export default function Contact() {
   const { t, language } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string>('');
+  const [turnstileError, setTurnstileError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,6 +24,17 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!turnstileToken) {
+      setTurnstileError(
+        language === 'bn'
+          ? 'অনুগ্রহ করে সিকিউরিটি ভেরিফিকেশন সম্পন্ন করুন।'
+          : 'Please complete the security check to proceed.'
+      );
+      return;
+    }
+
+    setTurnstileError(null);
     setIsSubmitting(true);
 
     try {
@@ -28,11 +43,15 @@ export default function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          turnstileToken,
+        }),
       });
 
       if (response.ok) {
         setIsSuccess(true);
+        setTurnstileToken('');
       } else {
         const data = await response.json();
         alert(data.error || 'Something went wrong. Please reach out via WhatsApp.');
@@ -230,6 +249,22 @@ export default function Contact() {
                       placeholder={t.contact.form_brief_ph}
                       className="w-full rounded-xl border border-border bg-surface-subtle px-4 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all resize-none"
                     />
+                  </div>
+
+                  {/* Cloudflare Turnstile Bot Protection */}
+                  <div className="pt-1">
+                    <Turnstile
+                      onVerify={(token) => {
+                        setTurnstileToken(token);
+                        setTurnstileError(null);
+                      }}
+                      onExpire={() => setTurnstileToken('')}
+                    />
+                    {turnstileError && (
+                      <p className="text-xs text-red-500 font-medium mt-1.5">
+                        {turnstileError}
+                      </p>
+                    )}
                   </div>
 
                   {/* Submit Button */}
