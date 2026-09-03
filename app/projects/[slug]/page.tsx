@@ -3,66 +3,76 @@
 import { use } from 'react';
 import { motion } from 'motion/react';
 import { PROJECTS } from '@/src/lib/projects-data';
-import { 
-  Github, 
-  ExternalLink, 
-  ArrowLeft, 
-  CheckCircle2, 
-  Terminal, 
-  Shield, 
-  Cpu, 
+import {
+  Github,
+  ExternalLink,
+  ArrowLeft,
+  CheckCircle2,
+  Cpu,
   Layers,
-  Globe,
-  Lock,
-  Zap,
-  Code2
+  Shield,
+  Code2,
+  Sparkles,
+  ArrowRight,
 } from 'lucide-react';
 import Link from 'next/link';
-import { cn } from '@/src/lib/utils';
 import { notFound } from 'next/navigation';
-
 import { useLanguage } from '@/lib/i18n';
 import { ThemeToggle } from '@/src/components/ThemeToggle';
 
 export default function ProjectCaseStudy({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const { language, setLanguage } = useLanguage();
-  const project = PROJECTS.find(p => p.slug === slug);
+  const project = PROJECTS.find((p) => p.slug === slug);
 
   if (!project) {
     notFound();
   }
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-white selection:bg-accent selection:text-black">
-      {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-xl border-b-2 border-white/10">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/projects" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group">
-            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-            <span className="font-mono text-xs uppercase tracking-widest font-black">All Projects</span>
+    <main className="min-h-screen text-text-primary bg-brand pb-24">
+      {/* Top Sticky Bar */}
+      <nav className="sticky top-0 z-50 glass-nav border-b border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+          <Link
+            href="/projects"
+            className="flex items-center gap-2 text-xs font-semibold text-text-secondary hover:text-accent transition-colors group"
+          >
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            <span>{language === 'bn' ? 'সব প্রজেক্ট' : 'All Projects'}</span>
           </Link>
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center gap-3">
-              <button
-                onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-                className="font-mono text-[10px] font-black uppercase px-3 py-2 border-2 border-white/20 hover:border-accent hover:text-accent text-white transition-all h-10 min-w-[40px] flex items-center justify-center"
-              >
-                {language === 'en' ? 'EN' : 'BN'}
-              </button>
-              <ThemeToggle />
-            </div>
-            
-            <div className="h-6 w-[2px] bg-white/10 hidden sm:block mx-2" />
 
-            {project.links.github !== '#' && (
-              <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="p-2 hover:text-accent transition-colors">
-                <Github size={24} />
+          <div className="flex items-center gap-2.5">
+            <button
+              onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
+              className="px-2.5 py-1.5 rounded-lg text-xs font-semibold border border-border bg-surface/80 text-text-secondary hover:text-text-primary transition-all"
+            >
+              {language === 'en' ? 'বাংলা' : 'EN'}
+            </button>
+
+            <ThemeToggle />
+
+            {project.links.github && project.links.github !== '#' && (
+              <a
+                href={project.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="size-9 rounded-xl border border-border bg-surface flex items-center justify-center text-text-muted hover:text-accent hover:border-border-hover transition-colors"
+                aria-label="GitHub Repository"
+              >
+                <Github className="w-4 h-4" />
               </a>
             )}
-            {project.links.live !== '#' && (
-              <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="brutal-btn py-3 px-6 text-sm">
-                Live Preview
+
+            {project.links.live && project.links.live !== '#' && (
+              <a
+                href={project.links.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-xs py-2 px-3.5 rounded-xl shadow-soft-sm"
+              >
+                <span>Live Demo</span>
+                <ExternalLink className="w-3.5 h-3.5" />
               </a>
             )}
           </div>
@@ -70,119 +80,217 @@ export default function ProjectCaseStudy({ params }: { params: Promise<{ slug: s
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto">
+      <section className="pt-12 pb-12 sm:pt-16 sm:pb-16 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="px-3 py-1 bg-accent/10 border-2 border-accent text-accent font-mono text-[10px] font-black uppercase tracking-widest">
+            <div className="flex flex-wrap items-center gap-2.5 mb-4">
+              <span className="pill-badge text-xs">
                 {project.niche}
               </span>
-              <span className="text-zinc-500 font-mono text-[10px] font-black uppercase tracking-widest">
+              <span className="pill-badge-neutral text-xs">
                 {project.period}
               </span>
             </div>
-            
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
+
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-text-primary leading-tight mb-6">
               {project.title}
             </h1>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-              <div className="lg:col-span-7">
-                <p className="text-lg md:text-xl text-zinc-400 font-medium leading-relaxed">
-                  {project.description}
+            <p className="text-base sm:text-lg text-text-secondary max-w-3xl leading-relaxed mb-8">
+              {project.description}
+            </p>
+
+            {project.impact && (
+              <div className="p-4 sm:p-5 rounded-2xl border border-accent/30 bg-accent-subtle max-w-2xl">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-accent mb-1">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Key Result & Impact</span>
+                </div>
+                <p className="text-sm sm:text-base font-semibold text-text-primary">
+                  {project.impact}
                 </p>
               </div>
-              <div className="lg:col-span-5 flex flex-wrap gap-4">
-                <div className="flex-1 p-4 border-2 border-white/10 bg-white/5 min-w-[140px]">
-                  <span className="block text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-2">Role</span>
-                  <span className="text-sm font-bold">Engineering Lead</span>
-                </div>
-                <div className="flex-1 p-4 border-2 border-white/10 bg-white/5 min-w-[140px]">
-                  <span className="block text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-2">Stack</span>
-                  <span className="text-sm font-bold text-accent">Production Grade</span>
-                </div>
-              </div>
-            </div>
+            )}
           </motion.div>
         </div>
       </section>
 
-      {/* Hero Image */}
-      <section className="px-6 pb-32">
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-7xl mx-auto relative overflow-hidden brutal-card p-4 bg-brand/50"
-        >
-          <img 
-            src={project.image} 
-            alt={project.title} 
-            className="w-full h-auto block" 
-          />
-        </motion.div>
+      {/* Main Showcase Image */}
+      <section className="px-4 sm:px-6 pb-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="editorial-card p-3 sm:p-4 overflow-hidden bg-surface-subtle">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-auto rounded-xl object-cover"
+            />
+          </div>
+        </div>
       </section>
 
-      {/* Tech Stack & Impact */}
-      <section className="py-32 bg-white/5 border-y-2 border-white/10 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20">
-          <div className="lg:col-span-5 space-y-12">
+      {/* Architecture & Features Grid */}
+      <section className="px-4 sm:px-6 py-12 border-t border-border bg-surface-subtle/40">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
+          {/* Tech Stack */}
+          <div className="lg:col-span-5 space-y-6">
             <div>
-              <h3 className="text-xs font-black uppercase tracking-[0.3em] text-accent mb-8 flex items-center gap-3">
-                <Cpu size={16} /> Technical Architecture
-              </h3>
-              <div className="grid grid-cols-1 gap-3">
-                {project.full_stack_details?.map(tech => (
-                  <div key={tech} className="flex items-center gap-4 p-4 border-2 border-white/10 hover:border-accent transition-colors group bg-zinc-950">
-                    <Code2 size={18} className="text-zinc-500 group-hover:text-accent transition-colors" />
-                    <span className="font-bold text-sm tracking-tight">{tech}</span>
-                  </div>
-                ))}
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-accent mb-4">
+                <Cpu className="w-4 h-4" />
+                <span>Technical Architecture</span>
+              </div>
+              <div className="grid grid-cols-1 gap-2.5">
+                {project.full_stack_details ? (
+                  project.full_stack_details.map((tech) => (
+                    <div
+                      key={tech}
+                      className="p-3.5 rounded-xl border border-border bg-surface flex items-center gap-3 text-sm font-medium text-text-primary"
+                    >
+                      <Code2 className="w-4 h-4 text-accent shrink-0" />
+                      <span>{tech}</span>
+                    </div>
+                  ))
+                ) : (
+                  project.tags.map((tag) => (
+                    <div
+                      key={tag}
+                      className="p-3.5 rounded-xl border border-border bg-surface flex items-center gap-3 text-sm font-medium text-text-primary"
+                    >
+                      <Code2 className="w-4 h-4 text-accent shrink-0" />
+                      <span>{tag}</span>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
 
-            <div className="p-8 border-4 border-accent bg-accent/5 shadow-brutal-white">
-              <h3 className="text-xs font-black uppercase tracking-[0.3em] text-white mb-6">Core Impact</h3>
-              <p className="text-2xl font-black leading-tight italic">"{project.impact}"</p>
-            </div>
+            {project.role && (
+              <div className="p-5 rounded-2xl border border-border bg-surface">
+                <span className="text-xs font-bold uppercase tracking-wider text-text-muted block mb-2">
+                  Role & Execution
+                </span>
+                <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                  {project.role}
+                </p>
+              </div>
+            )}
+
+            {/* Team Members */}
+            {project.team_members && project.team_members.length > 0 && (
+              <div className="p-5 rounded-2xl border border-border bg-surface">
+                <span className="text-xs font-bold uppercase tracking-wider text-text-muted block mb-3">
+                  Team Members
+                </span>
+                <div className="flex flex-col gap-2">
+                  {project.team_members.map((member) => (
+                    <div key={member} className="flex items-center gap-2.5 text-sm text-text-primary">
+                      <div className="size-6 rounded-full bg-accent-subtle text-accent flex items-center justify-center text-[10px] font-bold shrink-0">
+                        {member.charAt(0).toUpperCase()}
+                      </div>
+                      <span className="font-medium">{member}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Publications & Research */}
+            {project.publications && project.publications.length > 0 && (
+              <div className="p-5 rounded-2xl border border-accent/30 bg-accent-subtle">
+                <span className="text-xs font-bold uppercase tracking-wider text-accent block mb-3 flex items-center gap-2">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  Publications & Research
+                </span>
+                <div className="flex flex-col gap-3">
+                  {project.publications.map((pub) => (
+                    <a
+                      key={pub.url}
+                      href={pub.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group p-3 rounded-xl border border-border bg-surface hover:border-accent transition-colors"
+                    >
+                      <span className="text-sm font-semibold text-text-primary group-hover:text-accent transition-colors block mb-1">
+                        {pub.title}
+                      </span>
+                      <span className="text-[11px] text-text-muted">
+                        {pub.venue}
+                      </span>
+                    </a>
+                  ))}
+
+                  {/* Thesis Book link (hardcoded for certichain) */}
+                  {project.slug === 'certichain' && (
+                    <a
+                      href="/certichain/Thesis books.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group p-3 rounded-xl border border-border bg-surface hover:border-accent transition-colors"
+                    >
+                      <span className="text-sm font-semibold text-text-primary group-hover:text-accent transition-colors block mb-1">
+                        Full Thesis Report
+                      </span>
+                      <span className="text-[11px] text-text-muted">
+                        Complete thesis book with detailed system architecture, implementation, and evaluation
+                      </span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
 
-          <div className="lg:col-span-7 space-y-20">
-            {project.features_detailed && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                {project.features_detailed.map(cat => (
-                  <div key={cat.category}>
-                    <h4 className="text-xs font-black uppercase tracking-widest text-zinc-500 border-b-2 border-white/10 pb-4 mb-6 flex items-center gap-2">
-                      <Layers size={14} className="text-accent" /> {cat.category}
-                    </h4>
-                    <ul className="space-y-4">
-                      {cat.items.map(item => (
-                        <li key={item} className="flex items-start gap-3 group">
-                          <CheckCircle2 size={16} className="text-accent mt-1 shrink-0 group-hover:scale-110 transition-transform" />
-                          <span className="text-zinc-300 font-medium leading-relaxed">{item}</span>
+          {/* Features & Security */}
+          <div className="lg:col-span-7 space-y-8">
+            {project.features_detailed ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {project.features_detailed.map((cat) => (
+                  <div key={cat.category} className="editorial-card p-5">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-accent mb-3.5 flex items-center gap-2">
+                      <Layers className="w-3.5 h-3.5" />
+                      <span>{cat.category}</span>
+                    </h3>
+                    <ul className="space-y-2 text-xs sm:text-sm text-text-secondary">
+                      {cat.items.map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                          <span>{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 ))}
               </div>
+            ) : (
+              <div className="editorial-card p-6">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-accent mb-4">
+                  Key Capabilities
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {project.features.map((feature) => (
+                    <div key={feature} className="flex items-center gap-2 text-xs sm:text-sm text-text-secondary">
+                      <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             )}
 
             {project.security_highlights && (
-              <div className="p-10 bg-zinc-950 border-2 border-accent shadow-[8px_8px_0px_rgba(42,157,143,0.2)]">
-                <h4 className="text-xs font-black uppercase tracking-widest text-accent mb-8 flex items-center gap-2">
-                  <Shield size={18} /> Security Infrastructure
-                </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {project.security_highlights.map(item => (
-                    <div key={item} className="flex items-center gap-3 text-sm font-bold text-zinc-300">
-                      <div className="size-2 bg-accent shrink-0" />
-                      {item}
+              <div className="p-6 rounded-2xl border border-border bg-surface">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-accent mb-4">
+                  <Shield className="w-4 h-4" />
+                  <span>Security & Integrity Guardrails</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {project.security_highlights.map((sec) => (
+                    <div key={sec} className="flex items-start gap-2 text-xs sm:text-sm text-text-secondary">
+                      <div className="size-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
+                      <span>{sec}</span>
                     </div>
                   ))}
                 </div>
@@ -192,64 +300,66 @@ export default function ProjectCaseStudy({ params }: { params: Promise<{ slug: s
         </div>
       </section>
 
-      {/* Visual Walkthrough - Blog Style */}
-      <section className="py-40 px-6 space-y-40">
-        <div className="max-w-4xl mx-auto text-center mb-20">
-          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6">
-            Detailed <span className="text-zinc-700 italic">Walkthrough</span>
-          </h2>
-          <p className="text-zinc-500 font-medium text-lg">
-            A step-by-step examination of the platform's interface, features, and user experience.
-          </p>
-        </div>
+      {/* Gallery Walkthrough */}
+      {project.gallery && project.gallery.length > 0 && (
+        <section className="px-4 sm:px-6 py-16 max-w-6xl mx-auto">
+          <div className="mb-10 text-center sm:text-left">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-text-primary mb-2">
+              Visual Walkthrough
+            </h2>
+            <p className="text-xs sm:text-sm text-text-secondary">
+              Step-by-step walkthrough of interfaces, user flows, and core features.
+            </p>
+          </div>
 
-        {project.gallery.map((item, idx) => (
-          <motion.div 
-            key={idx}
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="max-w-7xl mx-auto"
-          >
-            <div className="grid grid-cols-1 gap-12">
-              <div className="brutal-card p-0 overflow-hidden bg-brand shadow-[20px_20px_0px_rgba(255,255,255,0.02)] h-auto">
-                <img 
-                  src={item.url} 
-                  alt={item.description} 
-                  className="w-full h-auto block"
+          <div className="space-y-12">
+            {project.gallery.map((item, idx) => (
+              <div key={idx} className="editorial-card p-4 sm:p-6 overflow-hidden">
+                <img
+                  src={item.url}
+                  alt={item.description}
+                  className="w-full h-auto rounded-xl object-cover mb-4 border border-border"
+                  loading="lazy"
                 />
-              </div>
-              <div className="max-w-4xl">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="size-10 rounded-full border-2 border-accent flex items-center justify-center font-mono font-black text-accent">
+                <div className="flex items-start gap-3">
+                  <span className="pill-badge text-[11px] shrink-0 font-mono">
                     {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
-                  </div>
-                  <div className="h-[2px] w-12 bg-accent" />
+                  </span>
+                  <p className="text-xs sm:text-sm text-text-secondary leading-relaxed pt-0.5">
+                    {item.description}
+                  </p>
                 </div>
-                <p className="text-xl md:text-2xl text-zinc-300 leading-relaxed font-medium">
-                  {item.description}
-                </p>
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </section>
+            ))}
+          </div>
+        </section>
+      )}
 
-      {/* Conclusion / Next Steps */}
-      <section className="py-40 px-6 bg-brand border-t-2 border-white/10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-10">
-            Interested in a <br />
-            <span className="text-accent">Similar Solution?</span>
+      {/* Conclusion CTA */}
+      <section className="px-4 sm:px-6 pt-12">
+        <div className="max-w-4xl mx-auto text-center p-8 sm:p-12 rounded-3xl border border-border bg-surface-subtle">
+          <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-3">
+            Interested in building a similar solution?
           </h2>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Link href="/#contact" className="brutal-btn text-lg px-10 py-5 w-full sm:w-auto">
-              Start a Project
+          <p className="text-text-secondary text-sm max-w-md mx-auto mb-6">
+            From concept architecture to production deployment, let's discuss your roadmap.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link href="/#contact" className="btn-primary w-full sm:w-auto py-2.5 px-6 text-sm">
+              <span>Start a Project</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
-            <a href={project.links.live} className="brutal-btn-outline text-lg px-10 py-5 w-full sm:w-auto">
-              Live Demo
-            </a>
+            {project.links.live && project.links.live !== '#' && (
+              <a
+                href={project.links.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary w-full sm:w-auto py-2.5 px-5 text-sm"
+              >
+                <span>Launch Live App</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            )}
           </div>
         </div>
       </section>

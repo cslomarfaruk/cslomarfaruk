@@ -1,49 +1,21 @@
-/* Performance Optimization CSS */
+/* Performance Optimization CSS - Modern & Non-breaking */
 
 /* Font loading optimization - prevent layout shift */
 @supports (font-feature-settings: normal) {
   html {
-    font-feature-settings: "kern";
+    font-feature-settings: "kern", "liga", "clig", "calt";
   }
 }
 
-/* Reduce jank during animations */
-* {
-  scroll-behavior: auto;
-}
-
-html.smooth-scroll {
+/* Base smooth scroll behavior */
+html {
   scroll-behavior: smooth;
 }
 
-/* Optimize animations - use transform and opacity only */
-.will-change-transform {
-  will-change: transform;
-  contain: layout;
-}
-
-.will-change-opacity {
-  will-change: opacity;
-  contain: layout;
-}
-
-/* Prevent layout shift for images */
-img {
-  contain: layout style paint;
-}
-
-/* Optimize for Core Web Vitals */
-/* Cumulative Layout Shift (CLS) - reserve space */
-img,
-video,
-iframe {
-  display: block;
-  aspect-ratio: auto;
-}
-
-/* Optimize motion for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -51,55 +23,23 @@ iframe {
   }
 }
 
-/* Performance: Use CSS containment */
-.section {
-  contain: layout style paint;
+/* Image containment without clipping aspect ratio */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
 }
 
-/* Optimize scrolling performance */
-.glass {
-  will-change: auto;
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
-/* Reduce paint areas */
-.fixed-nav {
-  contain: layout style;
-}
-
-/* Optimize SVG/Icon rendering */
-svg {
-  will-change: transform;
-}
-
-/* Optimize text rendering */
+/* Optimized text rendering */
 body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* CSS Grid/Flex optimization */
-.grid,
-.flex {
-  contain: layout;
-}
-
-/* Optimize backdrop blur performance */
-.backdrop-blur {
-  will-change: backdrop-filter;
-}
-
-/* Mobile-first media queries */
-@media (prefers-color-scheme: light) {
-  :root {
-    color-scheme: light;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-  }
+/* GPU acceleration helper for animated floating elements */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }

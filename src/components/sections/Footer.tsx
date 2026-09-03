@@ -2,95 +2,170 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowUpRight, ArrowUp, Github, Linkedin, Facebook, MessageCircle, Mail, FileText } from 'lucide-react';
+import { useLanguage } from '@/lib/i18n';
 
 export default function Footer() {
+  const { language } = useLanguage();
   const currentYear = new Date().getFullYear();
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="relative px-6 py-20 md:py-32 max-w-7xl mx-auto border-t-2 border-white/10 bg-brand">
-      {/* Massive subtle background text */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-[1] overflow-hidden">
-        <h1 className="text-[15vw] md:text-[12vw] font-black text-white whitespace-nowrap tracking-tight uppercase leading-none opacity-[0.05]">
-          DEV.CSL
-        </h1>
-      </div>
+    <footer className="border-t border-border bg-surface-subtle/50 text-text-primary">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12">
+          {/* Column 1: Brand & Positioning */}
+          <div className="md:col-span-5 flex flex-col items-start">
+            <Link href="/" className="flex items-center gap-2.5 mb-4 group">
+              <div className="size-8 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center p-1">
+                <Image
+                  src="/icon.png"
+                  alt="DEV.CSL"
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                />
+              </div>
+              <span className="font-bold tracking-tight text-lg text-text-primary">
+                dev<span className="text-accent">.csl</span>
+              </span>
+            </Link>
 
-      <div className="relative z-10 flex flex-col md:flex-row justify-between items-start gap-16">
-        <div className="space-y-8 max-w-sm">
-          <div className="flex items-center gap-3 group cursor-pointer w-fit">
-            <div className="size-12 relative transition-all duration-300 group-hover:scale-110">
-              <Image
-                src="/icon.png"
-                alt="DEV.CSL"
-                width={48}
-                height={48}
-                className="object-contain"
-              />
+            <p className="text-text-secondary text-xs sm:text-sm leading-relaxed max-w-sm mb-6">
+              {language === 'bn'
+                ? 'প্রোডাকশন SaaS, ব্লকচেইন সিস্টেম, একাডেমিক প্রজেক্ট এবং Linux/DevOps ইনফ্রাস্ট্রাকচার ম্যানেজমেন্টে বিশ্বস্ত। আইডিয়াকে বাস্তবে রূপ দেওয়ার টেকনিক্যাল পার্টনার।'
+                : 'Full-stack developer & Linux/DevOps engineer. Building production SaaS, blockchain systems, academic projects, and managing VPS infrastructure. CSE graduate from Sylhet Engineering College.'}
+            </p>
+
+            <div className="flex items-center gap-2">
+              <a
+                href="https://github.com/cslomarfaruk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="size-8 rounded-lg border border-border bg-surface hover:bg-surface-subtle hover:text-accent flex items-center justify-center text-text-muted transition-colors"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/csl-omarfaruk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="size-8 rounded-lg border border-border bg-surface hover:bg-surface-subtle hover:text-accent flex items-center justify-center text-text-muted transition-colors"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.facebook.com/cslomarfaruk1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="size-8 rounded-lg border border-border bg-surface hover:bg-surface-subtle hover:text-accent flex items-center justify-center text-text-muted transition-colors"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a
+                href="https://wa.me/8801839467728"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="size-8 rounded-lg border border-border bg-surface hover:bg-surface-subtle hover:text-accent flex items-center justify-center text-text-muted transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+              </a>
             </div>
-            <span className="font-black tracking-tighter text-white text-3xl uppercase">dev<span className="text-accent">.csl</span></span>
           </div>
-          <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-bold tracking-tight">
-            Specialized in building high-impact academic projects, business landing pages, and production SaaS. Turning technical concepts into professional reality for students and founders.
+
+          {/* Column 2: Navigation Links */}
+          <div className="md:col-span-3">
+            <span className="text-xs font-semibold uppercase tracking-wider text-text-muted block mb-4">
+              {language === 'bn' ? 'ন্যাভিগেশন' : 'Navigation'}
+            </span>
+            <ul className="flex flex-col gap-2.5 text-xs sm:text-sm text-text-secondary">
+              <li>
+                <Link href="#services" className="hover:text-accent transition-colors">
+                  {language === 'bn' ? 'সার্ভিসসমূহ' : 'Services & Architecture'}
+                </Link>
+              </li>
+              <li>
+                <Link href="#students" className="hover:text-accent transition-colors">
+                  {language === 'bn' ? 'স্টুডেন্ট হাব' : 'Student & Thesis Hub'}
+                </Link>
+              </li>
+              <li>
+                <Link href="#projects" className="hover:text-accent transition-colors">
+                  {language === 'bn' ? 'প্রজেক্ট ও কেস স্টাডি' : 'Selected Projects'}
+                </Link>
+              </li>
+              <li>
+                <Link href="#contact" className="hover:text-accent transition-colors">
+                  {language === 'bn' ? 'যোগাযোগ' : 'Get in Touch'}
+                </Link>
+              </li>
+              <li className="pt-1">
+                <a
+                  href="/omar_cv (4).pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent hover:text-accent-hover transition-colors inline-flex items-center gap-1.5 font-medium"
+                >
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>{language === 'bn' ? 'সিভি ডাউনলোড (PDF)' : 'Download CV (PDF)'}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Direct Line */}
+          <div className="md:col-span-4">
+            <span className="text-xs font-semibold uppercase tracking-wider text-text-muted block mb-4">
+              {language === 'bn' ? 'সরাসরি যোগাযোগ' : 'Direct Reach'}
+            </span>
+            <div className="flex flex-col gap-3 text-xs sm:text-sm">
+              <a
+                href="https://wa.me/8801839467728"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-text-primary hover:text-accent transition-colors inline-flex items-center gap-1.5"
+              >
+                <span>+880 1839 467728</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-text-muted" />
+              </a>
+              <a
+                href="mailto:omar@devcsl.tech"
+                className="text-text-muted hover:text-accent transition-colors"
+              >
+                omar@devcsl.tech
+              </a>
+              <span className="text-[11px] text-text-muted">
+                Sylhet / Dhaka, Bangladesh (UTC+6)
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Strip */}
+        <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted">
+          <p>
+            &copy; {currentYear} devcsl.tech &bull; Built by{' '}
+            <span className="font-semibold text-text-primary">Omar Faruk</span>
           </p>
+
+          <button
+            onClick={scrollToTop}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-surface hover:bg-surface-subtle hover:text-accent text-text-secondary transition-colors text-xs font-medium"
+            aria-label="Back to top"
+          >
+            <span>{language === 'bn' ? 'উপরে যান' : 'Back to top'}</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
         </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-12 md:gap-24 w-full md:w-auto p-8 border-4 border-white/10 bg-zinc-950/10 shadow-brutal-white">
-          <div className="space-y-6">
-            <span className="text-[10px] uppercase font-black tracking-widest text-accent border-b-2 border-white/20 pb-1 block w-fit">Navigation</span>
-            <ul className="flex flex-col gap-4">
-              <li><FooterLink href="#projects">Work</FooterLink></li>
-              <li><FooterLink href="#skills">Services</FooterLink></li>
-              <li><FooterLink href="#about">Trust</FooterLink></li>
-            </ul>
-          </div>
-          <div className="space-y-6">
-            <span className="text-[10px] uppercase font-black tracking-widest text-accent border-b-2 border-white/20 pb-1 block w-fit">Connect</span>
-            <ul className="flex flex-col gap-4">
-              <li><FooterLink href="https://github.com/cslomarfaruk/">GitHub</FooterLink></li>
-              <li><FooterLink href="https://www.linkedin.com/in/csl-omarfaruk/">LinkedIn</FooterLink></li>
-              <li><FooterLink href="https://www.facebook.com/cslomarfaruk1/">Facebook</FooterLink></li>
-              <li><FooterLink href="https://x.com/cslomarfaruk">X / Twitter</FooterLink></li>
-            </ul>
-          </div>
-          <div className="space-y-6 col-span-2 lg:col-span-1">
-            <span className="text-[10px] uppercase font-black tracking-widest text-accent border-b-2 border-white/20 pb-1 block w-fit">Direct Line</span>
-            <div className="flex flex-col sm:flex-row lg:flex-col sm:items-center lg:items-start gap-4 sm:gap-8 lg:gap-3">
-              <a href="https://wa.me/8801839467728" target="_blank" rel="noopener noreferrer" className="block text-sm md:text-lg text-white font-black tracking-tighter transition-colors hover:text-accent cursor-pointer whitespace-nowrap">+880 1839 467728</a>
-              <a href="mailto:omar@devcsl.tech" className="block text-xs text-zinc-500 hover:text-white transition-colors tracking-widest whitespace-nowrap uppercase font-bold">omar@devcsl.tech</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="relative z-10 mt-12 md:mt-32 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 border-t-4 border-white/10">
-        <p className="text-zinc-400 text-[10px] md:text-xs font-mono tracking-widest uppercase font-black text-center md:text-left bg-zinc-950 px-4 py-2 border-2 border-white/20">
-          &copy; {currentYear} devcsl.tech &bull; Designed and Developed by <span className="text-accent">Omar Faruk</span>
-        </p>
-
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="group relative overflow-hidden text-[10px] font-mono font-black text-white hover:text-black flex items-center gap-3 transition-all px-8 py-4 bg-brand border-2 border-white/20 hover:bg-accent hover:border-accent hover:-translate-y-1 hover:-translate-x-1 hover:shadow-brutal"
-        >
-          <span className="relative z-10 uppercase tracking-widest">Back to Top</span>
-          <ArrowUpRight size={16} className="relative z-10 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-        </button>
       </div>
     </footer>
-  );
-}
-
-function FooterLink({ href, children }: { href: string, children: React.ReactNode }) {
-  return (
-    <a
-      href={href}
-      className="text-sm font-bold text-zinc-400 hover:text-white transition-all flex items-center gap-2 group w-fit"
-    >
-      <span className="relative overflow-hidden flex items-center">
-        {children}
-        <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-accent -translate-x-full group-hover:translate-x-0 transition-transform duration-200"></span>
-      </span>
-      <ArrowUpRight size={16} className="opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all text-accent duration-200" />
-    </a>
   );
 }

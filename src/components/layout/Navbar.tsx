@@ -4,19 +4,11 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu, X, ArrowUpRight, Globe } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Globe, Sparkles, FileText } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { ThemeToggle } from '../ThemeToggle';
 import { useLanguage } from '@/lib/i18n';
-
 import { usePathname } from 'next/navigation';
-
-const NAV_ITEMS = [
-  { label: 'Services', href: '#skills' },
-  { label: 'Student Hub', href: '#students' },
-  { label: 'About', href: '#about' },
-  { label: 'Work', href: '#projects' },
-];
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -27,20 +19,23 @@ export default function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('hero');
+
+  const navItems = [
+    { label: language === 'bn' ? 'সার্ভিসসমূহ' : 'Services', href: '#services', id: 'services' },
+    { label: language === 'bn' ? 'স্টুডেন্ট হাব' : 'Student Hub', href: '#students', id: 'students' },
+    { label: language === 'bn' ? 'প্রজেক্টসমূহ' : 'Work', href: '#projects', id: 'projects' },
+    { label: language === 'bn' ? 'যোগাযোগ' : 'Contact', href: '#contact', id: 'contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
-      setScrollProgress(progress);
+      setScrolled(window.scrollY > 24);
     };
 
-    const sectionIds = ['hero', 'skills', 'students', 'about', 'projects', 'contact'];
+    const sectionIds = ['hero', 'services', 'students', 'projects', 'contact'];
     const detectActiveSection = () => {
-      const y = window.scrollY + window.innerHeight * 0.35;
+      const y = window.scrollY + 140;
       let current = 'hero';
       for (const id of sectionIds) {
         const section = document.getElementById(id);
@@ -50,157 +45,265 @@ export default function Navbar() {
       setActiveSection(current);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('scroll', detectActiveSection);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', detectActiveSection, { passive: true });
     detectActiveSection();
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('scroll', detectActiveSection);
     };
   }, []);
 
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   if (isProjectDetailPage) return null;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[110] transition-all duration-200 flex justify-center w-full px-4 sm:px-6 pt-4 sm:pt-6 pointer-events-none">
-      {/* Brutalist scroll progress */}
-      <div
-        className="fixed top-0 left-0 h-1.5 bg-accent z-[120]"
-        style={{ width: `${scrollProgress}%` }}
-      />
+    <header className="fixed top-0 left-0 right-0 z-[100] transition-all duration-300 px-3 sm:px-6 pt-3 sm:pt-4 pointer-events-none">
+      <div className="max-w-6xl mx-auto flex items-center justify-between pointer-events-auto">
+        {/* Floating Bar Container */}
+        <div
+          className={cn(
+            'w-full flex items-center justify-between transition-all duration-300 rounded-2xl md:rounded-full px-4 sm:px-6 py-2.5 sm:py-3',
+            scrolled
+              ? 'glass-nav shadow-soft-md border border-border/80'
+              : 'bg-surface/50 backdrop-blur-sm border border-border/40'
+          )}
+        >
+          {/* LOGO */}
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="relative size-8 sm:size-9 rounded-xl overflow-hidden bg-accent/10 border border-accent/20 flex items-center justify-center p-1 transition-transform duration-300 group-hover:scale-105">
+              <Image
+                src="/icon.png"
+                alt="DEV.CSL Logo"
+                width={32}
+                height={32}
+                className="object-contain"
+                priority
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-bold tracking-tight text-sm sm:text-base text-text-primary leading-tight">
+                DEV<span className="text-accent">.CSL</span>
+              </span>
+              <span className="hidden sm:block text-[10px] text-text-muted font-medium -mt-0.5">
+                Omar Faruk
+              </span>
+            </div>
+          </Link>
 
-      <div className={cn(
-        "w-full flex items-center justify-between transition-all duration-200 pointer-events-auto",
-        scrolled
-          ? "max-w-6xl bg-brand border-2 border-white/20 px-6 py-3 shadow-brutal"
-          : "max-w-7xl px-4 py-4 bg-transparent border-none shadow-none"
-      )}>
-        {/* LOGO */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="size-10 relative transition-all duration-300 group-hover:rotate-12">
-            <Image
-              src="/icon.png"
-              alt="DEV.CSL"
-              width={40}
-              height={40}
-              className="object-contain"
-            />
-          </div>
-          <span className={cn(
-            "font-black tracking-tighter uppercase transition-all whitespace-nowrap",
-            scrolled ? "text-xl text-white" : "text-2xl text-white"
-          )}>
-            DEV<span className="text-accent">.CSL</span>
-          </span>
-        </Link>
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              const isHomePage = pathname === '/';
+              const href = isHomePage ? item.href : `/${item.href}`;
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {NAV_ITEMS.map(item => {
-            const isHomePage = pathname === '/';
-            const href = isHomePage ? item.href : `/${item.href}`;
+              return (
+                <a
+                  key={item.id}
+                  href={href}
+                  className={cn(
+                    'relative px-3.5 py-1.5 rounded-full text-xs font-medium tracking-normal transition-all duration-200',
+                    isActive
+                      ? 'text-accent font-semibold bg-accent-subtle'
+                      : 'text-text-secondary hover:text-text-primary hover:bg-surface-subtle'
+                  )}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </nav>
 
-            return (
-              <a
-                key={item.label}
-                href={href}
-                className={cn(
-                  "text-xs uppercase tracking-widest font-black transition-all relative group py-2",
-                  activeSection === item.href.replace('#', '') ? "text-accent" : "text-white hover:text-accent"
-                )}
-              >
-                {item.label}
-                {activeSection === item.href.replace('#', '') && (
-                  <span className="absolute bottom-0 left-0 w-full h-1 bg-accent" />
-                )}
-                {activeSection !== item.href.replace('#', '') && (
-                  <span className="absolute bottom-0 left-0 w-0 h-1 bg-accent transition-all group-hover:w-full" />
-                )}
-              </a>
-            );
-          })}
-
-          <div className="w-[2px] h-6 bg-white/20 mx-2"></div>
-
-          <div className="flex items-center gap-4">
+          {/* Desktop Right Actions */}
+          <div className="hidden md:flex items-center gap-2 sm:gap-3">
+            {/* Language Switcher Pill */}
             <button
               onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-              className="font-mono text-[10px] font-black uppercase px-3 py-2 border-2 border-white/20 hover:border-accent hover:bg-accent hover:text-[#000] text-white transition-all h-10 min-w-[40px] flex items-center justify-center"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold border border-border bg-surface/60 hover:bg-surface-subtle hover:border-border-hover text-text-secondary hover:text-text-primary transition-all duration-200"
+              title={language === 'en' ? 'Switch to Bengali' : 'Switch to English'}
+              aria-label="Switch Language"
             >
-              {language === 'en' ? 'EN' : 'BN'}
+              <Globe className="w-3.5 h-3.5 text-accent" />
+              <span>{language === 'en' ? 'বাংলা' : 'EN'}</span>
             </button>
+
+            {/* CV Download / View Link */}
+            <a
+              href="/omar_cv (4).pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-border bg-surface/60 hover:bg-surface-subtle hover:border-border-hover text-text-secondary hover:text-text-primary transition-all duration-200"
+              title="View Omar Faruk's CV (PDF)"
+            >
+              <FileText className="w-3.5 h-3.5 text-accent" />
+              <span>{language === 'bn' ? 'সিভি' : 'CV'}</span>
+            </a>
+
+            {/* Theme Toggle */}
             <ThemeToggle />
+
+            {/* Talk / Contact CTA */}
             <a
               href="#contact"
-              className={cn(
-                "bg-accent text-[#000] text-xs uppercase tracking-widest font-black flex items-center gap-2 hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all whitespace-nowrap border-2 border-accent h-10",
-                scrolled ? "px-6" : "px-6"
-              )}
+              className="btn-primary text-xs py-2 px-4 rounded-xl shadow-soft-sm hover:shadow-soft-md"
             >
-              Contact
-              <ArrowUpRight size={16} />
+              <span>{language === 'bn' ? 'চলুন কথা বলি' : "Let's Talk"}</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
-        </div>
 
-        {/* Mobile Nav Toggle */}
-        <div className="md:hidden flex items-center gap-3">
-          <button
-            onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-            className="font-mono text-[10px] font-black uppercase px-3 py-2 border-2 border-white/20 hover:border-accent hover:text-accent text-white h-10 min-w-[40px] flex items-center justify-center"
-          >
-            {language === 'en' ? 'EN' : 'BN'}
-          </button>
-          <ThemeToggle />
-          <button
-            className="h-10 w-10 flex items-center justify-center text-white border-2 border-white/20 hover:border-accent hover:text-accent transition-colors bg-brand"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile Right Controls */}
+          <div className="md:hidden flex items-center gap-1.5">
+            <button
+              onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
+              className="px-2 py-1.5 rounded-lg text-[11px] font-bold border border-border/80 bg-surface/70 text-text-secondary hover:text-text-primary transition-all"
+              aria-label="Language"
+            >
+              {language === 'en' ? 'বাং' : 'EN'}
+            </button>
+
+            <ThemeToggle />
+
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="size-9 flex items-center justify-center rounded-xl border border-border/80 bg-surface/80 text-text-primary hover:bg-surface-subtle transition-colors ml-0.5"
+              aria-label="Toggle navigation menu"
+              aria-expanded={isOpen}
+            >
+              {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Brutalist Mobile Menu Overlay */}
+      {/* Mobile Menu Backdrop & Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-24 left-4 right-4 bg-brand border-2 border-white/20 p-6 md:hidden pointer-events-auto shadow-brutal z-[150]"
-          >
-            <div className="flex flex-col gap-6">
-              {NAV_ITEMS.map(item => {
-                const isHomePage = pathname === '/';
-                const href = isHomePage ? item.href : `/${item.href}`;
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[115] pointer-events-auto md:hidden"
+            />
 
-                return (
+            {/* Drawer */}
+            <motion.div
+              initial={{ opacity: 0, y: -16, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -16, scale: 0.98 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed top-16 inset-x-3 max-w-md mx-auto rounded-3xl border border-border bg-surface/95 backdrop-blur-2xl p-6 shadow-soft-lg z-[120] pointer-events-auto md:hidden"
+            >
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center justify-between pb-3 mb-2 border-b border-border">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-text-muted">
+                    {language === 'bn' ? 'মেনু' : 'Navigation'}
+                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="size-2 rounded-full bg-accent animate-pulse" />
+                    <span className="text-[11px] font-medium text-accent">
+                      {language === 'bn' ? 'প্রজেক্টের জন্য উন্মুক্ত' : 'Available for Work'}
+                    </span>
+                  </div>
+                </div>
+
+                {navItems.map((item) => {
+                  const isHomePage = pathname === '/';
+                  const href = isHomePage ? item.href : `/${item.href}`;
+                  const isActive = activeSection === item.id;
+
+                  return (
+                    <a
+                      key={item.id}
+                      href={href}
+                      onClick={() => setIsOpen(false)}
+                      className={cn(
+                        'flex items-center justify-between py-3 px-3.5 rounded-xl text-base font-medium transition-all duration-200',
+                        isActive
+                          ? 'bg-accent-subtle text-accent font-semibold'
+                          : 'text-text-primary hover:bg-surface-subtle'
+                      )}
+                    >
+                      <span>{item.label}</span>
+                      <ArrowUpRight className="w-4 h-4 opacity-50" />
+                    </a>
+                  );
+                })}
+
+                <div className="pt-4 mt-2 border-t border-border flex flex-col gap-2.5">
                   <a
-                    key={item.label}
-                    href={href}
+                    href="/omar_cv (4).pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
-                    className={cn(
-                      "text-3xl font-black tracking-tighter uppercase transition-colors border-b-2 border-white/20 pb-4",
-                      activeSection === item.href.replace('#', '') ? "text-accent border-accent" : "text-white hover:text-accent"
-                    )}
+                    className="btn-secondary w-full py-2.5 text-center text-xs font-semibold rounded-xl inline-flex items-center justify-center gap-2"
                   >
-                    {item.label}
+                    <FileText className="w-4 h-4 text-accent" />
+                    <span>{language === 'bn' ? 'আমার সিভি দেখুন (PDF)' : 'View Curriculum Vitae (PDF)'}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-text-muted" />
                   </a>
-                );
-              })}
-              <a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
-                className="w-full mt-4 bg-accent text-[#000] py-4 border-2 border-accent text-center font-black text-lg uppercase tracking-widest hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0px_var(--theme-white)] transition-all"
-              >
-                Start a Project
-              </a>
-            </div>
-          </motion.div>
+
+                  <a
+                    href="#contact"
+                    onClick={() => setIsOpen(false)}
+                    className="btn-primary w-full py-3 text-center text-sm font-semibold rounded-xl"
+                  >
+                    <span>{language === 'bn' ? 'প্রজেক্ট শুরু করুন' : 'Start a Project'}</span>
+                    <Sparkles className="w-4 h-4" />
+                  </a>
+
+                  <div className="flex items-center justify-between pt-1 px-1 text-xs text-text-muted">
+                    <span>{language === 'bn' ? 'ভাষা পরিবর্তন করুন' : 'Change Language'}</span>
+                    <div className="flex gap-1.5">
+                      <button
+                        onClick={() => {
+                          setLanguage('en');
+                          setIsOpen(false);
+                        }}
+                        className={cn(
+                          'px-2.5 py-1 rounded-lg font-medium transition-colors',
+                          language === 'en' ? 'bg-accent text-accent-text font-bold' : 'hover:bg-surface-subtle'
+                        )}
+                      >
+                        English
+                      </button>
+                      <button
+                        onClick={() => {
+                          setLanguage('bn');
+                          setIsOpen(false);
+                        }}
+                        className={cn(
+                          'px-2.5 py-1 rounded-lg font-medium transition-colors',
+                          language === 'bn' ? 'bg-accent text-accent-text font-bold' : 'hover:bg-surface-subtle'
+                        )}
+                      >
+                        বাংলা
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </nav>
+    </header>
   );
 }

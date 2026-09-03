@@ -2,47 +2,55 @@
 
 import { motion } from 'motion/react';
 import { PROJECTS, type Project } from '@/src/lib/projects-data';
-import { Github, ExternalLink, ArrowLeft, CheckCircle2, Terminal, Shield, Cpu, Activity } from 'lucide-react';
+import { Github, ExternalLink, ArrowLeft, ArrowUpRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/src/lib/utils';
 import { useLanguage } from '@/lib/i18n';
 
 export default function ProjectsPage() {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
 
   return (
-    <main className="min-h-screen bg-zinc-950 pt-32 pb-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
-        <div className="mb-20">
-          <Link 
-            href="/" 
-            className="inline-flex items-center gap-2 text-zinc-500 hover:text-accent transition-colors mb-8 group"
+    <main className="min-h-screen pt-28 pb-20 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto">
+        {/* Navigation Breadcrumb & Header */}
+        <div className="mb-12 sm:mb-16">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-text-muted hover:text-accent transition-colors mb-6 group"
           >
-            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-            <span className="font-mono text-xs uppercase tracking-widest font-black">Back to Home</span>
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            <span>{language === 'bn' ? 'হোম পেজে ফিরে যান' : 'Back to Home'}</span>
           </Link>
-          
+
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-6">
-              Project <br />
-              <span className="text-zinc-700 italic">Showcase</span>
+            <div className="pill-badge mb-3">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{language === 'bn' ? 'সব প্রজেক্ট' : 'Architectural Portfolio'}</span>
+            </div>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-text-primary mb-4 leading-tight">
+              {language === 'bn' ? (
+                <>প্রজেক্ট <span className="text-accent">শোকেস</span></>
+              ) : (
+                <>Project <span className="text-accent">Showcase</span></>
+              )}
             </h1>
-            <p className="text-zinc-400 max-w-2xl text-lg font-medium leading-relaxed">
-              A deep dive into my professional work, research projects, and engineered solutions. 
-              Each project represents a unique challenge solved with modern technology and architectural excellence.
+            <p className="text-text-secondary max-w-2xl text-sm sm:text-base leading-relaxed">
+              {language === 'bn'
+                ? 'আমার বাস্তবায়িত প্রোডাকশন সিস্টেম, রিসার্চ প্রজেক্ট এবং ফুল-স্ট্যাক অ্যাপ্লিকেশনের বিস্তারিত সংকলন।'
+                : 'A comprehensive collection of production platforms, academic research tools, and engineered software solutions built for real-world impact.'}
             </p>
           </motion.div>
         </div>
 
-        {/* Projects Grid */}
-        <div className="space-y-32">
+        {/* Projects Showcase List */}
+        <div className="space-y-12 sm:space-y-16">
           {PROJECTS.map((project, index) => (
-            <ProjectDetailedCard key={project.title} project={project} index={index} />
+            <ProjectDetailedCard key={project.slug} project={project} index={index} language={language} />
           ))}
         </div>
       </div>
@@ -50,99 +58,115 @@ export default function ProjectsPage() {
   );
 }
 
-function ProjectDetailedCard({ project, index }: { project: Project; index: number }) {
+function ProjectDetailedCard({
+  project,
+  index,
+  language,
+}: {
+  project: Project;
+  index: number;
+  language: string;
+}) {
   const isEven = index % 2 === 0;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8, delay: 0.1 }}
-      className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
+      transition={{ duration: 0.5, delay: 0.05 }}
+      className="editorial-card overflow-hidden"
     >
-      {/* Visual Content */}
-      <div className={cn(
-        "lg:col-span-7 space-y-6",
-        !isEven && "lg:order-2"
-      )}>
-        <Link href={`/projects/${project.slug}`} className="group relative overflow-hidden brutal-card p-6 bg-brand/50 block">
-          <img 
-            src={project.image} 
-            alt={project.title}
-            className="w-full h-auto block transition-all duration-700"
-          />
-          <div className="absolute inset-0 bg-zinc-950/5 group-hover:bg-transparent transition-all duration-500" />
-          
-          {/* Status Badge */}
-          <div className="absolute top-6 left-6 px-4 py-2 bg-accent text-black font-black text-[10px] uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)]">
-            {project.period}
-          </div>
-          
-          <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity bg-accent text-black px-4 py-2 font-black uppercase text-xs shadow-brutal-white border-2 border-black">
-            Read Case Study
-          </div>
-        </Link>
-
-        {/* Gallery Preview */}
-        {project.gallery.length > 0 && (
-          <div className="grid grid-cols-3 gap-4">
-            {project.gallery.slice(0, 3).map((img, idx) => (
-              <div key={idx} className="aspect-video brutal-card p-0 overflow-hidden bg-brand">
-                <img src={img.url} alt={img.description} className="w-full h-full object-cover" />
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* Text Content */}
-      <div className={cn(
-        "lg:col-span-5 flex flex-col",
-        !isEven && "lg:order-1"
-      )}>
-        <div className="inline-flex items-center gap-3 px-3 py-1 border-2 border-white/10 bg-white/5 w-fit mb-6">
-          <span className="font-mono text-[10px] font-black text-accent uppercase tracking-widest">{project.niche}</span>
-        </div>
-
-        <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-6 leading-tight">
-          {project.title}
-        </h2>
-
-        <p className="text-zinc-400 text-lg font-medium leading-relaxed mb-8 border-l-4 border-accent pl-6">
-          {project.description}
-        </p>
-
-        {/* Tech Stack Chips */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          {project.tags.map(tag => (
-            <span key={tag} className="px-3 py-1 bg-zinc-900 border-2 border-white/10 text-[10px] font-black uppercase tracking-widest text-zinc-400">
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 mt-auto">
-          <Link 
-            href={`/projects/${project.slug}`}
-            className="brutal-btn flex items-center justify-center gap-3"
-          >
-            Read Full Case Study
-            <ArrowLeft size={18} className="rotate-180" />
+      <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+        {/* Visual Content */}
+        <div
+          className={cn(
+            'lg:col-span-7 relative bg-surface-subtle p-4 sm:p-6 flex flex-col justify-center border-b lg:border-b-0 border-border',
+            isEven ? 'lg:border-r' : 'lg:order-2 lg:border-l'
+          )}
+        >
+          <Link href={`/projects/${project.slug}`} className="block relative group overflow-hidden rounded-xl">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-auto max-h-[400px] object-cover rounded-xl transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            <div className="absolute top-3 left-3">
+              <span className="pill-badge bg-surface/90 backdrop-blur-md shadow-soft-sm">
+                {project.period}
+              </span>
+            </div>
           </Link>
-          <a 
-            href={project.links.github} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className={cn(
-              "brutal-btn-outline flex items-center justify-center gap-3",
-              project.links.github === '#' && "opacity-50 cursor-not-allowed pointer-events-none"
+        </div>
+
+        {/* Text Details */}
+        <div
+          className={cn(
+            'lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between',
+            !isEven && 'lg:order-1'
+          )}
+        >
+          <div>
+            <div className="flex items-center justify-between gap-2 mb-2">
+              <span className="text-xs font-semibold text-accent uppercase tracking-wider">
+                {project.niche}
+              </span>
+            </div>
+
+            <h2 className="text-xl sm:text-2xl font-bold text-text-primary mb-3">
+              <Link href={`/projects/${project.slug}`} className="hover:text-accent transition-colors">
+                {project.title}
+              </Link>
+            </h2>
+
+            <p className="text-text-secondary text-sm leading-relaxed mb-6">
+              {project.description}
+            </p>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-1.5 mb-6">
+              {project.tags.map((tag) => (
+                <span key={tag} className="pill-badge-neutral text-[11px]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="pt-5 border-t border-border-subtle flex flex-wrap items-center gap-3">
+            <Link
+              href={`/projects/${project.slug}`}
+              className="btn-primary text-xs py-2 px-4 rounded-xl"
+            >
+              <span>{language === 'bn' ? 'কেস স্টাডি দেখুন' : 'Case Study'}</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+
+            {project.links.live && project.links.live !== '#' && (
+              <a
+                href={project.links.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary text-xs py-2 px-3.5 rounded-xl inline-flex items-center gap-1.5"
+              >
+                <span>Live</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             )}
-          >
-            Source Code
-            <Github size={18} />
-          </a>
+
+            {project.links.github && project.links.github !== '#' && (
+              <a
+                href={project.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary text-xs py-2 px-3 rounded-xl inline-flex items-center gap-1.5 text-text-muted hover:text-text-primary"
+                aria-label="GitHub Repository"
+              >
+                <Github className="w-3.5 h-3.5" />
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>

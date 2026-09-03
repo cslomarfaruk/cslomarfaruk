@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter } from "next/font/google";
 import { LanguageProvider } from "@/lib/i18n";
 import Navbar from "@/src/components/layout/Navbar";
 import FloatingWhatsApp from "@/src/components/layout/FloatingWhatsApp";
@@ -8,18 +7,10 @@ import Footer from "@/src/components/sections/Footer";
 import { ThemeProvider } from "@/src/components/ThemeProvider";
 import PageTransition from "@/src/components/layout/PageTransition";
 
-// Font optimization — Inter only (Poppins was never used)
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  preload: true,
-  variable: '--font-inter',
-});
-
 export const metadata: Metadata = {
-  title: "DEV CSL — Web Development Platform | Omar Faruk",
-  description: "Full-stack engineer, Web Developer and Web Design expert, and the best academic project developer in Bangladesh. Building production SaaS, high-quality academic projects, and shipping digital products. 3+ years of battle-tested experience.",
-  keywords: "SaaS developer, academic projects, final year project help, university project developer, full stack developer, web development, software engineer, Next.js expert, React developer, Node.js, DevOps, managed VPS hosting, domain hosting, freelance developer, IEEE project implementation, board viva help, Omar Faruk, cslomarfaruk, devcsl, dev csl tech, web engineering studio, custom software development, production-ready web apps, ওয়েব ডেভেলপমেন্ট, সফটওয়্যার ডেভেলপমেন্ট, একাডেমিক প্রজেক্ট, ওমার ফারুক",
+  title: "DEV CSL — Full-Stack Developer & DevOps | Omar Faruk",
+  description: "Full-stack developer and Linux/DevOps engineer. CSE graduate from Sylhet Engineering College (CGPA 3.75, with distinction). Building production SaaS, blockchain systems (CertiChain), academic projects, and managing VPS infrastructure with Docker, Traefik, and Cloudflare. 3+ years of hands-on experience.",
+  keywords: "SaaS developer, academic projects, final year project help, university project developer, full stack developer, web development, software engineer, Next.js expert, React developer, Node.js, DevOps, Linux engineer, Docker, Traefik, VPS management, blockchain developer, ZK-proofs, CertiChain, managed VPS hosting, domain hosting, freelance developer, IEEE project implementation, ICCIT paper, board viva help, Omar Faruk, cslomarfaruk, devcsl, dev csl tech, Sylhet Engineering College, web engineering studio, custom software development, production-ready web apps, ওয়েব ডেভেলপমেন্ট, সফটওয়্যার ডেভেলপমেন্ট, একাডেমিক প্রজেক্ট, ওমার ফারুক, ব্লকচেইন",
   authors: [{ name: "Omar Faruk", url: "https://devcsl.tech" }],
   creator: "Omar Faruk",
   publisher: "DEV.CSL",
@@ -43,7 +34,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -54,7 +44,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "DEV CSL — Web Development Platform",
-    description: "Full-stack engineer, Web Developer and Web Design expert, and the best academic project developer in Bangladesh. Building production SaaS, high-quality academic projects, and shipping digital products. 3+ years of battle-tested experience.",
+    description: "Full-stack engineer, Web Developer and Web Design expert, building production SaaS, high-quality academic & thesis projects, and digital platforms.",
     url: "https://devcsl.tech",
     siteName: "DEV CSL",
     locale: "en_US",
@@ -73,7 +63,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "DEV CSL — Web Development Platform",
-    description: "Full-stack engineer, Web Developer and Web Design expert, and the best academic project developer in Bangladesh. Building production SaaS, high-quality academic projects, and shipping digital products.",
+    description: "Full-stack engineer, Web Developer and Web Design expert, building production SaaS, high-quality academic projects, and shipping digital products.",
     images: ['https://devcsl.tech/logo.png'],
     creator: '@cslomarfaruk',
   },
@@ -84,10 +74,6 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   category: 'technology',
-  verification: {
-    google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code',
-  },
 };
 
 export default function RootLayout({
@@ -96,38 +82,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+    >
       <head>
-        {/* Performance: DNS Prefetch & Preconnect */}
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-
-        {/* Theme & Mobile */}
-        <meta name="theme-color" content="#0A0A0B" />
+        {/* Mobile & PWA */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+        <meta name="theme-color" content="#09090b" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="DEV CSL" />
-        <meta name="mobile-web-app-capable" content="yes" />
 
-        {/* Viewport */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
-
-        {/* Preload critical images */}
-        <link rel="preload" as="image" href="/logo.png" />
-
-        {/* Font declaration */}
-        <style>{`
-          html {
-            font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
-          }
-          :root {
-            color-scheme: light dark;
-          }
-        `}</style>
+        {/* Preload critical logo */}
+        <link rel="preload" as="image" href="/icon.png" />
       </head>
-      <body className="antialiased min-h-screen">
+      <body className="antialiased min-h-screen bg-brand text-text-primary">
         <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
           <LanguageProvider>
             <Navbar />

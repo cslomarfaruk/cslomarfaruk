@@ -20,6 +20,8 @@ export interface Project {
   gallery: ProjectImage[];
   videoUrl: string;
   full_stack_details?: string[];
+  team_members?: string[];
+  publications?: { title: string; venue: string; url: string }[];
 }
 
 export const PROJECTS: Project[] = [
@@ -111,6 +113,83 @@ export const PROJECTS: Project[] = [
       { url: '/hive/9x9-ttt-game-page.png', description: 'Strategic 9x9 Ultimate Tic-Tac-Toe game integrated directly into the social ecosystem.' },
       { url: '/hive/connect4-game-ss.png', description: 'Real-time Connect 4 multiplayer game with live state synchronization.' },
       { url: '/hive/hive-light-mode.png', description: 'Premium light mode support featuring a clean comment section with nested reply functionality.' },
+    ],
+    videoUrl: ''
+  },
+  {
+    slug: 'certichain',
+    title: 'CertiChain',
+    niche: 'Blockchain / Zero-Knowledge Proofs',
+    impact: 'Academic thesis accepted at ICCIT 2026 — a blockchain-based certificate verification system with ZK-proofs and face recognition.',
+    period: 'Final Year Thesis (2026)',
+    description: 'A blockchain-based certificate generation and verification platform built as an academic thesis project. CertiChain uses zero-knowledge proofs (ZK-proofs) to enable privacy-preserving certificate verification, combined with face-recognition integration for identity-aware authentication. The system features role-based access for admins, students, and the public — with separate workflows for certificate issuance, gradesheet management, and tamper-proof verification.',
+    role: 'Full-Stack Developer — responsible for frontend/backend architecture, blockchain integration, ZK-proof implementation, face verification module, role-based access control, and deployment to production VPS. Team project with Labib Al Faisal and Jarin Siddiqua.',
+    team_members: ['Md. Omar Faruk (Full-Stack Developer)', 'Labib Al Faisal', 'Jarin Siddiqua'],
+    publications: [
+      {
+        title: 'CertiChain: Blockchain-Based Certificate Generation & Verification with ZK-Proofs',
+        venue: 'ICCIT 2026 (International Conference on Computer and Information Technology)',
+        url: '/certichain/ICCIT_Paper.pdf'
+      }
+    ],
+    features_detailed: [
+      {
+        category: 'Blockchain & Cryptography',
+        items: [
+          'On-chain certificate hash storage for tamper-proof verification',
+          'Zero-knowledge proof (ZK-proof) based public verification',
+          'Cryptographic integrity validation without exposing private data'
+        ]
+      },
+      {
+        category: 'Student Portal',
+        items: [
+          'Student dashboard with profile & academic info',
+          'Certificate and gradesheet download with controlled download limits',
+          'Profile update requests routed to admin approval',
+          'Certificate revocation request workflow'
+        ]
+      },
+      {
+        category: 'Public Verification',
+        items: [
+          'Public certificate verifier page (no login required)',
+          'ZK-proof verification for privacy-preserving validation',
+          'Face verification for identity-aware certificate authentication',
+          'Verified student demo with face match confirmation'
+        ]
+      }
+    ],
+    security_highlights: [
+      'Blockchain-backed certificate integrity',
+      'Zero-knowledge proofs for privacy-preserving verification',
+      'Face recognition for identity-aware authentication',
+      'Role-based access control (Admin / Student / Public)',
+      'Download limits and revocation workflows for certificate governance'
+    ],
+    full_stack_details: [
+      'Next.js (App Router)',
+      'TypeScript & Tailwind CSS',
+      'Blockchain (Smart Contracts)',
+      'ZK-Proof Libraries',
+      'Face Recognition API',
+      'MySQL with Prisma ORM',
+      'Docker & VPS Deployment'
+    ],
+    features: ['ZK-Proof Verification', 'Face Recognition', 'Blockchain Certificates', 'RBAC'],
+    tags: ['Blockchain', 'ZK-Proofs', 'Next.js', 'Face Recognition', 'TypeScript', 'Prisma', 'Docker'],
+    links: { live: 'https://c.devcsl.tech', github: '#' },
+    image: '/certichain/landing_page.png',
+    gallery: [
+      { url: '/certichain/landing_page.png', description: 'CertiChain landing page — the public entry point for certificate verification and system overview.' },
+      { url: '/certichain/public_verifier_page.png', description: 'Public certificate verifier — anyone can validate a certificate\'s authenticity without needing an account.' },
+      { url: '/certichain/zk_proof_verification(public).png', description: 'Zero-knowledge proof verification interface — validates certificate integrity without revealing private student data.' },
+      { url: '/certichain/face_verification_for_certificate_verification.png', description: 'Face recognition module for identity-aware certificate verification, ensuring the requester matches the certificate holder.' },
+      { url: '/certichain/verified_student_demo_after_face_verification.png', description: 'Verification success screen showing confirmed student identity after face match with blockchain-stored credentials.' },
+      { url: '/certichain/stdent_dashboard(after_login).png', description: 'Student dashboard after login — centralized view of certificates, gradesheets, and profile management.' },
+      { url: '/certichain/student_certificate_with_download_limit_and_revoke_request.png', description: 'Certificate management panel with download count limits and the ability to submit revocation requests to admin.' },
+      { url: '/certichain/student_gradesheet_download_with_downlaod_limit.png', description: 'Gradesheet download interface with enforced download limits for controlled document distribution.' },
+      { url: '/certichain/student_profile_with_update_information_request_to_admin.png', description: 'Student profile view with the ability to request information updates, which are routed through admin approval.' }
     ],
     videoUrl: ''
   },
