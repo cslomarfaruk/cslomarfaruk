@@ -2,6 +2,7 @@ import Hero from "@/src/components/sections/Hero";
 import Services from "@/src/components/sections/Services";
 import StudentHub from "@/src/components/sections/Mentorship";
 import Projects from "@/src/components/sections/Projects";
+import Education from "@/src/components/sections/Education";
 import Contact from "@/src/components/sections/Contact";
 import { generatePageSchema } from "@/lib/seo";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <Services />
       <StudentHub />
       <Projects />
+      <Education />
       <Contact />
     </main>
   );

@@ -3,7 +3,7 @@
     "tagline": "FULL-STACK DEVELOPER · LINUX & DEVOPS",
     "headline_pt1": "Building Thoughtful",
     "headline_pt2": "Websites & Apps",
-    "subheadline": "Hi, I'm Omar Faruk — CSE graduate (CGPA 3.75, with distinction) from Sylhet Engineering College. I build production-grade web applications, manage Linux infrastructure, and take software from idea to deployment. Strongest in Next.js, React, TypeScript, Docker, and VPS operations.",
+    "subheadline": "Hi, I'm Omar Faruk. I build clean, fast, and reliable web applications and manage Linux VPS infrastructure — taking digital products from idea to production with Next.js, React, TypeScript, Docker, and modern database systems.",
     "cta_discuss": "Let's Build Together",
     "cta_portfolio": "Explore My Work",
     "cta_cv": "Resume / CV",
@@ -93,5 +93,22 @@
     "headline_pt1": "Selected",
     "headline_pt2": "Projects & Case Studies",
     "index_btn": "View All Projects"
+  },
+  "education": {
+    "tagline": "Academic Foundation",
+    "headline": "Education & Research",
+    "subheadline": "Rigorous computer science fundamentals paired with hands-on systems engineering, Linux architecture, and blockchain research.",
+    "degree": "B.Sc. in Computer Science & Engineering",
+    "institution": "Sylhet Engineering College",
+    "timeline": "Graduated: 2026",
+    "grade": "CGPA: 3.75 / 4.00 (with distinction)",
+    "thesis_title": "Final Year Thesis: CertiChain",
+    "thesis_desc": "Blockchain-based certificate generation and verification using zero-knowledge proofs (ZK-proofs) and face recognition.",
+    "thesis_link_label": "Explore Case Study",
+    "publication_title": "Research Paper Submitted to ICCIT 2026",
+    "publication_desc": "Co-authored research on privacy-preserving academic credential verification.",
+    "publication_link_label": "Read Paper (PDF)",
+    "coursework_label": "Core Focus Areas",
+    "coursework": ["Software Architecture", "Operating Systems & Linux", "Distributed Systems", "Database Design", "Computer Networks", "Information Security"]
   }
 }

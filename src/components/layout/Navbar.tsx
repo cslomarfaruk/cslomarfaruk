@@ -25,6 +25,7 @@ export default function Navbar() {
     { label: language === 'bn' ? 'সার্ভিসসমূহ' : 'Services', href: '#services', id: 'services' },
     { label: language === 'bn' ? 'স্টুডেন্ট হাব' : 'Student Hub', href: '#students', id: 'students' },
     { label: language === 'bn' ? 'প্রজেক্টসমূহ' : 'Work', href: '#projects', id: 'projects' },
+    { label: language === 'bn' ? 'শিক্ষা' : 'Education', href: '#education', id: 'education' },
     { label: language === 'bn' ? 'যোগাযোগ' : 'Contact', href: '#contact', id: 'contact' },
   ];
 
@@ -33,7 +34,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 24);
     };
 
-    const sectionIds = ['hero', 'services', 'students', 'projects', 'contact'];
+    const sectionIds = ['hero', 'services', 'students', 'projects', 'education', 'contact'];
     const detectActiveSection = () => {
       const y = window.scrollY + 140;
       let current = 'hero';

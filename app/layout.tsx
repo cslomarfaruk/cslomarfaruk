@@ -9,7 +9,7 @@ import PageTransition from "@/src/components/layout/PageTransition";
 
 export const metadata: Metadata = {
   title: "DEV CSL — Full-Stack Developer & DevOps | Omar Faruk",
-  description: "Full-stack developer and Linux/DevOps engineer. CSE graduate from Sylhet Engineering College (CGPA 3.75, with distinction). Building production SaaS, blockchain systems (CertiChain), academic projects, and managing VPS infrastructure with Docker, Traefik, and Cloudflare. 3+ years of hands-on experience.",
+  description: "Full-stack developer and Linux/DevOps engineer. CSE graduate from Sylhet Engineering College. Building production SaaS, blockchain systems (CertiChain), academic projects, and managing VPS infrastructure with Docker, Traefik, and Cloudflare. 3+ years of hands-on experience.",
   keywords: "SaaS developer, academic projects, final year project help, university project developer, full stack developer, web development, software engineer, Next.js expert, React developer, Node.js, DevOps, Linux engineer, Docker, Traefik, VPS management, blockchain developer, ZK-proofs, CertiChain, managed VPS hosting, domain hosting, freelance developer, IEEE project implementation, ICCIT paper, board viva help, Omar Faruk, cslomarfaruk, devcsl, dev csl tech, Sylhet Engineering College, web engineering studio, custom software development, production-ready web apps, ওয়েব ডেভেলপমেন্ট, সফটওয়্যার ডেভেলপমেন্ট, একাডেমিক প্রজেক্ট, ওমার ফারুক, ব্লকচেইন",
   authors: [{ name: "Omar Faruk", url: "https://devcsl.tech" }],
   creator: "Omar Faruk",

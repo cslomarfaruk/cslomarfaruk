@@ -103,13 +103,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="#education" className="hover:text-accent transition-colors">
+                  {language === 'bn' ? 'শিক্ষা ও গবেষণা' : 'Education & Research'}
+                </Link>
+              </li>
+              <li>
                 <Link href="#contact" className="hover:text-accent transition-colors">
                   {language === 'bn' ? 'যোগাযোগ' : 'Get in Touch'}
                 </Link>
               </li>
               <li className="pt-1">
                 <a
-                  href="/omar_cv (7).pdf"
+                  href="/omar_cv (4).pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-accent hover:text-accent-hover transition-colors inline-flex items-center gap-1.5 font-medium"
