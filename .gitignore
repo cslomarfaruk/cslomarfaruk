@@ -1,13 +1,42 @@
+# Dependencies
 node_modules/
+.pnp
+.pnp.js
+
+# Next.js Build Output
+.next/
+out/
 build/
 dist/
 coverage/
-.DS_Store
-*.log
+
+# Environment variables & Local secrets
 .env*
 !.env.example
+*.local
 
-.next
-.vscode
+# Archives & Backups (Prevent zip leaks)
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.sql
+*.dump
+credentials-backup/
+
+# Server Credentials & Keys
+*.pem
+*.key
+*.cert
+*.crt
+
+# OS & IDE metadata
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
 .agent
-.antigravity    
+.antigravity
