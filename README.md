@@ -27,28 +27,28 @@ The site runs as a standalone Node.js container inside a Linux VPS Docker networ
 
 ```mermaid
 flowchart TD
-    subgraph Edge Layer [Cloudflare Edge & Security]
-        DNS[Cloudflare DNS & Strict SSL]
-        WAF[Cloudflare WAF & DDoS Shield]
-        Turnstile[Turnstile Smart CAPTCHA Verification]
+    subgraph EdgeLayer ["Cloudflare Edge & Security"]
+        DNS["Cloudflare DNS & Strict SSL"]
+        WAF["Cloudflare WAF & DDoS Shield"]
+        Turnstile["Turnstile Smart CAPTCHA Verification"]
     end
 
-    subgraph Host Server [Ubuntu Linux VPS - Docker Network]
+    subgraph HostServer ["Ubuntu Linux VPS - Docker Network"]
         Traefik["Traefik v2.11 Reverse Proxy<br/>(Auto TLS Certificate Resolver & Router)"]
         
-        subgraph Portfolio Container [Next.js Standalone Container]
+        subgraph AppContainer ["Next.js Standalone Container"]
             App["Next.js 15 App Router<br/>(SSR, Static Optimization, Bilingual i18n)"]
             RateLimit["In-Memory Sliding-Window Rate Limiter<br/>(Max 3 requests / 5 min per IP)"]
             Mailer["Nodemailer SMTP Dispatcher<br/>(Authenticated Zoho SMTP Transport)"]
         end
     end
 
-    subgraph External Notification [Email Infrastructure]
+    subgraph NotificationLayer ["Email Infrastructure"]
         SMTP["Zoho Mail SMTP Server<br/>(smtp.zoho.com:587)"]
         Inbox["Recipient Inbox<br/>(omar@devcsl.tech)"]
     end
 
-    Browser[Visitor / Client Browser] --> DNS
+    Browser["Visitor / Client Browser"] --> DNS
     DNS --> WAF
     WAF --> Traefik
     Traefik -->|Network: app_admission_net| App
