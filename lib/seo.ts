@@ -22,7 +22,15 @@ function personSchema() {
     ],
     jobTitle: "Full-Stack Software Engineer, Freelance Web Developer & DevOps Specialist",
     url: SITE_URL,
-    image: `${SITE_URL}/logo.png`,
+    image: {
+      "@type": "ImageObject",
+      "@id": `${SITE_URL}/#personimage`,
+      url: `${SITE_URL}/dp.png`,
+      contentUrl: `${SITE_URL}/dp.png`,
+      caption: "Omar Faruk - Full-Stack Developer",
+      width: 1254,
+      height: 1254,
+    },
     description:
       "Omar Faruk (cslomarfaruk / developer omar) is a top-rated full-stack web developer in Bangladesh and Linux specialist with 3+ years of practical experience. He builds custom web apps, SaaS platforms, and APIs using Next.js, React, Node.js, PostgreSQL, and Docker for clients in Bangladesh, the US, UK, and worldwide.",
     sameAs: [
@@ -105,7 +113,7 @@ function professionalServiceSchema() {
       height: 512,
       caption: "DEV CSL Logo",
     },
-    image: `${SITE_URL}/logo.png`,
+    image: `${SITE_URL}/dp.png`,
     email: "omar@devcsl.tech",
     telephone: "+8801839467728",
     description:
@@ -423,6 +431,16 @@ function webpageSchema() {
       "@type": "SpeakableSpecification",
       cssSelector: ["#hero h1", "#hero p", "#faq"],
     },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      "@id": `${SITE_URL}/#primaryimage`,
+      url: `${SITE_URL}/dp.png`,
+      contentUrl: `${SITE_URL}/dp.png`,
+      caption: "Omar Faruk (cslomarfaruk) - Full-Stack Developer for Hire",
+      width: 1254,
+      height: 1254,
+    },
+    image: `${SITE_URL}/dp.png`,
     breadcrumb: { "@id": `${SITE_URL}/#breadcrumb` },
   };
 }

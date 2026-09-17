@@ -6,7 +6,7 @@ import { memo } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Terminal, Sparkles, Check, FileText, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
-import photo from '../../dp-new.jpg';
+import photo from '../../dp.png';
 import { useLanguage } from '@/lib/i18n';
 
 export default function Hero() {

@@ -52,19 +52,26 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: 'https://devcsl.tech/logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'Freelance Full-Stack Developer for Hire — Omar Faruk',
+        url: 'https://devcsl.tech/dp.png',
+        width: 1254,
+        height: 1254,
+        alt: 'Omar Faruk (cslomarfaruk) — Full-Stack Developer for Hire',
         type: 'image/png',
-      }
+      },
+      {
+        url: 'https://devcsl.tech/omar-faruk.png',
+        width: 1254,
+        height: 1254,
+        alt: 'Omar Faruk — Full-Stack Web Developer in Bangladesh',
+        type: 'image/png',
+      },
     ]
   },
   twitter: {
     card: 'summary_large_image',
     title: "Freelance Full-Stack Developer for Hire | Omar Faruk (DEV CSL)",
     description: "Freelance full-stack web developer for hire. I build custom web applications, SaaS platforms, and APIs using React, Next.js, Node.js, and PostgreSQL.",
-    images: ['https://devcsl.tech/logo.png'],
+    images: ['https://devcsl.tech/dp.png'],
     creator: '@cslomarfaruk',
   },
   appleWebApp: {
@@ -102,6 +109,11 @@ export default function RootLayout({
             `,
           }}
         />
+
+        {/* SERP Search Thumbnail & Primary Image for Google / AI */}
+        <meta name="thumbnail" content="https://devcsl.tech/dp.png" />
+        <meta name="image" content="https://devcsl.tech/dp.png" />
+        <meta itemProp="image" content="https://devcsl.tech/dp.png" />
 
         {/* Mobile & PWA */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
