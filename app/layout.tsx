@@ -6,7 +6,6 @@ import FloatingWhatsApp from "@/src/components/layout/FloatingWhatsApp";
 import Footer from "@/src/components/sections/Footer";
 import { ThemeProvider } from "@/src/components/ThemeProvider";
 import PageTransition from "@/src/components/layout/PageTransition";
-import GoogleAnalytics from "@/src/components/analytics/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: "DEV CSL — Full-Stack Developer & DevOps | Omar Faruk",
@@ -88,6 +87,22 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-KPNVVDRG02"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-KPNVVDRG02');
+            `,
+          }}
+        />
+
         {/* Mobile & PWA */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
         <meta name="theme-color" content="#09090b" />
@@ -108,7 +123,6 @@ export default function RootLayout({
             <Footer />
           </LanguageProvider>
         </ThemeProvider>
-        <GoogleAnalytics />
       </body>
     </html>
   );
