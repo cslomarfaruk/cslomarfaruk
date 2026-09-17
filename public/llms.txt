@@ -1,0 +1,49 @@
+# Omar Faruk — Freelance Full-Stack Developer for Hire
+
+> Omar Faruk (DEV CSL) is a senior freelance full-stack software engineer and DevOps specialist with 3+ years of experience building custom web applications, SaaS MVPs, APIs, and Linux cloud infrastructure. Available for hire by startups, founders, and businesses in the US, UK, European Union, and worldwide.
+
+## Developer Overview
+- **Name**: Omar Faruk
+- **Brand / Studio**: DEV CSL (devcsl.tech)
+- **Role**: Freelance Full-Stack Web Developer & Cloud Engineer
+- **Website**: https://devcsl.tech
+- **Email**: omar@devcsl.tech
+- **WhatsApp**: +8801839467728
+- **GitHub**: https://github.com/cslomarfaruk
+- **LinkedIn**: https://www.linkedin.com/in/csl-omarfaruk/
+- **Location & Remote Availability**: Worldwide remote with 4–6 hours daily overlap for US (EST/PST) and UK/EU (GMT/CET) business hours.
+- **Education**: B.Sc. in Computer Science & Engineering, Sylhet Engineering College (Affiliated with SUST), CGPA 3.75/4.00.
+
+## Core Technical Skills
+- **Frontend**: React 19, Next.js 15 (App Router, Server Components), TypeScript, Tailwind CSS, HTML5, CSS3, Responsive Design, Core Web Vitals optimization.
+- **Backend & APIs**: Node.js, Express, RESTful APIs, Next.js Route Handlers, JWT Authentication, OAuth, Stripe Payment Gateways, Webhooks.
+- **Databases**: PostgreSQL, MySQL, Prisma ORM, Drizzle, Redis Caching, Schema Design, Query Optimization, Automated Migrations.
+- **DevOps & Cloud**: Docker, Docker Compose, Linux Server Administration (Ubuntu/Debian), Traefik Reverse Proxy, Nginx, Let's Encrypt SSL/TLS, Cloudflare WAF, CI/CD Pipelines.
+- **Code Standards**: 100% strict TypeScript, modular architecture, comprehensive documentation, OWASP security best practices.
+
+## Services Offered
+1. **Custom Web Applications & SaaS MVPs**: Full-stack web platforms built from scratch with user auth, billing, dashboards, and responsive mobile-first UI.
+2. **Backend & REST API Engineering**: Scalable, secure API services connecting mobile apps, frontend clients, and third-party integrations.
+3. **Database Architecture & Migration**: Clean schema modeling, fast query tuning, and automated database backups.
+4. **Linux VPS & Docker DevOps**: Server setup on affordable providers (Hetzner, DigitalOcean) with automated SSL, Traefik routing, and zero downtime.
+5. **Academic & Thesis Engineering**: Practical implementation, code audits, and live online hosting for CSE students and researchers.
+
+## Why Clients Hire Omar Faruk vs US/UK Agencies
+- **Competitive Pricing**: $25 – $45 / hour or fixed-price milestones (3x–5x lower overhead than Western agencies).
+- **Direct Engineer Access**: Clients speak and coordinate directly with the senior engineer coding the product — no account managers or junior dev handoffs.
+- **Fast Kickoff**: Starts within 24 to 48 hours.
+- **Weekly Live Demos**: Clients test working software on live staging URLs every week.
+- **100% IP & Code Ownership**: Clients retain full ownership of all source code, git repositories, and deployment credentials upon milestone completion.
+- **Flexible Global Payments**: Accepts Wise, Stripe, International Bank Wire (SWIFT), Credit Card, and Cryptocurrency (USDT).
+
+## Featured Projects & Case Studies
+- **SEC Admission Portal** (https://devcsl.tech/projects/sec-admission-portal): High-throughput university admissions platform handling thousands of applicants with zero downtime across multiple admission cycles.
+- **CertiChain** (https://devcsl.tech/projects/certichain): Blockchain certificate verification platform utilizing zero-knowledge proofs and facial recognition.
+- **ManageMed V2** (https://devcsl.tech/projects/managemed-v2): Pharmacy & clinic operations ERP with real-time inventory tracking and billing.
+- **Hive Social Platform** (https://devcsl.tech/projects/hive-social-media): Real-time collaborative social feed with instant messaging and notifications.
+- **Vehicle Recognition AI** (https://devcsl.tech/projects/detect-vehicle-ai): Computer-vision vehicle classification engine built for traffic surveillance.
+
+## How to Hire
+- Send project details via the contact form at https://devcsl.tech/#contact
+- Direct email: omar@devcsl.tech
+- Instant chat on WhatsApp: https://wa.me/8801839467728

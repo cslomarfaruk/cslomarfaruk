@@ -8,23 +8,37 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: '/api/',
       },
-      // Allow Google
+      // Search Engines
       {
         userAgent: 'Googlebot',
         allow: '/',
       },
-      // Allow Bing
       {
         userAgent: 'Bingbot',
         allow: '/',
       },
-      // Allow AI Crawlers
+      // OpenAI (ChatGPT & ChatGPT Search)
       {
         userAgent: 'GPTBot',
         allow: '/',
       },
       {
-        userAgent: 'CCBot',
+        userAgent: 'OAI-SearchBot',
+        allow: '/',
+      },
+      // Google Gemini AI
+      {
+        userAgent: 'Google-Extended',
+        allow: '/',
+      },
+      // Perplexity AI
+      {
+        userAgent: 'PerplexityBot',
+        allow: '/',
+      },
+      // Anthropic Claude
+      {
+        userAgent: 'ClaudeBot',
         allow: '/',
       },
       {
@@ -33,6 +47,16 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: 'Claude-Web',
+        allow: '/',
+      },
+      // Apple Intelligence
+      {
+        userAgent: 'Applebot-Extended',
+        allow: '/',
+      },
+      // Common Crawl
+      {
+        userAgent: 'CCBot',
         allow: '/',
       },
     ],

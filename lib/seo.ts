@@ -304,11 +304,15 @@ function webpageSchema() {
     "@type": "WebPage",
     "@id": WEBPAGE_ID,
     url: SITE_URL,
-    name: "Omar Faruk — Full-Stack Developer for Hire (Freelance & Contract) | DEV CSL",
+    name: "Freelance Full-Stack Developer for Hire (Remote US, UK, EU) | Omar Faruk (DEV CSL)",
     description:
-      "Full-stack software engineer with 3+ years experience building production SaaS, scalable web apps, and managing Linux cloud servers. Available for freelance projects and long-term contracts.",
+      "Freelance full-stack web developer for hire. I build custom web applications, SaaS platforms, and APIs using React, Next.js, Node.js, and PostgreSQL for clients in the US, UK, Europe, and worldwide.",
     isPartOf: { "@id": WEBSITE_ID },
     about: { "@id": PERSON_ID },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["#hero h1", "#hero p"],
+    },
     breadcrumb: { "@id": `${SITE_URL}/#breadcrumb` },
   };
 }
