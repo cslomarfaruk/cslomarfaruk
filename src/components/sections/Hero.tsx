@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { memo } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Terminal, Sparkles, CheckCircle, FileText, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Terminal, Sparkles, Check, FileText, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import photo from '../../dp-new.jpg';
 import { useLanguage } from '@/lib/i18n';
@@ -105,43 +105,100 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* ── RIGHT COLUMN: PORTRAIT IMAGE ── */}
+        {/* ── RIGHT COLUMN: AUTHENTIC SOLUTION & CAPABILITY CARD ── */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="lg:col-span-5 relative w-full order-2 flex justify-center lg:justify-end"
         >
-          <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[380px] aspect-[4/5] group">
-            {/* Soft Ambient Glow */}
-            <div className="absolute -inset-1.5 bg-gradient-to-tr from-accent/20 to-accent/5 rounded-3xl blur-lg opacity-70 group-hover:opacity-100 transition duration-500" />
-
-            {/* Profile Image Container */}
-            <div className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden border border-border bg-surface-subtle shadow-soft-lg">
-              <Image
-                src={photo}
-                alt="Omar Faruk - Full Stack Engineer"
-                priority
-                placeholder="blur"
-                sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 380px"
-                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
+          <div className="w-full max-w-md rounded-2xl border border-border bg-surface shadow-soft-lg overflow-hidden">
+            {/* Terminal Window Header */}
+            <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-surface-subtle/80">
+              <div className="flex items-center gap-2">
+                <span className="size-2.5 rounded-full bg-red-400/80 inline-block" />
+                <span className="size-2.5 rounded-full bg-amber-400/80 inline-block" />
+                <span className="size-2.5 rounded-full bg-emerald-400/80 inline-block" />
+                <span className="ml-2 font-mono text-[11px] text-text-muted">
+                  developer.config.ts
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-accent-subtle border border-accent/20 text-accent text-[11px] font-medium">
+                <span className="size-1.5 rounded-full bg-accent animate-pulse" />
+                <span>Ready to build</span>
+              </div>
             </div>
 
-            {/* Quiet Floating Badge */}
-            <div className="absolute -bottom-3 left-3 sm:-bottom-4 sm:left-4 z-10">
-              <div className="flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-surface/90 backdrop-blur-md border border-border shadow-soft-md">
-                <Sparkles className="w-3.5 h-3.5 text-accent" />
+            {/* Code / Capability Object */}
+            <div className="p-4 sm:p-5 font-mono text-xs leading-relaxed text-text-secondary bg-surface overflow-x-auto select-none">
+              <p className="text-text-muted mb-1">// What I bring to your project</p>
+              <p>
+                <span className="text-accent font-semibold">export const</span>{' '}
+                <span className="text-text-primary font-bold">engineer</span> = {'{'}
+              </p>
+              <p className="pl-4">
+                name: <span className="text-emerald-600 dark:text-emerald-400">&quot;Omar Faruk&quot;</span>,
+              </p>
+              <p className="pl-4">
+                role: <span className="text-emerald-600 dark:text-emerald-400">&quot;Full-Stack Web Developer&quot;</span>,
+              </p>
+              <p className="pl-4">
+                focus: <span className="text-emerald-600 dark:text-emerald-400">&quot;Web Apps, SaaS MVPs &amp; APIs&quot;</span>,
+              </p>
+              <p className="pl-4">
+                stack: [
+                <span className="text-accent">&quot;Next.js 15&quot;</span>,{' '}
+                <span className="text-accent">&quot;React 19&quot;</span>,{' '}
+                <span className="text-accent">&quot;TypeScript&quot;</span>,{' '}
+                <span className="text-accent">&quot;Node.js&quot;</span>,{' '}
+                <span className="text-accent">&quot;PostgreSQL&quot;</span>,{' '}
+                <span className="text-accent">&quot;Docker&quot;</span>],
+              </p>
+              <p className="pl-4">
+                timezone: <span className="text-emerald-600 dark:text-emerald-400">&quot;Daily overlap with US / UK / EU&quot;</span>,
+              </p>
+              <p className="pl-4">
+                codeOwnership: <span className="text-emerald-600 dark:text-emerald-400">&quot;100% Client Owned&quot;</span>,
+              </p>
+              <p>{'}'};</p>
+            </div>
+
+            {/* Real Capability Checkmarks */}
+            <div className="px-4 py-3 sm:px-5 sm:py-3.5 border-t border-border bg-surface-subtle/50 space-y-2">
+              <div className="flex items-center gap-2 text-xs text-text-secondary">
+                <Check className="size-3.5 text-accent shrink-0" />
+                <span>Clean, maintainable TypeScript &amp; React code</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-text-secondary">
+                <Check className="size-3.5 text-accent shrink-0" />
+                <span>Fast page loads &amp; mobile-friendly UI</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-text-secondary">
+                <Check className="size-3.5 text-accent shrink-0" />
+                <span>Weekly live test links so you see real progress</span>
+              </div>
+            </div>
+
+            {/* Natural Mini Profile Strip */}
+            <div className="px-4 py-3 sm:px-5 sm:py-3 border-t border-border bg-surface flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="size-8 rounded-full overflow-hidden border border-border shrink-0 bg-surface-subtle">
+                  <Image
+                    src={photo}
+                    alt="Omar Faruk"
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-text-muted font-medium uppercase tracking-wider">
-                    Omar Faruk
-                  </span>
-                  <span className="text-xs font-semibold text-text-primary">
-                    Full-Stack Dev & DevOps
-                  </span>
+                  <span className="text-xs font-semibold text-text-primary leading-tight">Omar Faruk</span>
+                  <span className="text-[10px] text-text-muted">B.Sc. in CSE (SEC / SUST)</span>
                 </div>
               </div>
+              <span className="text-[11px] font-medium text-accent">
+                Direct Collaboration
+              </span>
             </div>
           </div>
         </motion.div>

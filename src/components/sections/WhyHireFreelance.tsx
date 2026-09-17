@@ -120,7 +120,7 @@ export default function WhyHireFreelance() {
           {/* Table Header */}
           <div className="grid grid-cols-12 bg-surface-subtle border-b border-border text-xs sm:text-sm font-semibold text-text-secondary">
             <div className="col-span-3 p-4 sm:p-5 flex items-center">
-              <span>Decision Factor</span>
+              <span>{language === 'bn' ? 'তুলনার বিষয়' : 'Comparison'}</span>
             </div>
             <div className="col-span-4 p-4 sm:p-5 bg-accent/5 border-x border-accent/20 text-accent flex items-center justify-between">
               <div className="flex items-center gap-1.5 font-bold">
@@ -128,7 +128,7 @@ export default function WhyHireFreelance() {
                 <span>{t.why_hire.col_freelance}</span>
               </div>
               <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-accent text-accent-text">
-                Recommended
+                {language === 'bn' ? 'সেরা পছন্দ' : 'Best Value'}
               </span>
             </div>
             <div className="col-span-3 p-4 sm:p-5 flex items-center border-r border-border text-text-primary">
@@ -212,19 +212,19 @@ export default function WhyHireFreelance() {
       <div className="mt-10 sm:mt-12 p-6 sm:p-8 rounded-2xl border border-accent/30 bg-accent/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
         <div>
           <h4 className="text-base sm:text-lg font-bold text-text-primary">
-            {language === 'bn' ? 'আপনার পরবর্তী প্রজেক্ট নিয়ে কথা বলতে চান?' : 'Ready to build high-ROI software without agency overhead?'}
+            {language === 'bn' ? 'আপনার কোনো প্রজেক্টের আইডিয়া আছে?' : 'Have a project you want to build?'}
           </h4>
           <p className="text-xs sm:text-sm text-text-secondary mt-1">
             {language === 'bn'
-              ? '২৪ ঘণ্টার মধ্যে আর্কিটেকচারাল রূপরেখা ও নির্দিষ্ট টাইমলাইন প্রদান করা হবে।'
-              : 'Direct communication, transparent estimates, and guaranteed delivery.'}
+              ? 'আপনার প্রয়োজনীয়তা জানিয়ে মেসেজ দিন, ২৪ ঘণ্টার মধ্যে উত্তর পেয়ে যাবেন।'
+              : 'Tell me what you need, and I will get back to you within 24 hours with ideas and an estimate.'}
           </p>
         </div>
         <Link
           href="#contact"
           className="btn-primary shrink-0 text-xs sm:text-sm py-2.5 px-5 rounded-xl shadow-soft-sm hover:shadow-soft-md"
         >
-          <span>{language === 'bn' ? 'প্রজেক্ট শুরু করুন' : 'Schedule Project Call / Hire Me'}</span>
+          <span>{language === 'bn' ? 'প্রজেক্ট নিয়ে কথা বলুন' : 'Discuss Your Project'}</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>

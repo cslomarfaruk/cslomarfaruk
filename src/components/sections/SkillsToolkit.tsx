@@ -140,37 +140,37 @@ export default function SkillsToolkit() {
             <div className="flex items-center gap-2 mb-2">
               <Cpu className="w-4 h-4 text-accent" />
               <span className="text-xs font-bold uppercase tracking-wider text-accent">
-                {language === 'bn' ? 'ইঞ্জিনিয়ারিং স্ট্যান্ডার্ড' : 'Engineering Best Practices'}
+                {language === 'bn' ? 'কোড লেখার মান' : 'How I Write Code'}
               </span>
             </div>
             <h4 className="text-base sm:text-lg font-bold text-text-primary mb-2">
               {language === 'bn'
-                ? 'ক্লিন কোড, সর্বোচ্চ সিকিউরিটি ও মডুলার আর্কিটেকচার'
-                : 'Clean Code, Robust Security & Maintainable Systems'}
+                ? 'পরিচ্ছন্ন, সহজবোধ্য ও দীর্ঘস্থায়ী কোড'
+                : 'Clean, Readable, and Easy to Maintain'}
             </h4>
             <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
               {language === 'bn'
-                ? 'আমি কেবল কাজ শেষ করার জন্য কোড লিখি না; ভবিষ্যতে যাতে অন্য যে কোনো প্রকৌশলী সহজেই কোডটি সম্প্রসারণ করতে পারেন, তা নিশ্চিত করি। এতে থাকে সুস্পষ্ট কমেন্ট, টাইপসেফটি, এবং স্বয়ংক্রিয় ডিপ্লয়মেন্ট প্রক্রিয়া।'
-                : 'Every project is written with strict TypeScript type safety, automated linting, modular separation of concerns, and zero-trust security principles. The result is software that is effortless to audit, maintain, and scale as your user base expands.'}
+                ? 'আমি সুস্পষ্ট গঠন ও স্ট্যান্ডার্ড নিয়ম মেনে কোড লিখি। ফলে ভবিষ্যতে আপনার টিমে অন্য যে কোনো ডেভেলপার যুক্ত হলেও কোনো বিভ্রান্তি ছাড়াই সহজেই কোড বুঝতে ও নতুন ফিচার যোগ করতে পারবেন।'
+                : 'I write clean code with proper TypeScript types, clear structure, and straightforward logic. If another developer joins your team later on, they can read the codebase and start shipping features immediately without confusion.'}
             </p>
           </div>
 
           <div className="lg:col-span-4 flex flex-col gap-2.5 border-t lg:border-t-0 lg:border-l border-border pt-4 lg:pt-0 lg:pl-6">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-text-primary">
               <CheckCircle className="w-4 h-4 text-accent shrink-0" />
-              <span>100% Strict TypeScript & Type-Safety</span>
+              <span>{language === 'bn' ? 'টাইপস্ক্রিপ্ট দিয়ে কম বাগের নিশ্চয়তা' : 'TypeScript for fewer bugs in production'}</span>
             </div>
             <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-text-primary">
               <CheckCircle className="w-4 h-4 text-accent shrink-0" />
-              <span>OWASP Top 10 Security Guardrails</span>
+              <span>{language === 'bn' ? 'নিরাপদ অথেন্টিকেশন ও ডাটা প্রোটেকশন' : 'Secure user logins & protected data'}</span>
             </div>
             <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-text-primary">
               <CheckCircle className="w-4 h-4 text-accent shrink-0" />
-              <span>Core Web Vitals & Sub-Second Loading</span>
+              <span>{language === 'bn' ? 'মোবাইল ও ডেসকটপে দ্রুত লোডিং' : 'Fast page loads on mobile & desktop'}</span>
             </div>
             <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-text-primary">
               <CheckCircle className="w-4 h-4 text-accent shrink-0" />
-              <span>Automated Docker & CI/CD Pipelines</span>
+              <span>{language === 'bn' ? 'ডকার দিয়ে সহজ সার্ভার ডিপ্লয়মেন্ট' : 'Docker setup for easy hosting & backups'}</span>
             </div>
           </div>
         </div>

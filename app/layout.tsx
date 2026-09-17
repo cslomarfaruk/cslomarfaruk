@@ -9,7 +9,7 @@ import PageTransition from "@/src/components/layout/PageTransition";
 
 export const metadata: Metadata = {
   title: "Freelance Full-Stack Developer for Hire (Remote US, UK, EU) | Omar Faruk (DEV CSL)",
-  description: "Senior freelance full-stack developer and cloud engineer for hire. Specializing in React 19, Next.js 15, Node.js, TypeScript, PostgreSQL, and Docker. Building high-performance SaaS applications, custom web platforms, and cloud infrastructure for clients in the US, UK, Europe, and worldwide at competitive rates.",
+  description: "Freelance full-stack web developer for hire. I build custom web applications, SaaS platforms, and APIs using React, Next.js, Node.js, and PostgreSQL for clients in the US, UK, Europe, and worldwide.",
   keywords: "freelance full-stack developer for hire, freelance full stack developer, hire full stack developer, Next.js developer for hire, React developer, Node.js backend engineer, remote web developer US UK, SaaS MVP development, custom web app development, Linux DevOps engineer, Docker Traefik setup, VPS server management, academic projects help, final year thesis project developer, IEEE project implementation, Omar Faruk, cslomarfaruk, devcsl, dev csl tech, Sylhet Engineering College, freelance software engineer, contract developer, ওয়েব ডেভেলপার, সফটওয়্যার ডেভেলপমেন্ট, ফুল স্ট্যাক ডেভেলপার",
   authors: [{ name: "Omar Faruk", url: "https://devcsl.tech" }],
   creator: "Omar Faruk",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Freelance Full-Stack Developer for Hire | Omar Faruk (DEV CSL)",
-    description: "Senior freelance full-stack web developer building high-performance web applications and SaaS platforms in React, Next.js, Node.js, and TypeScript. Delivering world-class software for US, UK, and European clients at transparent, competitive rates.",
+    description: "Freelance full-stack web developer for hire. I build custom web applications, SaaS platforms, and APIs using React, Next.js, Node.js, and PostgreSQL for clients in the US, UK, Europe, and worldwide.",
     url: "https://devcsl.tech",
     siteName: "DEV CSL — Omar Faruk",
     locale: "en_US",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Freelance Full-Stack Developer for Hire | Omar Faruk (DEV CSL)",
-    description: "Senior freelance full-stack web developer building high-performance web applications and SaaS platforms in React, Next.js, Node.js, and TypeScript for US, UK, and European clients.",
+    description: "Freelance full-stack web developer for hire. I build custom web applications, SaaS platforms, and APIs using React, Next.js, Node.js, and PostgreSQL.",
     images: ['https://devcsl.tech/logo.png'],
     creator: '@cslomarfaruk',
   },

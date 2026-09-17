@@ -17,7 +17,7 @@ function personSchema() {
     url: SITE_URL,
     image: `${SITE_URL}/logo.png`,
     description:
-      "Omar Faruk is a production full-stack software engineer, freelance developer, and DevOps specialist with 3+ years of battle-tested experience. He designs and builds production SaaS platforms, enterprise web applications, and Linux cloud infrastructure using Next.js, React, Node.js, TypeScript, PostgreSQL, and Docker. Available for freelance projects, contract roles, and long-term engineering engagements.",
+      "Omar Faruk is a freelance full-stack web developer and Linux specialist with 3+ years of practical experience. He builds custom web apps, SaaS platforms, and APIs using Next.js, React, Node.js, PostgreSQL, and Docker. Available for freelance projects and remote contract roles.",
     sameAs: [
       "https://github.com/cslomarfaruk",
       "https://www.linkedin.com/in/csl-omarfaruk/",
@@ -87,7 +87,7 @@ function professionalServiceSchema() {
     email: "omar@devcsl.tech",
     telephone: "+8801839467728",
     description:
-      "DEV CSL is a web engineering studio founded by Omar Faruk. We build production-ready SaaS platforms, provide freelance full-stack development, configure managed Linux VPS infrastructure with Docker, and deliver specialized academic project engineering. Serving startups, agencies, and businesses globally.",
+      "DEV CSL is a web engineering studio founded by Omar Faruk. We build custom web apps, SaaS platforms, and APIs, and configure Linux VPS servers with Docker. Serving startups and businesses worldwide.",
     address: {
       "@type": "PostalAddress",
       addressCountry: "BD",
