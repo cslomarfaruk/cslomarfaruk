@@ -1,5 +1,5 @@
 // lib/seo.ts — Structured JSON-LD Schema Generator
-// Optimized for search crawlers AND LLM authority signaling (Gemini/ChatGPT)
+// Optimized for search crawlers, Google Rich Results, and LLM authority signaling (Gemini/ChatGPT)
 
 const SITE_URL = "https://devcsl.tech";
 const PERSON_ID = `${SITE_URL}/#person`;
@@ -13,11 +13,11 @@ function personSchema() {
     "@id": PERSON_ID,
     name: "Omar Faruk",
     additionalName: "cslomarfaruk",
-    jobTitle: "Full-Stack Engineer & Technical Mentor",
+    jobTitle: "Full-Stack Software Engineer, Freelance Developer & DevOps Consultant",
     url: SITE_URL,
     image: `${SITE_URL}/logo.png`,
     description:
-      "Omar Faruk is a full-stack software engineer and technical mentor with 3+ years of production experience. He specializes in SaaS development (Next.js, React, Node.js), freelance web engineering for businesses, and hands-on technical mentorship for aspiring developers. Founder of DEV CSL.",
+      "Omar Faruk is a production full-stack software engineer, freelance developer, and DevOps specialist with 3+ years of battle-tested experience. He designs and builds production SaaS platforms, enterprise web applications, and Linux cloud infrastructure using Next.js, React, Node.js, TypeScript, PostgreSQL, and Docker. Available for freelance projects, contract roles, and long-term engineering engagements.",
     sameAs: [
       "https://github.com/cslomarfaruk",
       "https://www.linkedin.com/in/csl-omarfaruk/",
@@ -25,45 +25,39 @@ function personSchema() {
       "https://twitter.com/cslomarfaruk",
     ],
     knowsAbout: [
-      "SaaS Development",
-      "Full-Stack Web Engineering",
-      "Technical Mentorship",
-      "Next.js",
-      "React",
-      "Node.js",
+      "Full-Stack Web Development",
+      "Freelance Web Engineering",
+      "Contract Software Development",
+      "SaaS MVP Architecture",
+      "Next.js 15 & React 19",
+      "Node.js & Express / Fastify",
       "TypeScript",
-      "DevOps",
-      "Server Management",
-      "Fully Managed VPS Hosting",
-      "Domain Hosting",
-      "Cloud Infrastructure",
-      "Database Architecture",
-      "REST API Design",
-      "CI/CD Pipelines",
-      "Docker",
-      "Computer Vision",
-      "Python",
-      "PostgreSQL",
-      "MySQL",
+      "PostgreSQL & MySQL (Prisma ORM)",
+      "Linux Server Administration (Ubuntu, Debian)",
+      "Docker & Container Orchestration",
+      "Traefik Reverse Proxy & Let's Encrypt TLS",
+      "Cloudflare WAF & Turnstile Bot Mitigation",
+      "RESTful API Design & Payment Gateways",
+      "Computer Vision & Academic Research Implementation",
     ],
     hasOccupation: [
       {
         "@type": "Occupation",
-        name: "Full-Stack Software Engineer",
+        name: "Full-Stack Software Engineer & Freelance Developer",
         occupationLocation: { "@type": "Country", name: "Bangladesh" },
         description:
-          "Designs, builds, and deploys production-grade SaaS applications, admin dashboards, and automation systems for businesses worldwide.",
+          "Engineers end-to-end production SaaS applications, client management portals, and automated backends for businesses, startups, and agencies worldwide.",
         skills:
-          "Next.js, React, Node.js, TypeScript, PostgreSQL, MySQL, Docker, Linux Server Administration, CI/CD",
+          "Next.js, React, TypeScript, Node.js, PostgreSQL, MySQL, Docker, Linux Administration, Traefik, Cloudflare, CI/CD",
         experienceRequirements: "3+ years",
       },
       {
         "@type": "Occupation",
-        name: "Technical Mentor",
+        name: "Technical Mentor & Academic Project Consultant",
         description:
-          "Provides architecture guidance, code reviews, career coaching, and university project mentorship for aspiring software developers.",
+          "Provides system architecture guidance, code audits, research paper implementations (ICCIT, IEEE), and university thesis project coaching for CSE students.",
         skills:
-          "Code Review, System Architecture, Career Guidance, Project Mentorship, Technical Writing",
+          "System Architecture, Code Review, Academic Thesis Guidance, Computer Vision, Cryptography, Blockchain",
       },
     ],
     alumniOf: {
@@ -93,21 +87,28 @@ function professionalServiceSchema() {
     email: "omar@devcsl.tech",
     telephone: "+8801839467728",
     description:
-      "DEV CSL is a premium web engineering studio founded by Omar Faruk. We build production-ready SaaS applications, provide managed VPS hosting and domain services, and offer technical mentorship for aspiring developers. 3+ years of battle-tested experience delivering scalable systems.",
+      "DEV CSL is a web engineering studio founded by Omar Faruk. We build production-ready SaaS platforms, provide freelance full-stack development, configure managed Linux VPS infrastructure with Docker, and deliver specialized academic project engineering. Serving startups, agencies, and businesses globally.",
     address: {
       "@type": "PostalAddress",
       addressCountry: "BD",
     },
     areaServed: "Worldwide",
     priceRange: "$$",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: "18",
+      bestRating: "5",
+    },
     serviceType: [
-      "SaaS Application Development",
+      "Freelance Full-Stack Web Development",
+      "Contract Software Engineering",
+      "SaaS MVP Application Development",
       "Custom Web Application Development",
-      "Admin Dashboard Development",
-      "Business Process Automation",
-      "Managed VPS Server Hosting",
-      "Domain Registration & Hosting",
-      "Technical Mentorship & Code Review",
+      "Admin Dashboard & Portal Development",
+      "Linux VPS Server Management & Docker DevOps",
+      "Cloudflare Security & Anti-Bot Optimization",
+      "Academic & Thesis Project Technical Guidance",
     ],
     hasOfferCatalog: { "@id": `${SITE_URL}/#offers` },
     sameAs: [
@@ -117,25 +118,81 @@ function professionalServiceSchema() {
   };
 }
 
+function faqSchema() {
+  return {
+    "@type": "FAQPage",
+    "@id": `${SITE_URL}/#faq`,
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Are you available for freelance projects and long-term contract roles?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, I am actively available for both short-term freelance contracts (MVPs, custom web apps, feature additions) and long-term remote software engineering engagements. Reach out via the contact form or WhatsApp to discuss your project scope and timelines.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What tech stack do you specialize in for full-stack web development?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "My primary stack centers on Next.js (App Router), React 19, TypeScript, and Node.js for modern, responsive frontends and APIs. On the database and infrastructure side, I specialize in PostgreSQL, MySQL, Prisma ORM, Redis, Docker, Traefik, Linux VPS (Ubuntu/Debian), and Cloudflare edge security.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you handle complete hosting, domain, and DevOps configuration?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Every application I build can be deployed directly to your cloud or on a cost-effective Linux VPS with automated Docker Compose environments, Traefik reverse proxy, automated Let's Encrypt SSL/TLS certificates, and Cloudflare WAF protection with zero downtime.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How do you structure project milestones, pricing, and communication?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Engagements typically follow a structured 4-step workflow: Discovery & Planning, Architecture & Prototyping, Sprint-Based Development with live preview demos, and Production Deployment. Communication is transparent via WhatsApp, Slack, or Email with regular code and milestone check-ins.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you offer ongoing technical support and maintenance after project completion?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. I provide post-launch warranties for bug fixes and offer ongoing monthly maintenance retainers to handle security updates, server monitoring, database backups, and new feature iterations.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can you assist with academic, university thesis, or research project development?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. I provide specialized end-to-end technical implementation, live web deployment, and architecture documentation for CSE students and researchers working on capstone projects, IEEE implementations, and thesis defenses with special student-accessible pricing.",
+        },
+      },
+    ],
+  };
+}
+
 function courseSchema() {
   return {
     "@type": "Course",
     "@id": `${SITE_URL}/#mentorship`,
-    name: "Technical Mentorship Program by Omar Faruk",
+    name: "Technical Mentorship & Project Guidance Program by Omar Faruk",
     description:
-      "Hands-on technical mentorship for aspiring software developers. Covers university project guidance, production architecture reviews, code reviews, career coaching, and interview preparation. Delivered by a full-stack engineer with 3+ years of production experience.",
+      "Hands-on technical mentorship for aspiring software developers and CSE students. Covers university capstone guidance, production architecture reviews, code reviews, career coaching, and interview preparation. Delivered by Omar Faruk.",
     provider: { "@id": ORG_ID },
     instructor: { "@id": PERSON_ID },
     courseMode: "Online",
     isAccessibleForFree: false,
     inLanguage: ["en", "bn"],
     teaches: [
-      "Full-Stack Web Development",
-      "System Architecture & Design",
-      "Production Deployment & DevOps",
-      "Code Review Best Practices",
-      "Career Development for Developers",
-      "University Project Implementation",
+      "Full-Stack Web Development (Next.js, Node.js)",
+      "System Architecture & Database Design",
+      "Production Deployment & Linux DevOps",
+      "Code Review & Best Practices",
+      "University Project & Thesis Implementation",
       "Technical Documentation & Viva Preparation",
     ],
     audience: {
@@ -156,42 +213,42 @@ function offerCatalogSchema() {
   return {
     "@type": "OfferCatalog",
     "@id": `${SITE_URL}/#offers`,
-    name: "DEV CSL Services & Products",
+    name: "DEV CSL Engineering Services & Engagements",
     itemListElement: [
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "SaaS & Web Application Development",
+          name: "Freelance Full-Stack Web Application Development",
           description:
-            "End-to-end development of production-ready web applications, admin dashboards, and SaaS platforms using Next.js, React, and Node.js.",
+            "End-to-end design, implementation, and deployment of scalable SaaS platforms, dashboards, and custom web applications with Next.js, React, and Node.js.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Managed VPS Hosting & Domain Services",
+          name: "Contract Software Engineering (Monthly/Sprint Retainer)",
           description:
-            "Fully managed Linux VPS servers with security hardening, monitoring, and domain registration services.",
+            "Dedicated senior-level engineering capacity for startups and businesses needing ongoing feature development, performance optimization, and backend architecture.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Technical Mentorship Sessions",
+          name: "Managed Linux VPS Hosting & DevOps Setup",
           description:
-            "1:1 mentorship sessions covering architecture reviews, code reviews, career coaching, and university project guidance. Subsidized rates for verified students.",
+            "Full server provisioning, Docker containerization, Traefik reverse proxy with automated SSL, and Cloudflare security hardening.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Business Process Automation",
+          name: "Academic & Thesis Project Implementation",
           description:
-            "Custom automation workflows, API integrations, and system orchestration to eliminate manual work and reduce operational costs.",
+            "Technical architecture, coding, and live hosting setup for university capstones, IEEE paper projects, and CSE research prototypes.",
         },
       },
     ],
@@ -205,7 +262,7 @@ function websiteSchema() {
     url: SITE_URL,
     name: "DEV CSL — Omar Faruk",
     description:
-      "SaaS Development, Technical Mentorship & Digital Products by Omar Faruk",
+      "Full-Stack Web Development, SaaS Engineering, and Technical Mentorship by Omar Faruk",
     publisher: { "@id": ORG_ID },
     inLanguage: ["en-US", "bn-BD"],
     potentialAction: {
@@ -221,9 +278,9 @@ function webpageSchema() {
     "@type": "WebPage",
     "@id": WEBPAGE_ID,
     url: SITE_URL,
-    name: "Omar Faruk — SaaS Developer, Technical Mentor & Product Builder | DEV CSL",
+    name: "Omar Faruk — Full-Stack Developer for Hire (Freelance & Contract) | DEV CSL",
     description:
-      "Full-stack engineer with 3+ years building production SaaS for clients, mentoring aspiring developers, and shipping digital products. Based in Bangladesh, serving clients worldwide.",
+      "Full-stack software engineer with 3+ years experience building production SaaS, scalable web apps, and managing Linux cloud servers. Available for freelance projects and long-term contracts.",
     isPartOf: { "@id": WEBSITE_ID },
     about: { "@id": PERSON_ID },
     breadcrumb: { "@id": `${SITE_URL}/#breadcrumb` },
@@ -255,23 +312,29 @@ function navigationSchema() {
         "@type": "SiteNavigationElement",
         position: 1,
         name: "Services",
-        url: `${SITE_URL}/#skills`,
+        url: `${SITE_URL}/#services`,
       },
       {
         "@type": "SiteNavigationElement",
         position: 2,
-        name: "Mentorship",
-        url: `${SITE_URL}/#mentorship`,
-      },
-      {
-        "@type": "SiteNavigationElement",
-        position: 3,
         name: "Projects",
         url: `${SITE_URL}/#projects`,
       },
       {
         "@type": "SiteNavigationElement",
+        position: 3,
+        name: "Mentorship",
+        url: `${SITE_URL}/#mentorship`,
+      },
+      {
+        "@type": "SiteNavigationElement",
         position: 4,
+        name: "FAQ",
+        url: `${SITE_URL}/#faq`,
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 5,
         name: "Contact",
         url: `${SITE_URL}/#contact`,
       },
@@ -291,6 +354,7 @@ export function generatePageSchema() {
       professionalServiceSchema(),
       courseSchema(),
       offerCatalogSchema(),
+      faqSchema(),
       websiteSchema(),
       webpageSchema(),
       breadcrumbSchema(),

@@ -8,9 +8,9 @@ import { ThemeProvider } from "@/src/components/ThemeProvider";
 import PageTransition from "@/src/components/layout/PageTransition";
 
 export const metadata: Metadata = {
-  title: "DEV CSL — Full-Stack Developer & DevOps | Omar Faruk",
-  description: "Full-stack developer and Linux/DevOps engineer. CSE graduate from Sylhet Engineering College. Building production SaaS, blockchain systems (CertiChain), academic projects, and managing VPS infrastructure with Docker, Traefik, and Cloudflare. 3+ years of hands-on experience.",
-  keywords: "SaaS developer, academic projects, final year project help, university project developer, full stack developer, web development, software engineer, Next.js expert, React developer, Node.js, DevOps, Linux engineer, Docker, Traefik, VPS management, blockchain developer, ZK-proofs, CertiChain, managed VPS hosting, domain hosting, freelance developer, IEEE project implementation, ICCIT paper, board viva help, Omar Faruk, cslomarfaruk, devcsl, dev csl tech, Sylhet Engineering College, web engineering studio, custom software development, production-ready web apps, ওয়েব ডেভেলপমেন্ট, সফটওয়্যার ডেভেলপমেন্ট, একাডেমিক প্রজেক্ট, ওমার ফারুক, ব্লকচেইন",
+  title: "Omar Faruk — Full-Stack Developer for Hire | Freelance & Contract Web Engineering",
+  description: "Senior full-stack software engineer and Linux/DevOps specialist with 3+ years experience. Building production SaaS applications, custom web platforms, and high-availability cloud infrastructure with Next.js 15, React 19, Node.js, and Docker. Available for freelance and long-term engagements.",
+  keywords: "hire full stack developer, freelance full stack web developer, Next.js developer for hire, React developer, Node.js backend engineer, SaaS MVP development, custom web app development, Linux DevOps engineer, Docker Traefik setup, VPS server management, academic projects help, final year thesis project developer, IEEE project implementation, Omar Faruk, cslomarfaruk, devcsl, dev csl tech, Sylhet Engineering College, freelance software engineer, contract developer, ওয়েব ডেভেলপার, সফটওয়্যার ডেভেলপমেন্ট, ফুল স্ট্যাক ডেভেলপার",
   authors: [{ name: "Omar Faruk", url: "https://devcsl.tech" }],
   creator: "Omar Faruk",
   publisher: "DEV.CSL",

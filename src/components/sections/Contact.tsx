@@ -212,11 +212,27 @@ export default function Contact() {
                           onChange={handleChange}
                           className="w-full rounded-xl border border-border bg-surface-subtle px-4 py-2.5 text-sm text-text-primary focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all appearance-none cursor-pointer pr-10"
                         >
-                          <option value="Business">Business / Founder</option>
-                          <option value="Student">Student (Academic / Thesis)</option>
-                          <option value="Startup">Startup Team</option>
-                          <option value="Agency">Agency / Partner</option>
-                          <option value="Others">Other</option>
+                          <option value="Freelance">
+                            {language === 'bn' ? 'ফ্রিল্যান্স প্রজেক্ট' : 'Freelance Web Project'}
+                          </option>
+                          <option value="Contract">
+                            {language === 'bn' ? 'চুক্তিভিত্তিক / ফুল-টাইম রিমোট হায়ার' : 'Contract / Long-Term Hire'}
+                          </option>
+                          <option value="SaaS">
+                            {language === 'bn' ? 'SaaS MVP / কাস্টম ওয়েব অ্যাপ' : 'SaaS MVP / Custom Web App'}
+                          </option>
+                          <option value="Student">
+                            {language === 'bn' ? 'একাডেমিক / থিসিস প্রজেক্ট' : 'Student (Academic / Thesis)'}
+                          </option>
+                          <option value="DevOps">
+                            {language === 'bn' ? 'লিনাক্স VPS / ডকার ডেভঅপস' : 'Linux VPS / Docker DevOps'}
+                          </option>
+                          <option value="Agency">
+                            {language === 'bn' ? 'এজেন্সি / পার্টনারশিপ' : 'Agency / Partner'}
+                          </option>
+                          <option value="Others">
+                            {language === 'bn' ? 'অন্যান্য' : 'Other Inquiry'}
+                          </option>
                         </select>
                         <ChevronDown className="w-4 h-4 text-text-muted absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>

@@ -108,13 +108,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="#faq" className="hover:text-accent transition-colors">
+                  {language === 'bn' ? 'প্রশ্নোত্তর' : 'Frequently Asked Questions (FAQ)'}
+                </Link>
+              </li>
+              <li>
                 <Link href="#contact" className="hover:text-accent transition-colors">
                   {language === 'bn' ? 'যোগাযোগ' : 'Get in Touch'}
                 </Link>
               </li>
               <li className="pt-1">
                 <a
-                  href="/omar_cv (4).pdf"
+                  href="/omar_cv.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-accent hover:text-accent-hover transition-colors inline-flex items-center gap-1.5 font-medium"
