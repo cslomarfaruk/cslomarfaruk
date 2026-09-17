@@ -114,8 +114,52 @@ export default function WhyHireFreelance() {
         </p>
       </motion.div>
 
-      {/* Comparison Grid */}
-      <div className="overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0">
+      {/* Mobile Stacked Comparison Cards (Phones < 640px) */}
+      <div className="block sm:hidden space-y-3.5 mb-8">
+        <div className="flex items-center justify-between text-[11px] text-text-muted px-1 pb-1">
+          <span>{language === 'bn' ? 'সরাসরি তুলনা' : 'Direct Comparison'}</span>
+          <span className="text-accent font-semibold">{t.why_hire.col_freelance} vs {t.why_hire.col_agency}</span>
+        </div>
+        {comparisonRows.map((row, idx) => (
+          <div key={idx} className="editorial-card p-4 bg-surface border border-border space-y-2.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-text-muted block">
+              {row.metric}
+            </span>
+
+            {/* DEV CSL / Freelance Highlight */}
+            <div className="p-3 rounded-xl bg-accent-subtle/80 border border-accent/20">
+              <div className="flex items-center justify-between gap-2 mb-1">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-accent">
+                  <Code2 className="w-3.5 h-3.5 text-accent" />
+                  <span>{t.why_hire.col_freelance}</span>
+                </div>
+                <span className="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-accent text-accent-text">
+                  {language === 'bn' ? 'সেরা' : 'Best'}
+                </span>
+              </div>
+              <p className="text-xs font-semibold text-text-primary flex items-start gap-1.5 mt-1">
+                <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" />
+                <span>{row.freelance}</span>
+              </p>
+            </div>
+
+            {/* Alternative options */}
+            <div className="grid grid-cols-2 gap-2 text-[11px] pt-0.5">
+              <div className="p-2.5 rounded-lg bg-surface-subtle border border-border/60">
+                <span className="text-[10px] text-text-muted font-medium block mb-0.5">{t.why_hire.col_agency}</span>
+                <span className="text-text-secondary leading-snug">{row.agency}</span>
+              </div>
+              <div className="p-2.5 rounded-lg bg-surface-subtle border border-border/60">
+                <span className="text-[10px] text-text-muted font-medium block mb-0.5">{t.why_hire.col_inhouse}</span>
+                <span className="text-text-secondary leading-snug">{row.inhouse}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop / Tablet Comparison Grid (Screens >= 640px) */}
+      <div className="hidden sm:block overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0">
         <div className="min-w-[720px] rounded-2xl border border-border bg-surface overflow-hidden shadow-soft-sm">
           {/* Table Header */}
           <div className="grid grid-cols-12 bg-surface-subtle border-b border-border text-xs sm:text-sm font-semibold text-text-secondary">

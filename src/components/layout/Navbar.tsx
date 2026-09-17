@@ -251,7 +251,7 @@ export default function Navbar() {
 
                 <div className="pt-4 mt-2 border-t border-border flex flex-col gap-2.5">
                   <a
-                    href="/omar_cv (7).pdf"
+                    href="/omar_cv.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}

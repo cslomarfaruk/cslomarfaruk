@@ -67,9 +67,6 @@ export default function Services() {
       id="services"
       className="px-4 sm:px-6 py-16 sm:py-24 max-w-6xl mx-auto border-t border-border relative scroll-mt-20"
     >
-      {/* Anchor fallback for old #skills links */}
-      <span id="skills" className="absolute -top-24 left-0" />
-
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 15 }}

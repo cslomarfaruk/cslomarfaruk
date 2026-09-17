@@ -140,14 +140,16 @@ export default function Hero() {
                 name: <span className="text-emerald-600 dark:text-emerald-400">&quot;Omar Faruk&quot;</span>,
               </p>
               <p className="pl-4">
-                alias: <span className="text-emerald-600 dark:text-emerald-400">&quot;cslomarfaruk&quot;</span>,{' '}
-                <span className="text-text-muted">// developer omar / developer omer faruk</span>
+                alias: <span className="text-emerald-600 dark:text-emerald-400">&quot;cslomarfaruk&quot;</span>,
+              </p>
+              <p className="pl-4 text-[10px] text-text-muted">
+                // developer omar &bull; developer omer faruk
               </p>
               <p className="pl-4">
                 role: <span className="text-emerald-600 dark:text-emerald-400">&quot;Full-Stack Web Developer for Hire&quot;</span>,
               </p>
               <p className="pl-4">
-                location: <span className="text-emerald-600 dark:text-emerald-400">&quot;Bangladesh (BD) · Remote Worldwide (US, UK, EU)&quot;</span>,
+                location: <span className="text-emerald-600 dark:text-emerald-400">&quot;Bangladesh (BD) · Global Remote&quot;</span>,
               </p>
               <p className="pl-4">
                 focus: <span className="text-emerald-600 dark:text-emerald-400">&quot;Web Apps, SaaS MVPs &amp; APIs&quot;</span>,
@@ -217,10 +219,10 @@ export default function Hero() {
 const HeroStat = memo(function HeroStat({ value, label }: { value: string; label: string }) {
   return (
     <div className="flex flex-col">
-      <span className="text-2xl sm:text-3xl font-bold tracking-tight text-text-primary mb-0.5">
+      <span className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-text-primary mb-0.5">
         {value}
       </span>
-      <span className="text-[11px] sm:text-xs text-text-muted font-medium leading-tight">
+      <span className="text-[10px] sm:text-xs text-text-muted font-medium leading-tight line-clamp-2">
         {label}
       </span>
     </div>
