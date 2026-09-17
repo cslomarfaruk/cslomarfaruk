@@ -168,66 +168,66 @@ function faqSchema() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "Are you available for freelance projects and long-term contract roles?",
+        name: "Are you available for freelance projects or contract work?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, I am actively available for both short-term freelance contracts (MVPs, custom web apps, feature additions) and long-term remote software engineering engagements. Reach out via the contact form or WhatsApp to discuss your project scope and timelines.",
+          text: "Yes, I am actively available for both fixed-price freelance projects (like building a new web app or adding features) and ongoing contract roles (part-time or full-time remote). Send me a message to check current availability.",
         },
       },
       {
         "@type": "Question",
-        name: "What tech stack do you specialize in for full-stack web development?",
+        name: "What tech stack do you work with?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "My primary stack centers on Next.js (App Router), React 19, TypeScript, and Node.js for modern, responsive frontends and APIs. On the database and infrastructure side, I specialize in PostgreSQL, MySQL, Prisma ORM, Redis, Docker, Traefik, Linux VPS (Ubuntu/Debian), and Cloudflare edge security.",
+          text: "I mainly use React 19, Next.js 15, TypeScript, and Node.js for code, PostgreSQL and MySQL for databases, and Docker on Linux servers for hosting.",
         },
       },
       {
         "@type": "Question",
-        name: "Do you handle complete hosting, domain, and DevOps configuration?",
+        name: "Can you help set up hosting and domain?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. Every application I build can be deployed directly to your cloud or on a cost-effective Linux VPS with automated Docker Compose environments, Traefik reverse proxy, automated Let's Encrypt SSL/TLS certificates, and Cloudflare WAF protection with zero downtime.",
+          text: "Yes, I handle the entire deployment process. I configure your domain, set up automatic SSL certificates (HTTPS), and deploy the app with Docker on an affordable Linux VPS.",
         },
       },
       {
         "@type": "Question",
-        name: "How do you structure project milestones, pricing, and communication?",
+        name: "How do we communicate during the project?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Engagements typically follow a structured 4-step workflow: Discovery & Planning, Architecture & Prototyping, Sprint-Based Development with live preview demos, and Production Deployment. Communication is transparent via WhatsApp, Slack, or Email with regular code and milestone check-ins.",
+          text: "We can talk via WhatsApp, Slack, Discord, or Email — whatever fits your workflow best. For meetings or project reviews, we can do quick Google Meet or Zoom calls.",
         },
       },
       {
         "@type": "Question",
-        name: "Do you offer ongoing technical support and maintenance after project completion?",
+        name: "What support do you provide after launch?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. I provide post-launch warranties for bug fixes and offer ongoing monthly maintenance retainers to handle security updates, server monitoring, database backups, and new feature iterations.",
+          text: "Every project includes free bug-fix support for the first 30 days after launch. If you need ongoing maintenance, new features, or server monitoring later on, we can do a simple monthly retainer.",
         },
       },
       {
         "@type": "Question",
-        name: "Can you assist with academic, university thesis, or research project development?",
+        name: "Can you help university students with capstone or thesis projects?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. I provide specialized end-to-end technical implementation, live web deployment, and architecture documentation for CSE students and researchers working on capstone projects, IEEE implementations, and thesis defenses with special student-accessible pricing.",
+          text: "Yes. I help computer science students build working prototypes for their final year projects, deploy them live, and explain the code so they are fully prepared for defense.",
         },
       },
       {
         "@type": "Question",
-        name: "How do you handle timezone differences and international communication with US, UK, and European clients?",
+        name: "How do you handle timezone differences with US, UK, or EU clients?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "I maintain 4–6 hours of daily working overlap with US Eastern (EST), US Pacific (PST), and UK/European (GMT/CET) time zones. Communication is rapid and transparent via Slack, WhatsApp, or Discord, combined with weekly video demonstrations on Zoom/Google Meet and asynchronous Loom walkthroughs.",
+          text: "I maintain 4 to 6 hours of daily overlap with US (Eastern & Pacific) and European/UK working hours. You will get fast responses during your workday and clear weekly video demos.",
         },
       },
       {
         "@type": "Question",
-        name: "What are your payment terms, and who owns the intellectual property and source code?",
+        name: "Who owns the code and intellectual property?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "You retain 100% intellectual property (IP) and source code ownership upon milestone delivery. Fixed-price contracts typically operate on a 50/50 milestone basis, or weekly sprint retainers. Payments are accepted worldwide via Wise, Stripe, International Bank Wire (SWIFT), Credit Card, or Cryptocurrency (USDT).",
+          text: "You own 100% of the code and intellectual property as soon as milestones are completed. I provide full access to the GitHub repository and all server credentials.",
         },
       },
       {
@@ -235,7 +235,7 @@ function faqSchema() {
         name: "Looking for a developer for hire in BD or remotely? Why work with Omar Faruk (cslomarfaruk)?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Whether you are searching for a developer for hire in BD or need the best developer in Bangladesh for remote contracts across the US, UK, and EU, Omar Faruk (known online as cslomarfaruk, developer omar, or developer omer faruk) provides direct, senior-level full-stack development in React, Next.js, and Node.js without agency markups and with 100% code ownership.",
+          text: "Whether you are looking for a reliable developer for hire in BD or need the best developer in Bangladesh for remote contracts in the US, UK, or Europe, I offer senior full-stack engineering with zero agency overhead. Known online as cslomarfaruk and developer omar (or developer omer faruk), I combine Next.js, React, and Node.js expertise with clear daily communication, transparent milestone pricing, and 100% code ownership.",
         },
       },
     ],
