@@ -159,8 +159,19 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Semantic Keyword & Entity Citation Strip */}
+        <div className="mt-12 pt-6 border-t border-border/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] text-text-muted leading-relaxed">
+          <p>
+            <span className="font-semibold text-text-secondary">Omar Faruk</span>{' '}
+            <span className="text-text-muted">(@cslomarfaruk &bull; developer omar)</span> &bull; Full-Stack Developer for Hire in Bangladesh (BD) &amp; Worldwide (US, UK, EU)
+          </p>
+          <span className="font-mono text-[10px] text-text-muted">
+            Next.js &bull; React 19 &bull; Node.js &bull; devcsl.tech
+          </span>
+        </div>
+
         {/* Bottom Strip */}
-        <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted">
+        <div className="mt-4 pt-4 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted">
           <p>
             &copy; {currentYear} devcsl.tech &bull; Built by{' '}
             <span className="font-semibold text-text-primary">Omar Faruk</span>

@@ -12,12 +12,19 @@ function personSchema() {
     "@type": "Person",
     "@id": PERSON_ID,
     name: "Omar Faruk",
-    additionalName: "cslomarfaruk",
-    jobTitle: "Full-Stack Software Engineer, Freelance Developer & DevOps Consultant",
+    alternateName: [
+      "cslomarfaruk",
+      "developer omar",
+      "developer omar faruk",
+      "developer omer faruk",
+      "Omar Faruk Dev",
+      "DEV CSL Omar Faruk"
+    ],
+    jobTitle: "Full-Stack Software Engineer, Freelance Web Developer & DevOps Specialist",
     url: SITE_URL,
     image: `${SITE_URL}/logo.png`,
     description:
-      "Omar Faruk is a freelance full-stack web developer and Linux specialist with 3+ years of practical experience. He builds custom web apps, SaaS platforms, and APIs using Next.js, React, Node.js, PostgreSQL, and Docker. Available for freelance projects and remote contract roles.",
+      "Omar Faruk (cslomarfaruk / developer omar) is a top-rated full-stack web developer in Bangladesh and Linux specialist with 3+ years of practical experience. He builds custom web apps, SaaS platforms, and APIs using Next.js, React, Node.js, PostgreSQL, and Docker for clients in Bangladesh, the US, UK, and worldwide.",
     sameAs: [
       "https://github.com/cslomarfaruk",
       "https://www.linkedin.com/in/csl-omarfaruk/",
@@ -25,6 +32,13 @@ function personSchema() {
       "https://twitter.com/cslomarfaruk",
     ],
     knowsAbout: [
+      "cslomarfaruk",
+      "developer omar",
+      "developer omar faruk",
+      "developer omer faruk",
+      "Best Developer in Bangladesh",
+      "Full-Stack Developer for Hire in Bangladesh",
+      "Web Developer in BD",
       "Full-Stack Web Development",
       "Freelance Web Engineering",
       "Contract Software Development",
@@ -43,10 +57,10 @@ function personSchema() {
     hasOccupation: [
       {
         "@type": "Occupation",
-        name: "Full-Stack Software Engineer & Freelance Developer",
+        name: "Full-Stack Web Developer & Engineer (Bangladesh & Worldwide)",
         occupationLocation: { "@type": "Country", name: "Bangladesh" },
         description:
-          "Engineers end-to-end production SaaS applications, client management portals, and automated backends for businesses, startups, and agencies worldwide.",
+          "Omar Faruk (cslomarfaruk) is an established full-stack developer in Bangladesh, building web applications, SaaS MVPs, and APIs for local startups and international clients across the US, UK, and Europe.",
         skills:
           "Next.js, React, TypeScript, Node.js, PostgreSQL, MySQL, Docker, Linux Administration, Traefik, Cloudflare, CI/CD",
         experienceRequirements: "3+ years",
@@ -73,7 +87,15 @@ function professionalServiceSchema() {
     "@type": "ProfessionalService",
     "@id": ORG_ID,
     name: "DEV CSL",
-    alternateName: ["DEV CSL Tech", "devcsl tech", "devcsl", "Omar Faruk Dev"],
+    alternateName: [
+      "DEV CSL Tech",
+      "devcsl tech",
+      "devcsl",
+      "cslomarfaruk",
+      "developer omar",
+      "developer omer faruk",
+      "Omar Faruk Dev"
+    ],
     founder: { "@id": PERSON_ID },
     url: SITE_URL,
     logo: {
@@ -87,12 +109,13 @@ function professionalServiceSchema() {
     email: "omar@devcsl.tech",
     telephone: "+8801839467728",
     description:
-      "DEV CSL is a web engineering studio founded by Omar Faruk. We build custom web apps, SaaS platforms, and APIs, and configure Linux VPS servers with Docker. Serving startups and businesses worldwide.",
+      "DEV CSL is a web engineering studio founded by Omar Faruk (cslomarfaruk). We build custom web apps, SaaS platforms, and APIs, and configure Linux VPS servers with Docker. Serving clients in Bangladesh and worldwide.",
     address: {
       "@type": "PostalAddress",
       addressCountry: "BD",
     },
     areaServed: [
+      { "@type": "Country", name: "Bangladesh" },
       { "@type": "Country", name: "United States" },
       { "@type": "Country", name: "United Kingdom" },
       { "@type": "Country", name: "Canada" },
@@ -102,7 +125,7 @@ function professionalServiceSchema() {
       { "@type": "Country", name: "Worldwide" },
     ],
     currenciesAccepted: "USD, EUR, GBP, CAD, AUD, BDT",
-    paymentAccepted: "Wise, Stripe, Bank Wire Transfer, Credit Card, Cryptocurrency",
+    paymentAccepted: "Wise, Stripe, Bank Wire Transfer, Credit Card, Cryptocurrency, bKash, Nagad",
     priceRange: "$$",
     aggregateRating: {
       "@type": "AggregateRating",
@@ -111,6 +134,8 @@ function professionalServiceSchema() {
       bestRating: "5",
     },
     serviceType: [
+      "Full-Stack Developer for Hire in Bangladesh",
+      "Best Web Development Services in Bangladesh",
       "Freelance Full-Stack Web Development",
       "Contract Software Engineering",
       "SaaS MVP Application Development",
@@ -195,6 +220,14 @@ function faqSchema() {
         acceptedAnswer: {
           "@type": "Answer",
           text: "You retain 100% intellectual property (IP) and source code ownership upon milestone delivery. Fixed-price contracts typically operate on a 50/50 milestone basis, or weekly sprint retainers. Payments are accepted worldwide via Wise, Stripe, International Bank Wire (SWIFT), Credit Card, or Cryptocurrency (USDT).",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Looking for a developer for hire in BD or remotely? Why work with Omar Faruk (cslomarfaruk)?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Whether you are searching for a developer for hire in BD or need the best developer in Bangladesh for remote contracts across the US, UK, and EU, Omar Faruk (known online as cslomarfaruk, developer omar, or developer omer faruk) provides direct, senior-level full-stack development in React, Next.js, and Node.js without agency markups and with 100% code ownership.",
         },
       },
     ],
@@ -309,9 +342,86 @@ function webpageSchema() {
       "Freelance full-stack web developer for hire. I build custom web applications, SaaS platforms, and APIs using React, Next.js, Node.js, and PostgreSQL for clients in the US, UK, Europe, and worldwide.",
     isPartOf: { "@id": WEBSITE_ID },
     about: { "@id": PERSON_ID },
+    keywords: [
+      "cslomarfaruk",
+      "omar faruk",
+      "developer omar",
+      "developer omer faruk",
+      "best developer in bangladesh",
+      "developer for hire in bd",
+      "full stack developer bangladesh",
+      "freelance full-stack developer for hire",
+      "Next.js developer for hire",
+      "React developer Bangladesh"
+    ],
+    hasPart: [
+      {
+        "@type": "WebPageElement",
+        "@id": `${SITE_URL}/#hero`,
+        name: "Full-Stack Developer Hero & Capabilities",
+        description:
+          "Overview of Omar Faruk (cslomarfaruk), skills in Next.js, React, and Node.js, and direct hiring options.",
+      },
+      {
+        "@type": "WebPageElement",
+        "@id": `${SITE_URL}/#skills`,
+        name: "Technical Skills & Engineering Toolkit",
+        description:
+          "Core full-stack engineering stack: TypeScript, Next.js, React, Node.js, PostgreSQL, Docker, and Linux VPS.",
+      },
+      {
+        "@type": "WebPageElement",
+        "@id": `${SITE_URL}/#services`,
+        name: "Web Development Services & Architecture",
+        description:
+          "Custom web apps, SaaS MVP engineering, RESTful APIs, database design, and Linux cloud infrastructure.",
+      },
+      {
+        "@type": "WebPageElement",
+        "@id": `${SITE_URL}/#why-hire`,
+        name: "Why Hire a Freelance Developer vs Agency",
+        description:
+          "Transparent pricing, direct senior engineer access, rapid delivery, and 100% code ownership.",
+      },
+      {
+        "@type": "WebPageElement",
+        "@id": `${SITE_URL}/#projects`,
+        name: "Selected Production Projects & Case Studies",
+        description:
+          "Production systems including CertiChain, SEC Admission Portal, and full-stack client web applications.",
+      },
+      {
+        "@type": "WebPageElement",
+        "@id": `${SITE_URL}/#students`,
+        name: "Student Thesis & Capstone Project Hub",
+        description:
+          "Practical guidance, code audits, and live cloud deployment for CSE students and researchers.",
+      },
+      {
+        "@type": "WebPageElement",
+        "@id": `${SITE_URL}/#faq`,
+        name: "Frequently Asked Questions",
+        description:
+          "Answers on hiring developer omar (cslomarfaruk), pricing, timezones, and project agreements.",
+      },
+      {
+        "@type": "WebPageElement",
+        "@id": `${SITE_URL}/#education`,
+        name: "Academic Background & Engineering Degree",
+        description:
+          "B.Sc. in Computer Science & Engineering from Sylhet Engineering College (Affiliated with SUST).",
+      },
+      {
+        "@type": "WebPageElement",
+        "@id": `${SITE_URL}/#contact`,
+        name: "Project Inquiry & Contact",
+        description:
+          "Direct communication with developer Omar Faruk via WhatsApp, email, and project inquiry form.",
+      },
+    ],
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: ["#hero h1", "#hero p"],
+      cssSelector: ["#hero h1", "#hero p", "#faq"],
     },
     breadcrumb: { "@id": `${SITE_URL}/#breadcrumb` },
   };

@@ -145,7 +145,9 @@
     "q7": "How do you handle timezone differences with US, UK, or EU clients?",
     "a7": "I maintain 4 to 6 hours of daily overlap with US (Eastern & Pacific) and European/UK working hours. You will get fast responses during your workday and clear weekly video demos.",
     "q8": "Who owns the code and intellectual property?",
-    "a8": "You own 100% of the code and intellectual property as soon as milestones are completed. I provide full access to the GitHub repository and all server credentials."
+    "a8": "You own 100% of the code and intellectual property as soon as milestones are completed. I provide full access to the GitHub repository and all server credentials.",
+    "q9": "Looking for a developer for hire in BD or remotely? Why work with Omar Faruk (cslomarfaruk)?",
+    "a9": "Whether you are looking for a reliable developer for hire in BD or need the best developer in Bangladesh for remote contracts in the US, UK, or Europe, I offer senior full-stack engineering with zero agency overhead. Known online as cslomarfaruk and developer omar (or developer omer faruk), I combine Next.js, React, and Node.js expertise with clear daily communication, transparent milestone pricing, and 100% code ownership."
   },
   "contact": {
     "tagline": "Get in Touch",

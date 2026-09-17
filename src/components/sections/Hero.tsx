@@ -140,7 +140,14 @@ export default function Hero() {
                 name: <span className="text-emerald-600 dark:text-emerald-400">&quot;Omar Faruk&quot;</span>,
               </p>
               <p className="pl-4">
-                role: <span className="text-emerald-600 dark:text-emerald-400">&quot;Full-Stack Web Developer&quot;</span>,
+                alias: <span className="text-emerald-600 dark:text-emerald-400">&quot;cslomarfaruk&quot;</span>,{' '}
+                <span className="text-text-muted">// developer omar / developer omer faruk</span>
+              </p>
+              <p className="pl-4">
+                role: <span className="text-emerald-600 dark:text-emerald-400">&quot;Full-Stack Web Developer for Hire&quot;</span>,
+              </p>
+              <p className="pl-4">
+                location: <span className="text-emerald-600 dark:text-emerald-400">&quot;Bangladesh (BD) · Remote Worldwide (US, UK, EU)&quot;</span>,
               </p>
               <p className="pl-4">
                 focus: <span className="text-emerald-600 dark:text-emerald-400">&quot;Web Apps, SaaS MVPs &amp; APIs&quot;</span>,
@@ -192,8 +199,8 @@ export default function Hero() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xs font-semibold text-text-primary leading-tight">Omar Faruk</span>
-                  <span className="text-[10px] text-text-muted">B.Sc. in CSE (SEC / SUST)</span>
+                  <span className="text-xs font-semibold text-text-primary leading-tight">Omar Faruk (@cslomarfaruk)</span>
+                  <span className="text-[10px] text-text-muted">Full-Stack Developer · SEC / SUST (BD)</span>
                 </div>
               </div>
               <span className="text-[11px] font-medium text-accent">

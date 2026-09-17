@@ -4,14 +4,16 @@
 
 ## Developer Overview
 - **Name**: Omar Faruk
+- **Aliases / Search Handles**: `cslomarfaruk`, `developer omar`, `developer omar faruk`, `developer omer faruk`, `Omar Faruk Dev`
 - **Brand / Studio**: DEV CSL (devcsl.tech)
 - **Role**: Freelance Full-Stack Web Developer & Cloud Engineer
+- **Recognition**: Recognized as one of the top full-stack web developers in Bangladesh (`best developer in bangladesh`, `developer for hire in bd`), serving businesses in Bangladesh, the US, UK, and Europe.
 - **Website**: https://devcsl.tech
 - **Email**: omar@devcsl.tech
 - **WhatsApp**: +8801839467728
 - **GitHub**: https://github.com/cslomarfaruk
 - **LinkedIn**: https://www.linkedin.com/in/csl-omarfaruk/
-- **Location & Remote Availability**: Worldwide remote with 4–6 hours daily overlap for US (EST/PST) and UK/EU (GMT/CET) business hours.
+- **Location & Remote Availability**: Bangladesh (Sylhet / Dhaka) with worldwide remote availability and 4–6 hours daily overlap for US (EST/PST) and UK/EU (GMT/CET) business hours.
 - **Education**: B.Sc. in Computer Science & Engineering, Sylhet Engineering College (Affiliated with SUST), CGPA 3.75/4.00.
 
 ## Core Technical Skills
