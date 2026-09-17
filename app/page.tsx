@@ -1,5 +1,7 @@
 import Hero from "@/src/components/sections/Hero";
+import SkillsToolkit from "@/src/components/sections/SkillsToolkit";
 import Services from "@/src/components/sections/Services";
+import WhyHireFreelance from "@/src/components/sections/WhyHireFreelance";
 import Projects from "@/src/components/sections/Projects";
 import Testimonials from "@/src/components/sections/Testimonials";
 import StudentHub from "@/src/components/sections/Mentorship";
@@ -18,7 +20,9 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Hero />
+      <SkillsToolkit />
       <Services />
+      <WhyHireFreelance />
       <Projects />
       <Testimonials />
       <StudentHub />

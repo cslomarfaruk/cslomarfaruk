@@ -17,6 +17,8 @@ export default function FAQ() {
     { q: t.faq.q4, a: t.faq.a4 },
     { q: t.faq.q5, a: t.faq.a5 },
     { q: t.faq.q6, a: t.faq.a6 },
+    { q: t.faq.q7, a: t.faq.a7 },
+    { q: t.faq.q8, a: t.faq.a8 },
   ];
 
   const toggleFAQ = (index: number) => {

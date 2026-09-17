@@ -22,9 +22,10 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('hero');
 
   const navItems = [
-    { label: language === 'bn' ? 'সার্ভিসসমূহ' : 'Services', href: '#services', id: 'services' },
-    { label: language === 'bn' ? 'প্রজেক্টসমূহ' : 'Work', href: '#projects', id: 'projects' },
-    { label: language === 'bn' ? 'একাডেমিক হাব' : 'Academic Hub', href: '#students', id: 'students' },
+    { label: language === 'bn' ? 'দক্ষতা' : 'Skills', href: '#skills', id: 'skills' },
+    { label: language === 'bn' ? 'সার্ভিস' : 'Services', href: '#services', id: 'services' },
+    { label: language === 'bn' ? 'কেন আমি' : 'Why Hire', href: '#why-hire', id: 'why-hire' },
+    { label: language === 'bn' ? 'প্রজেক্ট' : 'Work', href: '#projects', id: 'projects' },
     { label: language === 'bn' ? 'প্রশ্নোত্তর' : 'FAQ', href: '#faq', id: 'faq' },
     { label: language === 'bn' ? 'যোগাযোগ' : 'Contact', href: '#contact', id: 'contact' },
   ];
@@ -34,7 +35,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 24);
     };
 
-    const sectionIds = ['hero', 'services', 'projects', 'testimonials', 'students', 'faq', 'education', 'contact'];
+    const sectionIds = ['hero', 'skills', 'services', 'why-hire', 'projects', 'testimonials', 'students', 'faq', 'education', 'contact'];
     const detectActiveSection = () => {
       const y = window.scrollY + 140;
       let current = 'hero';
@@ -143,7 +144,7 @@ export default function Navbar() {
 
             {/* CV Download / View Link */}
             <a
-              href="/omar_cv (7).pdf"
+              href="/omar_cv.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-border bg-surface/60 hover:bg-surface-subtle hover:border-border-hover text-text-secondary hover:text-text-primary transition-all duration-200"

@@ -92,7 +92,17 @@ function professionalServiceSchema() {
       "@type": "PostalAddress",
       addressCountry: "BD",
     },
-    areaServed: "Worldwide",
+    areaServed: [
+      { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "United Kingdom" },
+      { "@type": "Country", name: "Canada" },
+      { "@type": "Country", name: "Germany" },
+      { "@type": "Country", name: "European Union" },
+      { "@type": "Country", name: "Australia" },
+      { "@type": "Country", name: "Worldwide" },
+    ],
+    currenciesAccepted: "USD, EUR, GBP, CAD, AUD, BDT",
+    paymentAccepted: "Wise, Stripe, Bank Wire Transfer, Credit Card, Cryptocurrency",
     priceRange: "$$",
     aggregateRating: {
       "@type": "AggregateRating",
@@ -169,6 +179,22 @@ function faqSchema() {
         acceptedAnswer: {
           "@type": "Answer",
           text: "Yes. I provide specialized end-to-end technical implementation, live web deployment, and architecture documentation for CSE students and researchers working on capstone projects, IEEE implementations, and thesis defenses with special student-accessible pricing.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How do you handle timezone differences and international communication with US, UK, and European clients?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "I maintain 4–6 hours of daily working overlap with US Eastern (EST), US Pacific (PST), and UK/European (GMT/CET) time zones. Communication is rapid and transparent via Slack, WhatsApp, or Discord, combined with weekly video demonstrations on Zoom/Google Meet and asynchronous Loom walkthroughs.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What are your payment terms, and who owns the intellectual property and source code?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You retain 100% intellectual property (IP) and source code ownership upon milestone delivery. Fixed-price contracts typically operate on a 50/50 milestone basis, or weekly sprint retainers. Payments are accepted worldwide via Wise, Stripe, International Bank Wire (SWIFT), Credit Card, or Cryptocurrency (USDT).",
         },
       },
     ],

@@ -8,9 +8,9 @@ import { ThemeProvider } from "@/src/components/ThemeProvider";
 import PageTransition from "@/src/components/layout/PageTransition";
 
 export const metadata: Metadata = {
-  title: "Omar Faruk — Full-Stack Developer for Hire | Freelance & Contract Web Engineering",
-  description: "Senior full-stack software engineer and Linux/DevOps specialist with 3+ years experience. Building production SaaS applications, custom web platforms, and high-availability cloud infrastructure with Next.js 15, React 19, Node.js, and Docker. Available for freelance and long-term engagements.",
-  keywords: "hire full stack developer, freelance full stack web developer, Next.js developer for hire, React developer, Node.js backend engineer, SaaS MVP development, custom web app development, Linux DevOps engineer, Docker Traefik setup, VPS server management, academic projects help, final year thesis project developer, IEEE project implementation, Omar Faruk, cslomarfaruk, devcsl, dev csl tech, Sylhet Engineering College, freelance software engineer, contract developer, ওয়েব ডেভেলপার, সফটওয়্যার ডেভেলপমেন্ট, ফুল স্ট্যাক ডেভেলপার",
+  title: "Freelance Full-Stack Developer for Hire (Remote US, UK, EU) | Omar Faruk (DEV CSL)",
+  description: "Senior freelance full-stack developer and cloud engineer for hire. Specializing in React 19, Next.js 15, Node.js, TypeScript, PostgreSQL, and Docker. Building high-performance SaaS applications, custom web platforms, and cloud infrastructure for clients in the US, UK, Europe, and worldwide at competitive rates.",
+  keywords: "freelance full-stack developer for hire, freelance full stack developer, hire full stack developer, Next.js developer for hire, React developer, Node.js backend engineer, remote web developer US UK, SaaS MVP development, custom web app development, Linux DevOps engineer, Docker Traefik setup, VPS server management, academic projects help, final year thesis project developer, IEEE project implementation, Omar Faruk, cslomarfaruk, devcsl, dev csl tech, Sylhet Engineering College, freelance software engineer, contract developer, ওয়েব ডেভেলপার, সফটওয়্যার ডেভেলপমেন্ট, ফুল স্ট্যাক ডেভেলপার",
   authors: [{ name: "Omar Faruk", url: "https://devcsl.tech" }],
   creator: "Omar Faruk",
   publisher: "DEV.CSL",
@@ -43,10 +43,10 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "DEV CSL — Web Development Platform",
-    description: "Full-stack engineer, Web Developer and Web Design expert, building production SaaS, high-quality academic & thesis projects, and digital platforms.",
+    title: "Freelance Full-Stack Developer for Hire | Omar Faruk (DEV CSL)",
+    description: "Senior freelance full-stack web developer building high-performance web applications and SaaS platforms in React, Next.js, Node.js, and TypeScript. Delivering world-class software for US, UK, and European clients at transparent, competitive rates.",
     url: "https://devcsl.tech",
-    siteName: "DEV CSL",
+    siteName: "DEV CSL — Omar Faruk",
     locale: "en_US",
     alternateLocale: ["bn_BD"],
     type: "website",
@@ -55,15 +55,15 @@ export const metadata: Metadata = {
         url: 'https://devcsl.tech/logo.png',
         width: 1200,
         height: 630,
-        alt: 'DEV CSL — Omar Faruk',
+        alt: 'Freelance Full-Stack Developer for Hire — Omar Faruk',
         type: 'image/png',
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: "DEV CSL — Web Development Platform",
-    description: "Full-stack engineer, Web Developer and Web Design expert, building production SaaS, high-quality academic projects, and shipping digital products.",
+    title: "Freelance Full-Stack Developer for Hire | Omar Faruk (DEV CSL)",
+    description: "Senior freelance full-stack web developer building high-performance web applications and SaaS platforms in React, Next.js, Node.js, and TypeScript for US, UK, and European clients.",
     images: ['https://devcsl.tech/logo.png'],
     creator: '@cslomarfaruk',
   },
@@ -105,15 +105,15 @@ export default function RootLayout({
 
         {/* Mobile & PWA */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
-        <meta name="theme-color" content="#09090b" />
+        <meta name="theme-color" content="#ffffff" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
         {/* Preload critical logo */}
         <link rel="preload" as="image" href="/icon.png" />
       </head>
       <body className="antialiased min-h-screen bg-brand text-text-primary">
-        <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+        <ThemeProvider defaultTheme="light" storageKey="devcsl-theme">
           <LanguageProvider>
             <Navbar />
             <PageTransition>
