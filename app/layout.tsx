@@ -6,6 +6,7 @@ import FloatingWhatsApp from "@/src/components/layout/FloatingWhatsApp";
 import Footer from "@/src/components/sections/Footer";
 import { ThemeProvider } from "@/src/components/ThemeProvider";
 import PageTransition from "@/src/components/layout/PageTransition";
+import GoogleAnalytics from "@/src/components/analytics/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: "DEV CSL — Full-Stack Developer & DevOps | Omar Faruk",
@@ -107,6 +108,7 @@ export default function RootLayout({
             <Footer />
           </LanguageProvider>
         </ThemeProvider>
+        <GoogleAnalytics />
       </body>
     </html>
   );
