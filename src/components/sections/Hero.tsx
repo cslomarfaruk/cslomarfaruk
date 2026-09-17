@@ -46,8 +46,8 @@ export default function Hero() {
           >
             <h1
               className={cn(
-                'text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-text-primary leading-[1.15]',
-                language === 'bn' ? 'leading-[1.3] font-bold' : ''
+                'text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-text-primary leading-[1.2]',
+                language === 'bn' ? 'leading-[1.3] font-bold text-2xl sm:text-3xl md:text-4xl' : ''
               )}
             >
               <span>{t.hero.headline_pt1} </span>

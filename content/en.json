@@ -1,10 +1,10 @@
 {
   "hero": {
-    "tagline": "FREELANCE FULL-STACK DEVELOPER · REMOTE · US / UK / EU",
-    "headline_pt1": "Freelance Full-Stack Developer",
-    "headline_pt2": "for Hire",
-    "subheadline": "I help founders and businesses build fast web applications, clean dashboards, and reliable APIs. Working mainly with React, Next.js, Node.js, and PostgreSQL — delivering quality code on time without agency overhead.",
-    "cta_discuss": "Discuss Your Project",
+    "tagline": "FREELANCE FULL-STACK DEVELOPER · REMOTE",
+    "headline_pt1": "I'm a full stack developer building custom web applications in",
+    "headline_pt2": "React, Next.js & Node.js.",
+    "subheadline": "You get someone who can own your product end to end: designing the database, writing clean frontend and backend code, and deploying to reliable Linux servers. Whether you need a new web app, a SaaS MVP, or an API — I'm available for hire.",
+    "cta_discuss": "Hire Me / Discuss Project",
     "cta_portfolio": "See My Work",
     "cta_cv": "Resume / CV",
     "status": "Available for Freelance & Contract Work",
